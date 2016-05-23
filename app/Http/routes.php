@@ -11,6 +11,16 @@
 |
 */
 
-Route::auth();
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
 
-Route::get('/', 'HomeController@index');
+    Route::get('/', function() {
+      return view('welcome');
+    });
+
+    Route::get('/perfil', function() {
+      return view('perfil');
+    });
+    //usar quando quiser autenticar na rota
+    Route::get('/home', 'HomeController@index');
+});
