@@ -18,9 +18,13 @@ Route::group(['middleware' => 'web'], function () {
       return view('welcome');
     });
 
-    Route::get('/perfil', function() {
-      return view('perfil');
-    });
     //usar quando quiser autenticar na rota
     Route::get('/home', 'HomeController@index');
+    Route::get('/perfil', 'HomeController@perfil');
+
+    //controle das paginas de anuncios
+    Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
+    Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
+    Route::get('/anuncio/interesses', 'AnuncioController@showInteressesPage');
+    Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
 });

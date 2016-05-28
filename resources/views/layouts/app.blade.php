@@ -41,17 +41,17 @@
 					</button>
 				</div>
 				<div class="collapse navbar-collapse" id="czsale-navbar">
-					<a href="{{ url('anuncios/novo')}}" class="btn btn-success navbar-btn navbar-left add-classified-btn" role="button">Publicar anúncio</a>
-					<ul class="nav navbar-nav navbar-right">
+					<a href="{{ url('anuncio/novo')}}" class="btn btn-success navbar-btn navbar-left add-classified-btn" role="button">Publicar anúncio</a>
+          <a href="{{ url('anuncio/interesses')}}" class="btn navbar-btn navbar-left">Meus negócios</a>
+          <ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class='caret'></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ url('/') }}">Página Inicial</a></li>
-								<li><a href="{{ url('anuncios/novo') }}">Adicionar Anúncio</a></li>
-								<li><a href="{{ url('categorias') }}">Página de categorias</a></li>
+								<li><a href="{{ url('anuncio/novo') }}">Adicionar Anúncio</a></li>
+								<li><a href="{{ url('anuncio/meusitens') }}">Meus anúncios</a></li>
 								<li><a href="{{ url('regras') }}">Regras & Termos de Uso</a></li>
 								<li><a href="{{ url('ajuda') }}">Ajuda</a></li>
-								<li><a href="{{ url('contato') }}">Contato</a></li>
 								@if (Auth::guest())
                   <li><a href="{{ url('register') }}">Registrar-se</a></li>
                 @endif
@@ -107,7 +107,7 @@
 
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('/perfil') }}"><i class="fa fa-btn fa-user"></i>Perfil</a></li>
-                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                    <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                   </ul>
                 </li>
             @endif
@@ -133,15 +133,24 @@
       			<div class="mobile-categories"></div>
       		</div>
       		<div class="categories list-group hidden-xs hidden-sm hidden-md">
-      			<a href="#" class="list-group-item">Books <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Cameras & Photo <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Cell Phones & Accessories <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Clothing, Shoes & Accessories <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Computers & Networking <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">DVDs & Movies <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Health & Beauty <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Music <span class="glyphicon glyphicon-chevron-right"></span></a>
-      			<a href="#" class="list-group-item">Toys & Hobbies <span class="glyphicon glyphicon-chevron-right"></span></a>
+      			  <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Carros
+              </a>
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Motocicletas
+              </a>
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Celulares & Acessórios
+              </a>
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Notebooks & Computadores
+              </a>
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Roupas & Calçados
+              </a>
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                Outras Categorias
+              </a>
       		</div>
       		<div class="hidden-xs hidden-sm hidden-md">
       			<h4>Recentemente adicionados</h4>
@@ -195,7 +204,7 @@
 							<span class="bar">|</span>
 							<a href="contact.html" class="btn btn-link">Contato</a>
 							<span class="bar">|</span>
-							<a href="conditions.html" class="btn btn-link">Regras & condições</a>
+							<a href="conditions.html" class="btn btn-link">Regras</a>
 						</div>
 					</div>
 				</div>
