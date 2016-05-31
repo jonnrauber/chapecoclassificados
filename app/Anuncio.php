@@ -9,10 +9,12 @@ class Anuncio extends Model
   //chave primária
   protected $primaryKey = ['emaila','tituloa'];
   public $incrementing = false;
-  
+
   protected $fillable = [
+    'id',
     'emaila',
     'tituloa',
+    'descricao',
     'codc',
     'valor',
     'qtvisit',

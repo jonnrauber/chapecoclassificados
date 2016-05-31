@@ -1,13 +1,18 @@
+<?php $categorias = DB::table('categorias')->get(); ?>
+
 @extends('layouts.app')
+
 
 @section('content')
   <div class="col-lg-9 content-right">
+
+    @yield('novosuccess')
 
 					<h2>Publicar anúncio</h2>
 					<p>Preencha abaixo as características do seu classificado.</p>
 					<hr>
 
-          @if (count($errors) > 0)
+          @if ($errors->any())
             <div class="alert alert-danger">
               <ul>
                 @foreach ($errors->all() as $error)
@@ -27,32 +32,31 @@
 								<div class="form-group">
                   <label>Tipo</label><br>
                   <div class="radio-inline">
-                    <label><input type="radio" name="tipo" id="p" checked> Produto</label>
+                    <label><input type="radio" name="tipo" value="p" checked> Produto</label>
                   </div>
                   <div class="radio-inline">
-                    <label><input type="radio" name="tipo" id="s"> Serviço</label>
+                    <label><input type="radio" name="tipo" value="s"> Serviço</label>
                   </div>
 								</div>
 
-								@if($errors->has('codc'))
-                  <div class="form-group text text-warning">
-                @else
-                  <div class="form-group">
-                @endif
+                <div class="form-group">
 									<label for="codc">Categoria</label>
-									<select id="codc" class="form-control">
+									<select name="codc" class="form-control">
 										<option value="" selected="selected">Selecione a categoria</option>
+                    @foreach($categorias as $cat)
+                      <option value='{{$cat->codc}}'>{{$cat->nomec}}</option>
+                    @endforeach
 									</select>
 								</div>
 
 								<div class="form-group">
 									<label for="tituloa">Título</label>
-									<input type="text" class="form-control" id="tituloa" placeholder="ex.: Celular Samsung Galaxy S2 ">
+									<input type="text" class="form-control" name="tituloa" placeholder="ex.: Celular Samsung Galaxy S2" value="{{old('tituloa')}}">
 								</div>
 
 								<div class="form-group">
 									<label for="descricao">Descrição</label>
-									<textarea id="descricao" class="form-control" rows="8"></textarea>
+									<textarea name="descricao" class="form-control" rows="8"></textarea>
 								</div>
 
 								<div class="form-group">
@@ -61,19 +65,19 @@
 										<div class="form-group">
 											<div class="input-group" style="width: 150px;">
                         <span class="input-group-addon">R$</span>
-                        <input type="text" class="form-control" id="valor">
+                        <input type="text" class="form-control" name="valor">
 											</div>
 										</div>
 										<div class="form-group">
 											<p class="form-control-static" style="padding: 0 10px;">ou</p>
 										</div>
-                    <label><input type="checkbox" id="gratis" /> Grátis?</label>
+                    <label><input type="checkbox" name="gratis" /> Grátis?</label>
 									</div>
 								</div>
 
                 <div class="form-group" style="width: 150px">
                   <label>Quantidade de itens
-                  <input type="text" class="form-control" id="qtitens">
+                  <input type="text" class="form-control" name="qtitens">
                   </label>
                 </div>
 
@@ -81,13 +85,13 @@
                   <label>Condição</label><br>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="condicao" id="n" checked>
+                      <input type="radio" name="condicao" value="n" checked>
                       Novo
                     </label>
                   </div>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="condicao" id="u">
+                      <input type="radio" name="condicao" value="u">
                       Usado
                     </label>
                   </div>
@@ -125,7 +129,7 @@
 								<div class="well">
 									<label>Patrocinar anúncio</label>
 									<div class="checkbox" style="margin-top: 0;">
-										<label><input type="checkbox" id="prior"> Propaganda na página inicial do site (R$ 15,00)</label>
+										<label><input type="checkbox" name="prior"> Propaganda na página inicial do site (R$ 15,00)</label>
 									</div>
 								</div>
 							</div>

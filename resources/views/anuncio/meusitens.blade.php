@@ -24,7 +24,7 @@
             <tr>
               <td></td>
               <td>{{$anuncio->codc}}</td>
-              <td>{{$anuncio->tituloa}}</td>
+              <td><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></td>
               <td>{{$anuncio->valor}}</td>
               <td>{{$anuncio->qtvisit}}</td>
               <td>{{$anuncio->created_at}}</td>

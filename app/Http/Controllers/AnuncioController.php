@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\AnuncioRequest;
 use Validator;
 use DB;
 use Auth;
+use App\Anuncio;
+use App\User;
 
 class AnuncioController extends Controller
 {
@@ -20,28 +23,43 @@ class AnuncioController extends Controller
     return view('anuncio.novo');
   }
   public function showInteressesPage(){
-    $interesses = DB::table('interesses')->where('emaili', Auth::user()->email)->get();
-    return view('anuncio.interesses', array('interesses'=>$interesses));
+    $interesses = DB::select('select i.* from interesses i where i.emaili = ?', [Auth::user()->email]);
+    return view('anuncio.interesses', ['interesses'=>$interesses]);
   }
   public function showMeusItensPage(){
-    $anuncios = DB::table('anuncios')->where('emaila', Auth::user()->email)->get();
+    $anuncios = DB::select('select a.* from anuncios a where a.emaila = ?', [Auth::user()->email]);
     return view('anuncio.meusitens', ['anuncios'=>$anuncios]);
   }
+  public function showAnuncioPage($id){
+    $anuncio = new Anuncio;
+    $anuncio = Anuncio::where('id', $id)->first();
 
-  public function createAnuncio(Request $request){
-    $validator = Validator::make($request->all(), [
-      'tipo' => 'required',
-      'codc' => 'required',
-      'tituloa' => 'required|max:100',
-      'descricao' => 'required',
-      'valor' => 'numeric',
-      'qtitens' => 'integer'
-    ]);
+    //tem que implementar a contagem de visitas!
 
-    if($validator->fails()) {
-      return redirect('anuncio/novo')->withErrors($validator);
-    }
+    $vendedor = User::find($anuncio->emaila);
 
-
+    return view('anuncio/publicacao', ['anuncio'=>$anuncio, 'vendedor'=>$vendedor]);
   }
+  public function createAnuncio(AnuncioRequest $request){
+    $anuncio = new Anuncio;
+    $anuncio->emaila = Auth::user()->email;
+    $anuncio->tituloa = $request->tituloa;
+    $anuncio->descricao = $request->descricao;
+    $anuncio->codc = $request->codc;
+    $anuncio->valor = $request->valor;
+    $anuncio->qtvisit = 0;
+    $anuncio->prior = false; //falta colocar a prioridade!
+    $anuncio->tipo = $request->tipo;
+    $anuncio->qtitens = $request->qtitens ? $request->qtitens : 0;
+    $anuncio->condicao = $request->condicao;
+    $anuncio->dataex = date('Y-m-d H:i:s', strtotime("+1 month"));
+
+    $qtanuncios = DB::select('select count(*) from anuncios');
+    $anuncio->id = $qtanuncios[0]->count + 1;
+
+    $anuncio->save();
+
+    return view('anuncio/novosuccess');
+  }
+
 }

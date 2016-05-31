@@ -65,6 +65,12 @@
   								<li>
   									<div class="row">
   										<div class="col-md-12">
+                        @if($errors->any())
+                          <div class="alert alert-danger">
+                            E-mail ou senha incorretos.
+                          </div>
+                        @endif
+
   											{!!
   											Form::open(['url' => 'login']),
   												ControlGroup::generate(

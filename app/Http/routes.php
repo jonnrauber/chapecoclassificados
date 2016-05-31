@@ -11,20 +11,21 @@
 |
 */
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+Route::auth();
 
-    Route::get('/', function() {
-      return view('welcome');
-    });
-
-    //usar quando quiser autenticar na rota
-    Route::get('/home', 'HomeController@index');
-    Route::get('/perfil', 'HomeController@perfil');
-
-    //controle das paginas de anuncios
-    Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
-    Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
-    Route::get('/anuncio/interesses', 'AnuncioController@showInteressesPage');
-    Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
+Route::get('/', function() {
+  return view('welcome');
 });
+
+//usar quando quiser autenticar na rota
+Route::get('/home', 'HomeController@index');
+Route::get('/perfil', 'HomeController@perfil');
+//controle das paginas de anuncios
+Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
+Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
+Route::get('/anuncio/interesses', 'AnuncioController@showInteressesPage');
+Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
+
+
+Route::get('anuncio/{id}', 'AnuncioController@showAnuncioPage@{id}');
+Route::post('anuncio/{id}', 'AnuncioController@enviarInteresse@{id}');

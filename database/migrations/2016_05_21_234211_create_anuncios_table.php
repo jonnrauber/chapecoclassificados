@@ -15,12 +15,14 @@ class CreateAnunciosTable extends Migration
         Schema::create('anuncios', function (Blueprint $table) {
           $table->timestamps();
 
+          $table->integer('id')->unique();
           $table->string('emaila', 50);
           $table->string('tituloa', 100);
+          $table->string('descricao', 255);
           $table->string('codc', 3);
-          $table->decimal('valor', 8, 2)->nullable;
-          $table->integer('qtvisit');
-          $table->boolean('prior');
+          $table->decimal('valor', 8, 2)->nullable();
+          $table->integer('qtvisit')->default(0);
+          $table->boolean('prior')->default(false);
           $table->char('tipo');
           $table->integer('qtitens')->nullable();
           $table->char('condicao')->nullable();
