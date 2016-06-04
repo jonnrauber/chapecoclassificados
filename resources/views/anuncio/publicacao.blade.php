@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.inside')
 
 @section('content')
 
-<div class="col-lg-9 content-right">
+<div class="col-lg-12 content-right">
 
   @yield('publicacaosuccess')
 
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="row">
-		<div class="col-md-8">
+		<div class="col-md-7">
 			<div id="carousel-detail-classified" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-detail-classified" data-slide-to="0" class="active"></li>
@@ -66,7 +66,7 @@
 				</a>
 			</div>
 		</div>
-  	<div class="col-md-4">
+  	<div class="col-md-5">
   		<table class="table table-condensed table-hover">
   		  <thead>
   				<th colspan="2">Detalhes:</th>
@@ -83,16 +83,16 @@
   				<tr>
   					<td>Condição</td>
   					<td>
-              {{$anuncio->condicao}}
+              @if($anuncio->condicao == 'n')
+                Produto novo
+              @else
+                Produto usado
+              @endif
             </td>
   				</tr>
   				<tr>
-  					<td>Brand</td>
-  					<td>Samsung</td>
-  				</tr>
-  				<tr>
   					<td>Categoria</td>
-  					<td>{{$anuncio->codc}}</td>
+  					<td>{{$categoria->nomec}}</td>
   				</tr>
   				<tr>
   					<td>Métodos de Pagamento</td>

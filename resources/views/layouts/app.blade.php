@@ -130,9 +130,9 @@
       	<div class="col-lg-3 content-left">
       		<h4>Pesquisa</h4>
       		<div class="well well-sm">
-      			<form>
+      			{!!Form::open(['url' => 'pesquisa']) !!}
       				<div class="input-group">
-      					<input type="text" class="form-control" placeholder="Procurando alguma coisa?">
+      					<input type="text" class="form-control" placeholder="Procurando alguma coisa?" name="titulo">
       					<span class="input-group-btn">
       						<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
       					</span>
@@ -159,7 +159,7 @@
               <a href="{{url('categoria/ROU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                 Roupas & Acessórios
               </a>
-              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+              <a href="{{url('categoria/OUT')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                 Outras Categorias
               </a>
       		</div>

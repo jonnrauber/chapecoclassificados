@@ -11,6 +11,8 @@ use DB;
 use Auth;
 use App\Anuncio;
 use App\User;
+use App\Categoria;
+
 
 class AnuncioController extends Controller
 {
@@ -21,10 +23,28 @@ class AnuncioController extends Controller
 
   public function showAnunciosByCat($id){
     $anuncios = DB::select(
-      'select a.*, u.* from anuncios a
+      'select a.*, u.*, c.nomec from anuncios a
       join categorias c on c.codc = a.codc
       join usuarios u on u.email = a.emaila
       where c.codc= ?', [$id]);
+    return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
+  }
+
+  public function showAnunciosByUrl($palavra) {
+    $anuncios = DB::select(
+      "select a.*, u.*, c.nomec from anuncios a
+      join categorias c on c.codc = a.codc
+      join usuarios u on u.email = a.emaila
+      where a.tituloa ~* ?", [$palavra]);
+    return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
+  }
+
+  public function showAnunciosBySearch(Request $request) {
+    $anuncios = DB::select(
+      "select a.*, u.*, c.nomec from anuncios a
+      join categorias c on c.codc = a.codc
+      join usuarios u on u.email = a.emaila
+      where a.tituloa ~* ?", [$request->titulo]);
     return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
   }
 
@@ -43,7 +63,8 @@ class AnuncioController extends Controller
     $anuncio = Anuncio::find($id);
     //tem que implementar a contagem de visitas!
     $vendedor = User::find($anuncio->emaila);
-    return view('anuncio/publicacao', ['anuncio'=>$anuncio, 'vendedor'=>$vendedor]);
+    $categoria = Categoria::find($anuncio->codc);
+    return view('anuncio/publicacao', ['anuncio'=>$anuncio, 'vendedor'=>$vendedor, 'categoria'=>$categoria]);
   }
   public function salvaImagemAnuncio($request, $campo, $num){
     if($request->hasFile($campo)) {

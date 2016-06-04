@@ -53,7 +53,7 @@
       </table>
     @else
       <div class='alert alert-info'>
-        Ainda não existem produtos cadastrados nesta categoria.
+        Não há itens a serem exibidos nessa lista.
       </div>
     @endif
   </div>

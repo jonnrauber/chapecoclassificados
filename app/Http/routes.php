@@ -28,5 +28,8 @@ Route::get('anuncio/{id}', 'AnuncioController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 
 Route::get('categoria/{id}', 'AnuncioController@showAnunciosByCat@{id}');
+Route::get('pesquisa/{palavrachave}', 'AnuncioController@showAnunciosByUrl@{palavrachave}');
+
+Route::post('pesquisa', 'AnuncioController@showAnunciosBySearch');
 
 Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
