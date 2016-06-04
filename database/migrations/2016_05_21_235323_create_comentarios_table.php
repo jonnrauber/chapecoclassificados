@@ -14,15 +14,14 @@ class CreateComentariosTable extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
           $table->timestamps();
-          $table->string('emaila',50);
+          $table->integer('id');
           $table->string('emailc',50);
-          $table->string('tituloa',50);
           $table->string('tituloc',50);
           $table->string('msg',255);
 
-          $table->primary(['emaila','emailc','tituloa','created_at']);
+          $table->primary(['emailc','created_at','id']);
           $table->foreign('emailc')->references('email')->on('usuarios');
-          $table->foreign(['emaila','tituloa'])->references(['emaila','tituloa'])->on('anuncios');
+          $table->foreign('id')->references('id')->on('anuncios');
         });
     }
 

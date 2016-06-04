@@ -9,12 +9,11 @@ class DenunciaA extends Model
     protected $table = 'denuncia_a';
     public $incrementing = false;
     //chave primária
-    protected $primaryKey = ['emaild','emaila','tituloa'];
+    protected $primaryKey = ['emaild','id'];
 
     protected $fillable = [
       'emaild',
-      'emaila',
-      'tituloa',
+      'id',
       'motivo',
     ];
 }

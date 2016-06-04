@@ -14,15 +14,14 @@ class CreateDenunciaAsTable extends Migration
     {
         Schema::create('denuncia_a', function (Blueprint $table) {
           $table->string('emaild',50);
-          $table->string('emaila',50);
-          $table->string('tituloa',100);
+          $table->integer('id');
           $table->string('motivo',255);
 
           $table->timestamps();
 
-          $table->primary(['emaild','emaila','tituloa']);
+          $table->primary(['emaild','id']);
           $table->foreign('emaild')->references('email')->on('usuarios');
-          $table->foreign(['emaila','tituloa'])->references(['emaila','tituloa'])->on('anuncios');
+          $table->foreign('id')->references('id')->on('anuncios');
         });
     }
 

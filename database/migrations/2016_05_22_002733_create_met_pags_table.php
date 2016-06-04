@@ -13,15 +13,14 @@ class CreateMetPagsTable extends Migration
     public function up()
     {
         Schema::create('met_pags', function (Blueprint $table) {
-          $table->string('emaila',50);
-          $table->string('tituloa',100);
+          $table->integer('id');
           $table->string('codp', 3);
 
           $table->timestamps();
 
-          $table->primary(['emaila','tituloa','codp']);
+          $table->primary(['id','codp']);
           $table->foreign('codp')->references('codp')->on('pagamentos');
-          $table->foreign(['emaila','tituloa'])->references(['emaila','tituloa'])->on('anuncios');
+          $table->foreign('id')->references('id')->on('anuncios');
         });
     }
 

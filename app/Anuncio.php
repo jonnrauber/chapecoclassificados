@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Anuncio extends Model
 {
   //chave primária
-  protected $primaryKey = ['emaila','tituloa'];
-  public $incrementing = false;
 
   protected $fillable = [
     'id',
@@ -23,6 +21,11 @@ class Anuncio extends Model
     'qtitens',
     'condicao',
     'dataex',
+    'imagem1',
+    'imagem2',
+    'imagem3',
+    'imagem4',
+    'imagem5'
   ];
 
 }

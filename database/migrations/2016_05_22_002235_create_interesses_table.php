@@ -14,15 +14,14 @@ class CreateInteressesTable extends Migration
     {
         Schema::create('interesses', function (Blueprint $table) {
           $table->string('emaili',50);
-          $table->string('emaila',50);
-          $table->string('tituloa',100);
           $table->string('msg',255);
+          $table->integer('id');
 
           $table->timestamps();
 
-          $table->primary(['emaili','emaila','tituloa']);
+          $table->primary(['emaili','id']);
           $table->foreign('emaili')->references('email')->on('usuarios');
-          $table->foreign(['emaila','tituloa'])->references(['emaila','tituloa'])->on('anuncios');
+          $table->foreign('id')->references('id')->on('anuncios');
         });
     }
 

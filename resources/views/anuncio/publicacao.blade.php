@@ -2,7 +2,10 @@
 
 @section('content')
 
-<div class="col-lg-9">
+<div class="col-lg-9 content-right">
+
+  @yield('publicacaosuccess')
+
   <div class="row">
     <div class="col-xs-12">
       <h2>{{$anuncio->tituloa}}</h2>
@@ -13,23 +16,47 @@
 			<div id="carousel-detail-classified" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-detail-classified" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-detail-classified" data-slide-to="1"></li>
-					<li data-target="#carousel-detail-classified" data-slide-to="2"></li>
-					<li data-target="#carousel-detail-classified" data-slide-to="3"></li>
+					@if($anuncio->imagem2)
+            <li data-target="#carousel-detail-classified" data-slide-to="1"></li>
+          @endif
+					@if($anuncio->imagem3)
+            <li data-target="#carousel-detail-classified" data-slide-to="2"></li>
+          @endif
+					@if($anuncio->imagem4)
+            <li data-target="#carousel-detail-classified" data-slide-to="3"></li>
+          @endif
+          @if($anuncio->imagem5)
+            <li data-target="#carousel-detail-classified" data-slide-to="4"></li>
+          @endif
 				</ol>
 			  <div class="carousel-inner">
-					<div class="item-active">
-						<img src="http://placehold.it/1024x768/e0e0e0/&text=Image+2" class="img-responsive" />
-					</div>
-					<div class="item">
-						<img src="http://placehold.it/1024x768/e0e0e0/&text=Image+3" class="img-responsive" />
-					</div>
-					<div class="item">
-						<img src="http://placehold.it/1024x768/e0e0e0/&text=Image+4" class="img-responsive" />
-					</div>
-				  <div class="item">
-						<img src="http://placehold.it/1024x768/e0e0e0/&text=Image+5" class="img-responsive" />
-					</div>
+
+          @if($anuncio->imagem1)
+  					<div class="item active tamimg">
+  						<img src="/img/anuncio/{{$anuncio->imagem1}}" class="img-responsive" />
+  					</div>
+          @endif
+          @if($anuncio->imagem2)
+            <div class="item tamimg">
+  						<img src="/img/anuncio/{{$anuncio->imagem2}}" class="img-responsive" />
+  					</div>
+          @endif
+          @if($anuncio->imagem3)
+            <div class="item tamimg">
+  						<img src="/img/anuncio/{{$anuncio->imagem3}}" class="img-responsive" />
+  					</div>
+          @endif
+          @if($anuncio->imagem4)
+            <div class="item tamimg">
+  						<img src="/img/anuncio/{{$anuncio->imagem4}}" class="img-responsive" />
+  					</div>
+          @endif
+          @if($anuncio->imagem5)
+            <div class="item tamimg">
+  						<img src="/img/anuncio/{{$anuncio->imagem5}}" class="img-responsive" />
+  					</div>
+          @endif
+
 				</div>
 				<a class="left carousel-control" href="#carousel-detail-classified" role="button" data-slide="prev">
 					<span class="glyphicon glyphicon-chevron-left"></span>
@@ -113,10 +140,12 @@
 			<h4>Enviar mensagem de interesse ao vendedor</h4>
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<form action="{{url('anuncio/'.$anuncio->id)}}" method="POST">
+					{!! Form::open() !!}
+            <input type="hidden" name="emaila" value="{{$anuncio->emaila}}">
+            <input type="hidden" name="tituloa" value="{{$anuncio->tituloa}}">
 						<div class="form-group">
-							<label for="InputText">Deixe sua mensagem abaixo: </label>
-							<textarea class="form-control" id="InputText" name="message" placeholder="Escreva aqui sua mensagem" rows="5" style="margin-bottom:10px;"></textarea>
+							<label for="msg">Deixe sua mensagem abaixo: </label>
+							<textarea class="form-control" id="msg" name="msg" placeholder="Escreva aqui sua mensagem" rows="5"></textarea>
 						</div>
 						<button class="btn btn-info" type="submit">Enviar</button>
 					</form>

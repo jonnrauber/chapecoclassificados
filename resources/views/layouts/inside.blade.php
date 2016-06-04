@@ -23,10 +23,6 @@
         .fa-btn {
             margin-right: 6px;
         }
-        .tamimg {
-          width:100%;
-          height: 400px !important;
-        }
     </style>
 </head>
 <body id="app-layout">
@@ -112,8 +108,7 @@
             @else
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <img src='/img/perfil/{{Auth::user()->email}}' class="img-rounded" height=27px width=27px>
-                      {{ Auth::user()->nome }} <span class="caret"></span>
+                    {{ Auth::user()->nome }} <span class="caret"></span>
                   </a>
 
                   <ul class="dropdown-menu" role="menu">
@@ -126,69 +121,29 @@
 				</div>
 			</nav>
 
-      <div class="row content">
-      	<div class="col-lg-3 content-left">
-      		<h4>Pesquisa</h4>
-      		<div class="well well-sm">
-      			<form>
-      				<div class="input-group">
-      					<input type="text" class="form-control" placeholder="Procurando alguma coisa?">
-      					<span class="input-group-btn">
-      						<button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-      					</span>
-      				</div>
-      			</form>
-      		</div>
-      		<h4>Categorias</h4>
-      		<div class="well well-sm hidden-lg">
-      			<div class="mobile-categories"></div>
-      		</div>
-      		<div class="categories list-group hidden-xs hidden-sm hidden-md">
-      			  <a href="{{url('categoria/CAR')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Carros
-              </a>
-              <a href="{{url('categoria/MOT')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Motocicletas
-              </a>
-              <a href="{{url('categoria/CEL')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Celulares
-              </a>
-              <a href="{{url('categoria/PCS')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Notebooks & Computadores
-              </a>
-              <a href="{{url('categoria/ROU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Roupas & Acessórios
-              </a>
-              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                Outras Categorias
-              </a>
-      		</div>
-      		@yield('menu-left')
-        </div>
+      <div class="row">
         @yield('content')
       </div>
-
-
-      <div class="footer">
-				<div class="footer-content">
-					<div class="row">
-						<div class="col-xs-6">
-						<!--
+      <div class="row">
+        <div class="footer col-lg-12">
+          <div class="row">
+            <div class="col-xs-6">
+            <!--
               <img src="img/czsale-logo.png" alt="CZSale" title="CZSale" style="width: 100px; height: 58px;" />
             -->
               <h3>Chapecó Class</h3>
-						</div>
-						<div class="col-xs-6 text-right">
-							<a href="help.html" class="btn btn-link">Ajuda</a>
-							<span class="bar">|</span>
-							<a href="contact.html" class="btn btn-link">Contato</a>
-							<span class="bar">|</span>
-							<a href="conditions.html" class="btn btn-link">Regras</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            </div>
+            <div class="col-xs-6 text-right">
+              <a href="help.html" class="btn btn-link">Ajuda</a>
+              <span class="bar">|</span>
+              <a href="contact.html" class="btn btn-link">Contato</a>
+              <span class="bar">|</span>
+              <a href="conditions.html" class="btn btn-link">Regras</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>

@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Comentario extends Model
 {
   //chave primária
-  protected $primaryKey = ['emaila','tituloa','emailc','created_at'];
+  protected $primaryKey = ['id','emailc','created_at'];
   public $incrementing = false;
 
   protected $fillable = [
-    'emaila',
     'emailc',
-    'tituloa',
+    'id',
     'tituloc',
     'msg'
   ];

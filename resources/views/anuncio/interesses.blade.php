@@ -15,14 +15,16 @@
           <th>
             <td>Título</td>
             <td>Anunciante</td>
-            <td>Data do interesse</td>
+            <td>Data</td>
+            <td>Mensagem</td>
           </th>
           @foreach($interesses as $interesse)
             <tr>
               <td></td>
-              <td>{{$interesse->tituloa}}</td>
+              <td><a href="{{url('anuncio/'.$interesse->id)}}">{{$interesse->tituloa}}</a></td>
               <td>{{$interesse->emaila}}</td>
               <td>{{$interesse->created_at}}</td>
+              <td>{{$interesse->msg}}</td>
             </tr>
           @endforeach
         </table>

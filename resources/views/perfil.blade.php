@@ -15,8 +15,24 @@
             <strong>Foto de perfil</strong>
           </div>
           {!!
-            Image::rounded('http://placehold.it/200x200')->responsive()
+            Image::rounded('/img/perfil/'.Auth::user()->email)->responsive()
           !!}
+          @if(count($errors)>0)
+            <div class="alert alert-danger">
+              @foreach($errors->all() as $error)
+                {{$error}}
+              @endforeach
+            </div>
+          @endif
+          {!!
+            Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
+              Form::file('fotoperfil'),
+              Form::submit('Alterar foto'),
+            Form::close()
+          !!}
+
+
+          </form>
         </div>
         <div class="col-sm-9">
           <div class='panel panel-heading'>

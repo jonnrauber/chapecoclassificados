@@ -14,17 +14,16 @@ class CreateDenunciaCsTable extends Migration
     {
         Schema::create('denuncia_c', function (Blueprint $table) {
           $table->string('emaild',50);
-          $table->string('emaila',50);
-          $table->string('tituloa',100);
+          $table->integer('id');
           $table->timestamp('datac');
           $table->string('emailc',50);
           $table->string('motivo',255);
 
           $table->timestamps();
 
-          $table->primary(['emaild','emaila','tituloa','datac','emailc']);
+          $table->primary(['emaild','id','datac','emailc']);
           $table->foreign('emaild')->references('email')->on('usuarios');
-          $table->foreign(['emaila','tituloa','datac','emailc'])->references(['emaila','tituloa','created_at','emailc'])->on('comentarios');
+          $table->foreign(['id','datac','emailc'])->references(['id','created_at','emailc'])->on('comentarios');
 
         });
     }

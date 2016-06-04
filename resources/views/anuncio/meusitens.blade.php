@@ -11,6 +11,9 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-12">
+        <div class="pull-right">
+          <a href="url('anuncio/meusitens/editar')">editar</a>
+        </div>
         <table class="table table-striped table-hover">
           <th>
             <td>cat.</td>
@@ -22,13 +25,13 @@
           </th>
           @foreach($anuncios as $anuncio)
             <tr>
-              <td></td>
-              <td>{{$anuncio->codc}}</td>
-              <td><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></td>
-              <td>{{$anuncio->valor}}</td>
-              <td>{{$anuncio->qtvisit}}</td>
-              <td>{{$anuncio->created_at}}</td>
-              <td>{{$anuncio->dataex}}</td>
+                <td></td>
+                <td>{{$anuncio->codc}}</td>
+                <td><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></td>
+                <td>{{$anuncio->valor}}</td>
+                <td>{{$anuncio->qtvisit}}</td>
+                <td>{{$anuncio->created_at}}</td>
+                <td>{{$anuncio->dataex}}</td>
             </tr>
           @endforeach
         </table>

@@ -22,7 +22,7 @@
             </div>
           @endif
 
-					{!!Form::open()!!}
+					{!!Form::open(['files'=>true])!!}
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class="panel-title">Detalhes</h3>
@@ -56,7 +56,7 @@
 
 								<div class="form-group">
 									<label for="descricao">Descrição</label>
-									<textarea name="descricao" class="form-control" rows="8"></textarea>
+									<textarea value="{{old('descricao')}}"name="descricao" class="form-control" rows="8"></textarea>
 								</div>
 
 								<div class="form-group">
@@ -65,7 +65,7 @@
 										<div class="form-group">
 											<div class="input-group" style="width: 150px;">
                         <span class="input-group-addon">R$</span>
-                        <input type="text" class="form-control" name="valor">
+                        <input type="text" class="form-control" name="valor" value="{{old('valor')}}">
 											</div>
 										</div>
 										<div class="form-group">
@@ -77,7 +77,7 @@
 
                 <div class="form-group" style="width: 150px">
                   <label>Quantidade de itens
-                  <input type="text" class="form-control" name="qtitens">
+                  <input type="text" class="form-control" name="qtitens" value="{{old('qtitens')}}">
                   </label>
                 </div>
 
@@ -106,11 +106,11 @@
 							<div class="panel-body">
 								<div class="form-group">
 									<label>Selecione as imagens</label>
-									<input type="file" id="image1">
-									<input type="file" id="image2">
-									<input type="file" id="image3">
-									<input type="file" id="image4">
-									<input type="file" id="image5">
+									<input type="file" name="imagem1">
+									<input type="file" name="imagem2">
+									<input type="file" name="imagem3">
+									<input type="file" name="imagem4">
+									<input type="file" name="imagem5">
 								</div>
 								<div class="form-group">
 									<label for="video">Vídeo (link do YouTube)</label>

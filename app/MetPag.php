@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class MetPag extends Model
 {
   //chave primária
-  protected $primaryKey = ['emaila','tituloa','codp'];
+  protected $primaryKey = ['id','codp'];
   public $incrementing = false;
 
   protected $fillable = [
-    'emaila',
-    'tituloa',
+    'id',
     'codp'
   ];
 }

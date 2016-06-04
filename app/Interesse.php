@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Interesse extends Model
 {
   //chave primária
-  protected $primaryKey = ['emaili','emaila','tituloa'];
+  protected $primaryKey = ['emaili','id'];
   public $incrementing = false;
 
   protected $fillable = [
     'emaili',
-    'emaila',
-    'tituloa',
+    'id',
     'msg'
   ];
 }

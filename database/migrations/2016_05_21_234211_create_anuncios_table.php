@@ -15,7 +15,7 @@ class CreateAnunciosTable extends Migration
         Schema::create('anuncios', function (Blueprint $table) {
           $table->timestamps();
 
-          $table->integer('id')->unique();
+          $table->increments('id');
           $table->string('emaila', 50);
           $table->string('tituloa', 100);
           $table->string('descricao', 255);
@@ -23,12 +23,16 @@ class CreateAnunciosTable extends Migration
           $table->decimal('valor', 8, 2)->nullable();
           $table->integer('qtvisit')->default(0);
           $table->boolean('prior')->default(false);
-          $table->char('tipo');
+          $table->string('tipo',1);
           $table->integer('qtitens')->nullable();
-          $table->char('condicao')->nullable();
+          $table->string('condicao',1)->nullable();
           $table->timestamp('dataex');
+          $table->string('imagem1', 100)->nullable();
+          $table->string('imagem2', 100)->nullable();
+          $table->string('imagem3', 100)->nullable();
+          $table->string('imagem4', 100)->nullable();
+          $table->string('imagem5', 100)->nullable();
 
-          $table->primary(['emaila','tituloa']);
           $table->foreign('emaila')->references('email')->on('usuarios');
         });
     }

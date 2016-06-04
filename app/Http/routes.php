@@ -13,13 +13,10 @@
 
 Route::auth();
 
-Route::get('/', function() {
-  return view('welcome');
-});
 
-//usar quando quiser autenticar na rota
-Route::get('/home', 'HomeController@index');
-Route::get('/perfil', 'HomeController@perfil');
+Route::get('/', 'HomeController@index');
+Route::get('/perfil', 'ProfileController@perfil');
+
 //controle das paginas de anuncios
 Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
 Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
@@ -28,4 +25,8 @@ Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
 
 
 Route::get('anuncio/{id}', 'AnuncioController@showAnuncioPage@{id}');
-Route::post('anuncio/{id}', 'AnuncioController@enviarInteresse@{id}');
+Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
+
+Route::get('categoria/{id}', 'AnuncioController@showAnunciosByCat@{id}');
+
+Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');

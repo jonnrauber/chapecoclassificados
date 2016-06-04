@@ -8,13 +8,12 @@ class DenunciaC extends Model
 {
   protected $table = 'denuncia_c';
   //chave primária
-  protected $primaryKey = ['emaild','emaila','tituloa','datac','emailc'];
+  protected $primaryKey = ['emaild','id','datac','emailc'];
   public $incrementing = false;
 
   protected $fillable = [
     'emaild',
-    'emaila',
-    'tituloa',
+    'id',
     'datac',
     'emailc',
     'motivo'
