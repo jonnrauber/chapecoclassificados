@@ -3,6 +3,12 @@
 @section('content')
 
 <div class="col-lg-12 content-right">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/categoria">Categorias</a></li>
+    <li><a href="/categoria/{{$anuncio->codc}}">{{$categoria->nomec}}</a></li>
+    <li>{{$anuncio->tituloa}}</li>
+  </ol>
 
   @yield('publicacaosuccess')
 
@@ -130,11 +136,16 @@
   </div>
 	<div class="row">
 		<div class="col-md-12">
-			<h4>Descrição</h4>
-			<p style="text-align: justify;">{{$anuncio->descricao}}</p>
+      <div class="panel" style="border-color: #ccc">
+    		<div class="panel panel-heading">
+          <h4>Descrição</h4>
+        </div>
+        <div class="panel-body">
+    			<p style="text-align: justify;">{{$anuncio->descricao}}</p>
+        </div>
+      </div>
 		</div>
 	</div>
-	<hr>
 	<div class="row">
 		<div class="col-md-12">
 			<h4>Enviar mensagem de interesse ao vendedor</h4>
