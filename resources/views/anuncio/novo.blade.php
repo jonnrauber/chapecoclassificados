@@ -1,14 +1,19 @@
 <?php $categorias = DB::table('categorias')->get(); ?>
 
-@extends('layouts.app')
+@extends('layouts.inside')
 
 
 @section('content')
-  <div class="col-lg-9 content-right">
+  <div class='col-lg-12'>
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li>Publicar anúncio</li>
+    </ol>
+  </div>
+  <div class="col-lg-9">
 
     @yield('novosuccess')
-
-					<h2>Publicar anúncio</h2>
+					<h3>Publicar anúncio</h3>
 					<p>Preencha abaixo as características do seu classificado.</p>
 					<hr>
 
@@ -21,7 +26,9 @@
               </ul>
             </div>
           @endif
-
+  </div>
+      <div class="row">
+        <div class="col-md-6">
 					{!!Form::open(['files'=>true])!!}
 						<div class="panel panel-info">
 							<div class="panel-heading">
@@ -51,7 +58,7 @@
 
 								<div class="form-group">
 									<label for="tituloa">Título</label>
-									<input type="text" class="form-control" name="tituloa" placeholder="ex.: Celular Samsung Galaxy S2" value="{{old('tituloa')}}">
+									  <input type="text" class="form-control" name="tituloa" placeholder="ex.: Celular Samsung Galaxy S2" value="{{old('tituloa')}}">
 								</div>
 
 								<div class="form-group">
@@ -96,9 +103,10 @@
                     </label>
                   </div>
                 </div>
-
               </div>
 						</div>
+          </div>
+          <div class="col-md-6">
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class="panel-title">Imagens do classificado</h3>
@@ -111,13 +119,6 @@
 									<input type="file" name="imagem3">
 									<input type="file" name="imagem4">
 									<input type="file" name="imagem5">
-								</div>
-								<div class="form-group">
-									<label for="video">Vídeo (link do YouTube)</label>
-									<div class="input-group">
-										<input type="text" class="form-control" id="video">
-										<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -134,7 +135,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="well">
+            <div class="well">
               <h3>Publicar</h3>
 							<div class="checkbox">
 								<label><input type="checkbox" required>
@@ -143,7 +144,7 @@
 							</div>
 							<button type="submit" class="btn btn-success">Finalizar</button>
 						</div>
-					</form>
+          </div>
 				</div>
-			</div>
+      </form>
 @endsection

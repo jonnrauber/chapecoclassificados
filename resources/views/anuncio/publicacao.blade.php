@@ -106,13 +106,21 @@
   				</tr>
   			</tbody>
   		</table>
+      <div class="row">
+        <div class='col-md-8 col-md-offset-2'>
+          <a href="#msg" class="btn btn-success btn-block">Tenho Interesse!</a>
+        </div>
+      </div>
   		<div class="row">
   			<div class="col-md-12">
-  				<div style="padding: 5px; font-weight: bold;">Vendedor:</div>
+  				<div style="padding: 5px; font-weight: bold;">Anunciante:</div>
   				<div class="well">
   					<div class="row">
   						<div class="col-sm-12">
-  							<h4 style="margin-bottom: 0;"><a href="#">{{$vendedor->nome}}</a></h4>
+  							<h4>
+                  <h4>
+                    {{$vendedor->nome}}
+                  </h4>
   							<span title="Seller's rating: 4/5">
   								<span class="glyphicon glyphicon-star"></span>
   								<span class="glyphicon glyphicon-star"></span>
@@ -148,7 +156,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<h4>Enviar mensagem de interesse ao vendedor</h4>
+			<h4 id='msg'>Enviar mensagem de interesse ao vendedor</h4>
 			<div class="panel panel-default">
 				<div class="panel-body">
 					{!! Form::open() !!}
@@ -164,6 +172,9 @@
 			</div>
 		</div>
 	</div>
+  <div class='row'>
+
+  </div>
 </div>
 
 

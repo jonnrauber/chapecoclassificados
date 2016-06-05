@@ -27,7 +27,6 @@
 @section('content')
 	<div class="col-lg-9 content-right">
 		<div class="hidden-xs hidden-sm">
-			<h4>Página Inicial</h4>
 			<div class="col-lg-11">
 				{!!
 					Carousel::named('example')->withContents([

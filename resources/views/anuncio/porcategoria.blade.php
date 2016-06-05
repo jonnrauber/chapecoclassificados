@@ -2,15 +2,43 @@
 
 @section('content')
 
-  <div class="col-lg-2">
-    <div class='col-lg-12'>
+  <div class="col-sm-3">
+    <div class="well well-sm">
+      {!!Form::open(['url' => 'pesquisa']) !!}
+        <label for='titulo' class='control-label'>Procure anúncios:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="" id='titulo' name="titulo">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class='col-md-12'>
       <h4>Filtrar busca</h4>
       Localização<hr>
-      Faixa de preço
+      Faixa de preço<hr>
+    </div>
+    <div class='col-md-12'>
+      <h4>Categorias</h4>
+      <ul class="list-unstyled">
+        <li><a href="{{url('categoria/CAR')}}">Carros</a></li>
+        <li><a href="{{url('categoria/MOT')}}">Motos</a></li>
+        <li><a href="{{url('categoria/CEL')}}">Celulares</a></li>
+        <li><a href="{{url('categoria/PCS')}}">Computadores & Notebooks</a></li>
+        <li><a href="{{url('categoria/ROU')}}">Roupas & Acessórios</a></li>
+        <li><a href="{{url('categoria/IMO')}}">Imóveis</a></li>
+        <li><a href="{{url('categoria/OUT')}}">Outros</a></li>
+      </ul>
     </div>
   </div>
-  <div class='col-lg-10'>
 
+  <div class='col-sm-9'>
+    <ol class='breadcrumb'>
+      <li><a href='/'>Home</a></li>
+      <li><a href='/categoria'>Categorias</a></li>
+      <li></li>
+    </ol>
     @if(count($anuncios) > 0)
       <table class="table">
         <th>

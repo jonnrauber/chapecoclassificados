@@ -27,6 +27,8 @@ Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
 Route::get('anuncio/{id}', 'AnuncioController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 
+
+Route::get('categoria', 'AnuncioController')
 Route::get('categoria/{id}', 'AnuncioController@showAnunciosByCat@{id}');
 Route::get('pesquisa/{palavrachave}', 'AnuncioController@showAnunciosByUrl@{palavrachave}');
 

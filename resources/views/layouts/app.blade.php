@@ -128,7 +128,6 @@
 
       <div class="row content">
       	<div class="col-lg-3 content-left">
-      		<h4>Pesquisa</h4>
       		<div class="well well-sm">
       			{!!Form::open(['url' => 'pesquisa']) !!}
       				<div class="input-group">
@@ -139,7 +138,6 @@
       				</div>
       			</form>
       		</div>
-      		<h4>Categorias</h4>
       		<div class="well well-sm hidden-lg">
       			<div class="mobile-categories"></div>
       		</div>
@@ -159,7 +157,7 @@
               <a href="{{url('categoria/ROU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                 Roupas & Acessórios
               </a>
-              <a href="{{url('categoria/OUT')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+              <a href="{{url('categoria/OU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                 Outras Categorias
               </a>
       		</div>
