@@ -82,6 +82,16 @@
                 </strong>
               </td>
             </tr>
+            <tr>
+              <td>
+                Cadastrado desde
+              </td>
+              <td>
+                <strong>
+                {{Auth::user()->created_at}}
+                </strong>
+              </td>
+            </tr>
           </table>
         </div>
       </div>

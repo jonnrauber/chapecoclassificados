@@ -12,6 +12,10 @@ use DB;
 
 class InteresseController extends Controller
 {
+  public function __construct() {
+      $this->middleware('auth');
+  }
+
   public function enviarInteresse($id, InteresseRequest $request) {
     $interesse = new Interesse;
     $interesse->msg = $request->msg;

@@ -53,7 +53,6 @@
 							<ul class="dropdown-menu">
 								<li><a href="{{ url('/') }}">Página Inicial</a></li>
 								<li><a href="{{ url('anuncio/novo') }}">Adicionar Anúncio</a></li>
-								<li><a href="{{ url('anuncio/meusitens') }}">Meus anúncios</a></li>
 								<li><a href="{{ url('regras') }}">Regras & Termos de Uso</a></li>
 								<li><a href="{{ url('ajuda') }}">Ajuda</a></li>
 								@if (Auth::guest())
@@ -101,12 +100,6 @@
   										</div>
   									</div>
   								</li>
-  								<li class="divider"></li>
-  								<li>
-  									<div class="form-group">
-  										<button onclick="location.href='{{ url("auth/facebook") }}'" class="btn btn-info btn-block">Entrar com o Facebook</button>
-  									</div>
-  								</li>
   							</ul>
   						</li>
             @else
@@ -118,6 +111,7 @@
 
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{{ url('/perfil') }}"><i class="fa fa-btn fa-user"></i>Perfil</a></li>
+                    <li><a href="{{ url('anuncio/meusitens') }}"><i class="fa fa-btn fa-tags"></i>Anúncios</a></li>
                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Sair</a></li>
                   </ul>
                 </li>
