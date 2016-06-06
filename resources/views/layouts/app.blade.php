@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/custom.css') }}">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <style>
@@ -31,11 +32,13 @@
 </head>
 <body id="app-layout">
   <div class="container wrapper">
-			<a href="{{ url('/') }}">
-        <!--<img src="#" alt="Chapecó Classificados" title="Chapecó Classificados" />-->
-        <h3>Chapecó Class</h3>
-      </a>
-			<nav class="navbar navbar-default" role="navigation">
+			<nav class="navbar navbar-default cc-nav" role="navigation">
+      <div class="banner">
+       <a href="{{ url('/') }}">
+          <img src="{{ url('img/master/logo.png') }}" alt="Chapecó Classificados" title="Chapecó Classificados" />
+        </a>
+        <h3>Classificados Chapecó</h3>
+      </div>
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#czsale-navbar">
 						<span class="sr-only">Toggle navigation</span>
@@ -45,8 +48,10 @@
 					</button>
 				</div>
 				<div class="collapse navbar-collapse" id="czsale-navbar">
+          @if (!Auth::guest())
 					<a href="{{ url('anuncio/novo')}}" class="btn btn-success navbar-btn navbar-left add-classified-btn" role="button">Publicar anúncio</a>
           <a href="{{ url('anuncio/interesses')}}" class="btn navbar-btn navbar-left">Meus negócios</a>
+          @endif
           <ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu <b class='caret'></b></a>
@@ -138,10 +143,10 @@
       				</div>
       			</form>
       		</div>
-      		<div class="well well-sm hidden-lg">
+      		<!-- <div class="well well-sm hidden-lg">
       			<div class="mobile-categories"></div>
-      		</div>
-      		<div class="categories list-group hidden-xs hidden-sm hidden-md">
+      		</div> -->
+      		<div class="categories list-group">
       			  <a href="{{url('categoria/CAR')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                 Carros
               </a>
@@ -167,14 +172,14 @@
       </div>
 
 
-      <div class="footer">
+      <footer>
 				<div class="footer-content">
 					<div class="row">
 						<div class="col-xs-6">
 						<!--
               <img src="img/czsale-logo.png" alt="CZSale" title="CZSale" style="width: 100px; height: 58px;" />
             -->
-              <h3>Chapecó Class</h3>
+              <p><a href="{{ url('/') }}">Chapecó Classificados</a> | 2016 &copy;</p>
 						</div>
 						<div class="col-xs-6 text-right">
 							<a href="help.html" class="btn btn-link">Ajuda</a>
@@ -185,7 +190,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</footer>
 		</div>
 
     <!-- JavaScripts -->
