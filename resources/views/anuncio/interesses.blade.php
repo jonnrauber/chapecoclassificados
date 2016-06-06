@@ -7,6 +7,7 @@
   <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="#">Meus Interesses</a></li>
     <li role="presentation"><a href="{{url('anuncio/meusitens')}}">Meus anúncios</a></li>
+    <li role="presentation"><a href="{{url('anuncio/recebidos')}}">Interesses recebidos</a></li>
   </ul>
   <div class="panel-body">
     <div class="row">
@@ -37,10 +38,4 @@
   <div class="panel-footer">
   </div>
 </div>
-
-
-<?
-//consulta php para pegar os interesses do usuario
-
-?>
 @endsection

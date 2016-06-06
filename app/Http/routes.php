@@ -20,15 +20,16 @@ Route::get('/perfil', 'ProfileController@perfil');
 //controle das paginas de anuncios
 Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
 Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
-Route::get('/anuncio/interesses', 'AnuncioController@showInteressesPage');
+Route::get('/anuncio/interesses', 'InteresseController@showInteressesPage');
 Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
+Route::get('/anuncio/recebidos', 'InteresseController@showInteressesRecebidosPage');
 
 
 Route::get('anuncio/{id}', 'AnuncioController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 
 
-Route::get('categoria', 'AnuncioController')
+//Route::get('categoria', 'AnuncioController');
 Route::get('categoria/{id}', 'AnuncioController@showAnunciosByCat@{id}');
 Route::get('pesquisa/{palavrachave}', 'AnuncioController@showAnunciosByUrl@{palavrachave}');
 

@@ -51,10 +51,6 @@ class AnuncioController extends Controller
   public function showAnuncioForm(){
     return view('anuncio.novo');
   }
-  public function showInteressesPage(){
-    $interesses = DB::select('select * from interesses i join anuncios a on i.id = a.id where i.emaili = ?', [Auth::user()->email]);
-    return view('anuncio.interesses', ['interesses'=>$interesses]);
-  }
   public function showMeusItensPage(){
     $anuncios = DB::select('select a.* from anuncios a where a.emaila = ?', [Auth::user()->email]);
     return view('anuncio.meusitens', ['anuncios'=>$anuncios]);

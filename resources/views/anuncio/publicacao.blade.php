@@ -77,16 +77,13 @@
   		  <thead>
   				<th colspan="2">Detalhes:</th>
   			</thead>
-  			<tbody style="font-size: 12px;">
-  				<tr>
-  					<td>ID do classificado</td>
-  					<td>{{$anuncio->id}}</td>
-  				</tr>
-  				<tr>
-  					<td>Preço</td>
-  					<td>R${{$anuncio->valor}}</td>
-  				</tr>
-  				<tr>
+  			<tbody style="font-size: 15px;">
+          @if($anuncio->tipo == 'p')
+          <tr>
+            <td>Quantidade de itens</td>
+            <td>{{$anuncio->qtitens}}</td>
+          </tr>
+          <tr>
   					<td>Condição</td>
   					<td>
               @if($anuncio->condicao == 'n')
@@ -96,6 +93,7 @@
               @endif
             </td>
   				</tr>
+          @endif
   				<tr>
   					<td>Categoria</td>
   					<td>{{$categoria->nomec}}</td>
@@ -106,10 +104,9 @@
   				</tr>
   			</tbody>
   		</table>
-      <div class="row">
-        <div class='col-md-8 col-md-offset-2'>
-          <a href="#msg" class="btn btn-success btn-block">Tenho Interesse!</a>
-        </div>
+      <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{$anuncio->valor}}</h3></div>
+      <div class='col-md-8 col-md-offset-2'>
+        <a href="#msg" class="btn btn-success btn-block">Tenho Interesse!</a>
       </div>
   		<div class="row">
   			<div class="col-md-12">
@@ -117,18 +114,7 @@
   				<div class="well">
   					<div class="row">
   						<div class="col-sm-12">
-  							<h4>
-                  <h4>
-                    {{$vendedor->nome}}
-                  </h4>
-  							<span title="Seller's rating: 4/5">
-  								<span class="glyphicon glyphicon-star"></span>
-  								<span class="glyphicon glyphicon-star"></span>
-  								<span class="glyphicon glyphicon-star"></span>
-  								<span class="glyphicon glyphicon-star"></span>
-  								<span class="glyphicon glyphicon-star-empty"></span>
-  							</span>
-  							<br /><br />
+  							<h4>{{$vendedor->nome}}</h4>
   							<span class="glyphicon glyphicon-map-marker" title="Location"></span>
                   {{$vendedor->bairro}}, {{$vendedor->cidade}}, {{$vendedor->estado}}<br />
   							<span class="glyphicon glyphicon-envelope" title="E-mail"></span>

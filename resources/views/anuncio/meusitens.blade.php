@@ -7,6 +7,7 @@
   <ul class="nav nav-tabs">
     <li role="presentation"><a href="{{url('anuncio/interesses')}}">Meus Interesses</a></li>
     <li role="presentation" class="active"><a href="#">Meus anúncios</a></li>
+    <li role="presentation"><a href="{{url('anuncio/recebidos')}}">Interesses recebidos</a></li>
   </ul>
   <div class="panel-body">
     <div class="row">

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Interesse;
 use Auth;
 use Redirect;
+use DB;
 
 class InteresseController extends Controller
 {
@@ -20,5 +21,19 @@ class InteresseController extends Controller
     $interesse->save();
 
     return Redirect::back();
+  }
+
+  public function showInteressesPage(){
+    $interesses = DB::select('select * from interesses i join anuncios a on i.id = a.id where i.emaili = ?', [Auth::user()->email]);
+    return view('anuncio.interesses', ['interesses'=>$interesses]);
+  }
+
+  public function showInteressesRecebidosPage(){
+    $interesses = DB::select(
+      'select * from interesses i
+      join anuncios a on i.id = a.id
+      join usuarios u on i.emaili = u.email
+      where a.emaila = ?', [Auth::user()->email]);
+    return view('anuncio.interessesrecebidos', ['interesses'=>$interesses]);
   }
 }
