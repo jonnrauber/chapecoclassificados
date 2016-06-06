@@ -24,7 +24,11 @@ class InteresseController extends Controller
   }
 
   public function showInteressesPage(){
-    $interesses = DB::select('select * from interesses i join anuncios a on i.id = a.id where i.emaili = ?', [Auth::user()->email]);
+    $interesses = DB::select(
+      'select * from interesses i
+      join anuncios a on i.id = a.id
+      join usuarios u on a.emaila = u.email
+      where i.emaili = ?', [Auth::user()->email]);
     return view('anuncio.interesses', ['interesses'=>$interesses]);
   }
 

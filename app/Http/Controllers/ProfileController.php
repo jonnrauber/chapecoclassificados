@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Redirect;
 use Auth;
 use Validator;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,7 @@ class ProfileController extends Controller
   }
   public function perfil()
   {
-      return view('perfil');
+      return view('perfil/perfil');
   }
 
   public function uploadFotoPerfil(Request $request) {
@@ -37,5 +38,30 @@ class ProfileController extends Controller
       return Redirect::back()->withErrors($validation);
     }
     return Redirect::back();
+  }
+  public function showEditarPerfilPage() {
+    return view('perfil/editar');
+  }
+  public function editarPerfil(Request $request) {
+    $rules = [
+      'nome' => 'required',
+      'tel1' => 'required|min:10|numeric',
+      'bairro' => 'required',
+      'cidade' => 'required'
+    ];
+    $validation = Validator::make($request->all(), $rules);
+
+    if(!$validation->fails()) {
+      $usuario = User::find(Auth::user()->email);
+      $usuario->nome = $request->nome;
+      $usuario->tel1 = $request->tel1;
+      $usuario->tel2 = $request->tel2;
+      $usuario->bairro = $request->bairro;
+      $usuario->cidade = $request->cidade;
+      $usuario->save();
+    } else {
+      return Redirect::back()->withErrors($validation);
+    }
+    return redirect('perfil');
   }
 }

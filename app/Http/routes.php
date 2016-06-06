@@ -15,7 +15,7 @@ Route::auth();
 
 
 Route::get('/', 'HomeController@index');
-Route::get('/perfil', 'ProfileController@perfil');
+
 
 //controle das paginas de anuncios
 Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
@@ -36,3 +36,6 @@ Route::get('pesquisa/{palavrachave}', 'AnuncioController@showAnunciosByUrl@{pala
 Route::post('pesquisa', 'AnuncioController@showAnunciosBySearch');
 
 Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
+Route::get('perfil', 'ProfileController@perfil');
+Route::get('perfil/editar', 'ProfileController@showEditarPerfilPage');
+Route::post('perfil/editar', 'ProfileController@editarPerfil');

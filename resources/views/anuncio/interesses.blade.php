@@ -23,7 +23,7 @@
             <tr>
               <td></td>
               <td><a href="{{url('anuncio/'.$interesse->id)}}">{{$interesse->tituloa}}</a></td>
-              <td>{{$interesse->emaila}}</td>
+              <td>{{$interesse->nome}}<br /><small>{{$interesse->emaila}}</small></td>
               <td>{{$interesse->created_at}}</td>
               <td>{{$interesse->msg}}</td>
             </tr>
