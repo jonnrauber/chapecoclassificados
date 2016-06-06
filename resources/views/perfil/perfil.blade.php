@@ -36,23 +36,16 @@
         </div>
         <div class="col-sm-9">
           <div class='panel panel-heading'>
-            <strong>Informações</strong>
+            <strong>Informações</strong> | <a href='perfil/editar'>editar perfil</a>
           </div>
           <table class="table table-striped table-hover">
             <tr>
               <td>Nome</td>
-              <td>{{Auth::user()->nome}}</td>
-              <td><a href='#'>alterar</a></td>
+              <td><strong>{{Auth::user()->nome}}</strong></td>
             </tr>
             <tr>
               <td>E-mail</td>
-              <td>{{Auth::user()->email}}</td>
-              <td><a href='#'>alterar</a></td>
-            </tr>
-            <tr>
-              <td>Senha</td>
-              <td>********</td>
-              <td><a href='#'>alterar</a></td>
+              <td><strong>{{Auth::user()->email}}</strong></td>
             </tr>
             <tr>
               <td>
@@ -63,26 +56,31 @@
                 @endif
               </td>
               <td>
+                <strong>
                 {{Auth::user()->tel1}}
+                </strong>
               </td>
-              <td><a href='#'>alterar</a></td>
             </tr>
             @if(Auth::user()->tel2)
               <tr>
                 <td>Telefone 2</td>
-                <td>{{Auth::user()->tel2}}</td>
-                <td><a href='#'>alterar</a></td>
+                <td>
+                  <strong>
+                    {{Auth::user()->tel2}}
+                  </strong>
+                </td>
               </tr>
             @endif
             <tr>
               <td>Endereço</td>
               <td>
+                <strong>
                 {{Auth::user()->bairro}},
                 {{Auth::user()->cidade}}
                 -
                 {{Auth::user()->estado}}
+                </strong>
               </td>
-              <td><a href='#'>alterar</a></td>
             </tr>
           </table>
         </div>
