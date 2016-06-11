@@ -3,6 +3,7 @@
 @section('content')
 <!-- <div class="container-fluid">
 	<div class="row"> -->
+
 		<div class="col-md-9">
 			<div class="panel panel-default">
 				<div class="panel-heading">Novo Usuário</div>
@@ -68,21 +69,15 @@
 						),
 						ControlGroup::generate(
 							Form::label('estado','Estado', ['class'=>'control-label']),
-							Form::select('estado', [
-								'PR' => 'Paraná',
-								'SC' => 'Santa Catarina',
-								'RS' => 'Rio Grande do Sul'
-								],
-							'SC'
-							),
+							Form::select('estado'),
 							null,
 							4,3
 						),
 						ControlGroup::generate(
 							Form::label('cidade', 'Cidade', ['class'=>'control-label']),
-							Form::text('cidade', null, ['class'=>'form-control','placeholder'=>'ex: Chapecó']),
+							Form::select('cidade'),
 							null,
-							4,5
+							4,3
 						),
 						ControlGroup::generate(
 							Form::label('bairro', 'Bairro', ['class'=>'control-label']),
@@ -94,9 +89,22 @@
 					Form::close()
 					!!}
 
+					<!-- Estado -->
+
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+		<script type="text/javascript">
+	    window.onload = function() {
+	        new dgCidadesEstados(
+	            document.getElementById('estado'),
+	            document.getElementById('cidade'),
+							true
+						);
+	    }
+	</script>
 <!--	</div>
 </div> -->
 @endsection
