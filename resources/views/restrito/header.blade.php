@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php
+    if(!isset($_SESSION['login']) || !isset($_SESSION['senha'])) {
+      unset($_SESSION['login']);
+	    unset($_SESSION['senha']);
+      header('location:login.blade.php');
+    }else{
+      $logado = $_SESSION['login'];
+    }
+  ?>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +28,6 @@
     <style>
         body {
             font-family: 'Lato';
-            color: #FFF;
             background-color: #ccc;
             padding-top: 70px;
         }
@@ -35,6 +43,10 @@
           color: #fff;
           text-decoration: none;
         }
+        .indexlink, .indexlink:hover, .indexlink:visited {
+          color: #000;
+          text-decoration: none;
+        }
     </style>
 </head>
 <body id="app-layout">
@@ -42,7 +54,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class='container'>
         <div class='navbar-brand'>
-          <a href='restrito'>Área restrita Chapecó Classificados</a>
+          <a href='{{url('restrito')}}'>Área restrita Chapecó Classificados</a>
         </div>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ccrest">
@@ -55,34 +67,27 @@
         <div class="collapse navbar-collapse" id="ccrest">
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuários <b class='caret'></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ url('/') }}">Página Inicial</a></li>
-              </ul>
+              <a href="{{url('restrito/usuarios')}}">Usuários</a>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Anúncios <b class='caret'></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ url('/') }}">Página Inicial</a></li>
-              </ul>
+              <a href="{{url('restrito/anuncios')}}">Anúncios</a>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Denúncias <b class='caret'></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ url('/') }}">Página Inicial</a></li>
-              </ul>
+              <a href="{{url('restrito/denuncias')}}">Denúncias </a>
             </li>
             <li class="list-unstyled">
-              <a href='#'>Sair</a>
+              <p class='text-success'><small>logado como {{$logado}}</small><br><a href='{{url('restrito/logout')}}'>Sair</a></p>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     @yield('body')
-    <footer>
-    </footer>
   </div>
+  <footer>
+
+  </footer>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 

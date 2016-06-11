@@ -41,4 +41,4 @@
         </div>
         @yield('content')
       </div>
-@endsection
+  @endsection
