@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
-class Admin extends Authenticatable
+class Admin extends User
 {
   //chave primária
   protected $primaryKey = 'login';

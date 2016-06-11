@@ -45,4 +45,9 @@ class CategoriaController extends Controller
     $categoria = Categoria::find($anuncio->codc);
     return view('anuncio/publicacao', ['anuncio'=>$anuncio, 'vendedor'=>$vendedor, 'categoria'=>$categoria]);
   }
+
+  public function showCategoriasPage() {
+    $categorias = DB::select('select c.* from categorias c');
+    return view('anuncio.categoria', ['categorias' => $categorias]);
+  }
 }
