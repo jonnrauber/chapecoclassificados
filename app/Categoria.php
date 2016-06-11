@@ -12,6 +12,7 @@ class Categoria extends Model
 
   protected $fillable = [
     'codc',
-    'nomec'
+    'nomec',
+    'foto'
   ];
 }

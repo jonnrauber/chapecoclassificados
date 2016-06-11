@@ -31,6 +31,8 @@ Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 
 //Route::get('categoria', 'AnuncioController');
 Route::get('categoria/{id}', 'CategoriaController@showAnunciosByCat@{id}');
+Route::get('categoria', 'CategoriaController@showCategoriasPage');
+
 Route::get('pesquisa/{palavrachave}', 'CategoriaController@showAnunciosByUrl@{palavrachave}');
 
 Route::post('pesquisa', 'CategoriaController@showAnunciosBySearch');
@@ -39,3 +41,5 @@ Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
 Route::get('perfil', 'ProfileController@perfil');
 Route::get('perfil/editar', 'ProfileController@showEditarPerfilPage');
 Route::post('perfil/editar', 'ProfileController@editarPerfil');
+
+Route::get('restrito', 'AdminController@showRestritoPage');

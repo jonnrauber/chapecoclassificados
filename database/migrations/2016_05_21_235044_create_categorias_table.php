@@ -15,6 +15,7 @@ class CreateCategoriasTable extends Migration
         Schema::create('categorias', function (Blueprint $table) {
           $table->string('codc',3);
           $table->string('nomec',30);
+          $table->string('foto', 50);
 
           $table->timestamps();
           $table->primary('codc');

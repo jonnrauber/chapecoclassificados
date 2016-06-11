@@ -27,33 +27,34 @@
 @section('content')
 	<div class="col-lg-9 content-right">
 		<div class="hidden-xs hidden-sm">
-			<div class="col-lg-11">
-				{!!
-					Carousel::named('example')->withContents([
-					    [
-					        'image' => '//lorempixel.com/800/400/city',
-					        'alt' => 'something',
-					    ],
-					    [
-					        'image' => '//lorempixel.com/800/400/people',
-					        'alt' => 'something else',
-					    ],
-					])
-				!!}
-			</div>
-		<h4>Recomendados</h4>
-		<div class="row">
-		@foreach($anuncios as $anuncio)
-				<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-					<div class="thumbnail">
-						<a href="{{url('anuncio/'.$anuncio->id)}}"><img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" /></a>
-						<div class="caption">
-							<h5><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></h5>
-							<p>R$ {{$anuncio->valor}}</p>
+				<div class="col-lg-11">
+					{!!
+						Carousel::named('example')->withContents([
+						    [
+						        'image' => '//lorempixel.com/800/400/city',
+						        'alt' => 'something',
+						    ],
+						    [
+						        'image' => '//lorempixel.com/800/400/people',
+						        'alt' => 'something else',
+						    ],
+						])
+					!!}
+				</div>
+			<h4>Recomendados</h4>
+			<div class="row">
+			@foreach($anuncios as $anuncio)
+					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+						<div class="thumbnail">
+							<a href="{{url('anuncio/'.$anuncio->id)}}"><img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" /></a>
+							<div class="caption">
+								<h5><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></h5>
+								<p>R$ {{$anuncio->valor}}</p>
+							</div>
 						</div>
 					</div>
-				</div>
-		@endforeach
+			@endforeach
+			</div>
 		</div>
 	</div>
 
