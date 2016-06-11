@@ -45,11 +45,15 @@ Route::post('perfil/editar', 'ProfileController@editarPerfil');
 Route::get('restrito', 'AdminController@showRestritoPage');
 Route::post('restrito', 'AdminController@loginAdmin');
 Route::get('restrito/logout', 'AdminController@logoutAdmin');
+
 Route::get('restrito/usuarios', 'AdminController@gerenciaUsuarios');
 Route::post('restrito/usuarios', 'AdminController@procuraUsuarios');
 Route::get('restrito/usuarios/novo', 'AdminController@criaUsuario');
 Route::get('restrito/usuarios/{email}', 'AdminController@updateUsuario@{email}');
 Route::get('restrito/usuarios/delete/{email}', 'AdminController@deletaUsuario@{email}');
 Route::post('restrito/usuarios/{email}', 'AdminController@aplicaUpdateUsuario');
+
 Route::get('restrito/anuncios', 'AdminController@gerenciaAnuncios');
+Route::post('restrito/anuncios', 'AdminController@procuraAnuncios');
+
 Route::get('restrito/denuncias', 'AdminController@gerenciaDenuncias');

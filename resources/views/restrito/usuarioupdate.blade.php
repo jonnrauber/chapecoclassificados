@@ -2,6 +2,11 @@
 
 
 @section('body')
+  <ol class='breadcrumb'>
+    <li><a href="{{url('restrito')}}" style='color:#23f'>Home</a></li>
+    <li><a href="{{url('restrito/usuarios')}}" style='color:#23f'>Usuários</a></li>
+    <li>{{$usuario->email}}</li>
+  </ol>
   {!! Form::open() !!}
   <div class='panel panel-default'>
     <div class='panel-heading'>

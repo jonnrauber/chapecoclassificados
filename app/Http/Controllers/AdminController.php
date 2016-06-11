@@ -137,12 +137,27 @@ class AdminController extends Controller
     }
 
     public function gerenciaAnuncios() {
+        $anuncios = DB::select('select * from anuncios a join usuarios u on a.emaila = u.email');
         if($this->admIsLoggedIn()) {
-          return view('restrito.anuncios');
+          return view('restrito.anuncios', ['anuncios' => $anuncios]);
         }
         else {
           return redirect('restrito');
         }
+    }
+
+    public function procuraAnuncios(Request $request) {
+      $anuncios = DB::select(
+        'select * from anuncios a
+        join usuarios u on a.emaila = u.email
+        where email = ?', [$request->email]);
+      if($this->admIsLoggedIn() && $anuncios) {
+        return view('restrito.anuncios', ['anuncios' => $anuncios]);
+      }
+      else {
+        return redirect('restrito/anuncios');
+      }
+
     }
 
     public function gerenciaDenuncias() {
