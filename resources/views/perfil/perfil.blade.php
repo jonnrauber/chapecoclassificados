@@ -26,7 +26,7 @@
           @endif
           {!!
             Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
-              Form::file('fotoperfil'),
+              Form::file('fotoperfil', ['class' => 'file']),
               Form::submit('Alterar foto'),
             Form::close()
           !!}
@@ -100,4 +100,5 @@
     </div>
   </div>
 </div>
+
 @endsection
