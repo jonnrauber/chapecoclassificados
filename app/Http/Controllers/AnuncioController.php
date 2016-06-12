@@ -25,10 +25,10 @@ class AnuncioController extends Controller
     return view('anuncio.novo');
   }
   public function showMeusItensPage(){
-    $anuncios = DB::select('select a.* from anuncios a where a.emaila = ?', [Auth::user()->email]);
+    $anuncios = DB::select('select a.*, c.nomec from anuncios a join categorias c on c.codc = a.codc where a.emaila = ?', [Auth::user()->email]);
     return view('anuncio.meusitens', ['anuncios'=>$anuncios]);
   }
-  
+
   public function salvaImagemAnuncio($request, $campo, $num){
     if($request->hasFile($campo)) {
       $string = $request->file($campo)->getPathname();

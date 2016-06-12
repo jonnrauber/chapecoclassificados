@@ -21,21 +21,23 @@
             Form::close()
           !!}
           <table class='table table-hover'>
-            <th>
-              <td>E-mail</td>
-              <td>Titulo</td>
-              <td>Data de criação</td>
-              <td>Data de expiração</td>
-              <td>Situação</td>
-            </th>
+            <thead><tr>
+
+              <th>Autor</th>
+              <th>Titulo</th>
+              <th>Data de criação</th>
+              <th>Data de expiração</th>
+              <th>Situação</th>
+            </tr></thead>
             @foreach($anuncios as $anuncio)
               <tr>
-                <td></td>
-                <td>{{$anuncio->email}}</td>
-                <td>{{$anuncio->tituloa}}</td>
-                <td>{{$anuncio->created_at}}</td>
-                <td>{{$anuncio->dataex}}</td>
-                <td></td>
+                <a href='{{url('restrito/anuncios/'.$anuncio->id)}}'>
+                  <td>{{$anuncio->nome}}<br>{{$anuncio->email}}</td>
+                  <td>{{$anuncio->tituloa}}</td>
+                  <td>{{$anuncio->created_at}}</td>
+                  <td>{{$anuncio->dataex}}</td>
+                  <td></td>
+                </a>
               </tr>
             @endforeach
           </table>

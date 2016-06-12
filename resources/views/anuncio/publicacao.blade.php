@@ -11,6 +11,15 @@
   </ol>
 
   @yield('publicacaosuccess')
+  @if(count($errors) > 0)
+    <div class='alert alert-danger'>
+      <ul class='list-unstyled'>
+        @foreach($errors->all() as $error)
+          <li>{{$error}}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
 
   <div class="row">
     <div class="col-xs-12">
@@ -104,7 +113,7 @@
   				</tr>
   			</tbody>
   		</table>
-      <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{$anuncio->valor}}</h3></div>
+      <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{number_format($anuncio->valor, 2, ',', '.')}}</h3></div>
       <div class='col-md-8 col-md-offset-2'>
         <a href="#msg" class="btn btn-success btn-block">Tenho Interesse!</a>
       </div>
@@ -147,7 +156,7 @@
 				<div class="panel-body">
 					{!! Form::open() !!}
             <input type="hidden" name="emaila" value="{{$anuncio->emaila}}">
-            <input type="hidden" name="tituloa" value="{{$anuncio->tituloa}}">
+            <input type="hidden" name="emaili" value="{{Auth::user()->email}}">
 						<div class="form-group">
 							<label for="msg">Deixe sua mensagem abaixo: </label>
 							<textarea class="form-control" id="msg" name="msg" placeholder="Escreva aqui sua mensagem" rows="5"></textarea>

@@ -16,20 +16,21 @@
           <a href="url('anuncio/meusitens/editar')">editar</a>
         </div>
         <table class="table table-striped table-hover">
-          <th>
-            <td>cat.</td>
-            <td>título</td>
-            <td>preço</td>
-            <td>nº visitas</td>
-            <td>publicado em:</td>
-            <td>expira em:</td>
-          </th>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Nº visitas</th>
+              <th>Publicado em:</th>
+              <th>Expira em:</th>
+            </tr>
+          </thead>
           @foreach($anuncios as $anuncio)
             <tr>
-                <td></td>
-                <td>{{$anuncio->codc}}</td>
                 <td><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></td>
-                <td>{{$anuncio->valor}}</td>
+                <td>{{$anuncio->nomec}}</td>
+                <td>R${{number_format($anuncio->valor, 2, ',', '.')}}</td>
                 <td>{{$anuncio->qtvisit}}</td>
                 <td>{{$anuncio->created_at}}</td>
                 <td>{{$anuncio->dataex}}</td>

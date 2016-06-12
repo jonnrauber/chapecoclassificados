@@ -29,7 +29,7 @@ class InteresseController extends Controller
 
   public function showInteressesPage(){
     $interesses = DB::select(
-      'select * from interesses i
+      'select i.*, a.tituloa, a.emaila, u.nome from interesses i
       join anuncios a on i.id = a.id
       join usuarios u on a.emaila = u.email
       where i.emaili = ?', [Auth::user()->email]);
@@ -38,7 +38,7 @@ class InteresseController extends Controller
 
   public function showInteressesRecebidosPage(){
     $interesses = DB::select(
-      'select * from interesses i
+      'select i.*, a.tituloa, a.emaila, u.nome from interesses i
       join anuncios a on i.id = a.id
       join usuarios u on i.emaili = u.email
       where a.emaila = ?', [Auth::user()->email]);

@@ -24,7 +24,15 @@ class InteresseRequest extends Request
     public function rules()
     {
       return [
-        'msg' => 'required',
+        'emaila' => 'different:emaili',
+        'msg' => 'required'
+      ];
+    }
+
+    public function messages() {
+      return [
+        'emaila.different' => 'Você não pode se interessar por um anúncio seu!',
+        'msg.required' => 'Você deve preencher o campo mensagem.'
       ];
     }
 }

@@ -14,15 +14,16 @@
       <div class="row">
         <div class="col-sm-12">
           <table class="table table-striped table-hover">
-            <th>
-              <td>Anúncio</td>
-              <td>Interessado</td>
-              <td>Data</td>
-              <td>Mensagem</td>
-            </th>
+            <thead>
+              <tr>
+                <th>Anúncio</th>
+                <th>Interessado</th>
+                <th>Data</th>
+                <th>Mensagem</th>
+              </tr>
+            </thead>
             @foreach($interesses as $interesse)
               <tr>
-                <td></td>
                 <td><a href="{{url('anuncio/'.$interesse->id)}}">{{$interesse->tituloa}}</a></td>
                 <td>{{$interesse->nome}}<br><small>{{$interesse->emaili}}</small></td>
                 <td>{{$interesse->created_at}}</td>
