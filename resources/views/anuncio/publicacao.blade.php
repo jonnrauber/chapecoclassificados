@@ -46,28 +46,35 @@
 				</ol>
 			  <div class="carousel-inner">
 
+
+
+          @if(!($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3 ||
+                $anuncio->imagem4 || $anuncio->imagem5))
+                <img src="{{url('/img/anuncioplaceholder.svg')}}" class="img-responsive">
+          @endif
+
           @if($anuncio->imagem1)
-  					<div class="item active tamimg">
-  						<img src="/img/anuncio/{{$anuncio->imagem1}}" class="img-responsive" />
-  					</div>
+            <div class="item active tamimg">
+              <img src="{{url('/img/anuncio/'.$anuncio->imagem1)}}" class="img-responsive">
+            </div>
           @endif
           @if($anuncio->imagem2)
-            <div class="item tamimg">
+            <div class="item active tamimg">
   						<img src="/img/anuncio/{{$anuncio->imagem2}}" class="img-responsive" />
   					</div>
           @endif
           @if($anuncio->imagem3)
-            <div class="item tamimg">
+            <div class="item active tamimg">
   						<img src="/img/anuncio/{{$anuncio->imagem3}}" class="img-responsive" />
   					</div>
           @endif
           @if($anuncio->imagem4)
-            <div class="item tamimg">
+            <div class="item active tamimg">
   						<img src="/img/anuncio/{{$anuncio->imagem4}}" class="img-responsive" />
   					</div>
           @endif
           @if($anuncio->imagem5)
-            <div class="item tamimg">
+            <div class="item active tamimg">
   						<img src="/img/anuncio/{{$anuncio->imagem5}}" class="img-responsive" />
   					</div>
           @endif

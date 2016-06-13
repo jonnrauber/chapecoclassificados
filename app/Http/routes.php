@@ -22,6 +22,9 @@ Route::get('/anuncio/novo', 'AnuncioController@showAnuncioForm');
 Route::post('/anuncio/novo', 'AnuncioController@createAnuncio');
 Route::get('/anuncio/interesses', 'InteresseController@showInteressesPage');
 Route::get('/anuncio/meusitens', 'AnuncioController@showMeusItensPage');
+Route::get('/anuncio/editar/{id}', 'AnuncioController@showEditarItemPage@{id}');
+Route::post('/anuncio/editar/{id}', 'AnuncioController@editarAnuncio@{id}');
+Route::get('/anuncio/deletar/{id}', 'AnuncioController@deletaAnuncio@{id}');
 Route::get('/anuncio/recebidos', 'InteresseController@showInteressesRecebidosPage');
 
 

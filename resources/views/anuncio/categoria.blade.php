@@ -6,7 +6,7 @@
     @foreach($categorias as $cat)
       <div class="col-md-3">
         <a href="{{url('categoria/'.$cat->codc)}}" class="thumbnail">
-          <img src="img/categoria/{{$cat->foto}}" alt="...">
+            <img src="img/categoria/{{$cat->foto}}" alt="...">
           <h4>{{$cat->nomec}}</h4>
         </a>
       </div>

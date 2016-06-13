@@ -14,9 +14,11 @@
           <div class='panel panel-heading'>
             <strong>Foto de perfil</strong>
           </div>
+          @if(file_exists('../public/img/perfil/'.Auth::user()->email))
           {!!
-            Image::rounded('/img/perfil/'.Auth::user()->email)->responsive()
+              Image::rounded('/img/perfil/'.Auth::user()->email)->responsive()
           !!}
+          @endif
           @if(count($errors)>0)
             <div class="alert alert-danger">
               @foreach($errors->all() as $error)

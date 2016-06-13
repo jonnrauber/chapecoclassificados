@@ -54,7 +54,7 @@
         <div class="collapse navbar-collapse" id="cc">
           @if (!Auth::guest())
           <div class="btn-group-actions">
-            <a href="{{ url('anuncio/novo')}}" class="btn btn-success navbar-btn navbar-left add-classified-btn" role="button">Publicar anúncio</a>
+            <a href="{{ url('anuncio/novo')}}" class="btn btn-success navbar-btn navbar-left" role="button">Publicar anúncio</a>
             <a href="{{ url('anuncio/interesses')}}" class="btn navbar-btn navbar-left">Meus negócios</a>
           @endif
           <ul class="nav navbar-nav navbar-right">
@@ -115,8 +115,11 @@
             @else
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <img src='/img/perfil/{{Auth::user()->email}}' class="img-rounded" height=27px width=27px>
-                      {{ Auth::user()->nome }} <span class="caret"></span>
+                    @if(file_exists('../public/img/perfil/'.Auth::user()->email))
+                      <img src='/img/perfil/{{Auth::user()->email}}' class="img-rounded" height=27px width=27px>
+                    @endif
+                    {{ Auth::user()->nome }} <span class="caret"></span>
+
                   </a>
 
                   <ul class="dropdown-menu" role="menu">

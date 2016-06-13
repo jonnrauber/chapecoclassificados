@@ -25,8 +25,44 @@ class AnuncioController extends Controller
     return view('anuncio.novo');
   }
   public function showMeusItensPage(){
-    $anuncios = DB::select('select a.*, c.nomec from anuncios a join categorias c on c.codc = a.codc where a.emaila = ?', [Auth::user()->email]);
-    return view('anuncio.meusitens', ['anuncios'=>$anuncios]);
+    $anuncios = DB::select('
+      select a.*, c.nomec from anuncios a
+      join categorias c on c.codc = a.codc
+      where a.emaila = ?', [Auth::user()->email]);
+    return view('anuncio.meusitens', ['anuncios' => $anuncios]);
+  }
+
+  public function showEditarItemPage($id) {
+    $anuncio = DB::select('
+      select a.* from anuncios a
+      where a.id = ?', [$id]);
+    $anuncio = $anuncio[0];
+    $categorias = DB::select('select c.codc, c.nomec from categorias c');
+    return view('anuncio.editar', ['anuncio' => $anuncio, 'categorias'=>$categorias]);
+  }
+
+  public function editarAnuncio($id, AnuncioRequest $request) {
+    $anuncio = Anuncio::find($id);
+
+    $anuncio->emaila = Auth::user()->email;
+    $anuncio->tituloa = $request->tituloa;
+    $anuncio->descricao = $request->descricao;
+    $anuncio->codc = $request->codc;
+    $anuncio->valor = $request->valor;
+    $anuncio->prior = false; //falta colocar a prioridade!
+    $anuncio->tipo = $request->tipo;
+    $anuncio->qtitens = $request->qtitens ? $request->qtitens : null;
+    $anuncio->condicao = $request->condicao;
+
+    $anuncio->save();
+    return redirect('anuncio/'.$id);
+  }
+
+  public function deletaAnuncio($id) {
+    $anuncio = Anuncio::find($id);
+    $anuncio->delete();
+
+    return redirect('anuncio/meusitens');
   }
 
   public function salvaImagemAnuncio($request, $campo, $num){

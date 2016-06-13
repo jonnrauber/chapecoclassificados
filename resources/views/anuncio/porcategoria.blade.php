@@ -56,7 +56,11 @@
           <tr>
             <td>
               <a href="{{url('anuncio/'.$anuncio->id)}}">
-                <img src="{{url('/img/anuncio/'.$anuncio->imagem1)}}" class="img-responsive" width=150px>
+                @if($anuncio->imagem1)
+                  <img src="{{url('/img/anuncio/'.$anuncio->imagem1)}}" class="img-responsive" width=150px>
+                @else
+                  <img src="{{url('/img/peqanuncioplaceholder.png')}}" class="img-responsive" width=100px>
+                @endif
               </a>
             </td>
             <td>

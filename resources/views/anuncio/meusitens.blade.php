@@ -12,9 +12,6 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-12">
-        <div class="pull-right">
-          <a href="url('anuncio/meusitens/editar')">editar</a>
-        </div>
         <table class="table table-striped table-hover">
           <thead>
             <tr>
@@ -32,8 +29,10 @@
                 <td>{{$anuncio->nomec}}</td>
                 <td>R${{number_format($anuncio->valor, 2, ',', '.')}}</td>
                 <td>{{$anuncio->qtvisit}}</td>
-                <td>{{$anuncio->created_at}}</td>
-                <td>{{$anuncio->dataex}}</td>
+                <td>{{date("d/m/y h:i",strtotime(str_replace('-','/', $anuncio->created_at)))}}</td>
+                <td>{{date("d/m/y h:i",strtotime(str_replace('-','/', $anuncio->dataex)))}}</td>
+                <td><a href='{{url('anuncio/editar/'.$anuncio->id)}}'><b class='fa fa-pencil'></b></a></td>
+                <td><a href='{{url('anuncio/deletar/'.$anuncio->id)}}' onclick="return confirm('Tem certeza que deseja deletar o anúncio?');"><b class='fa fa-trash'></b></a></td>
             </tr>
           @endforeach
         </table>
@@ -47,10 +46,4 @@
   <div class="panel-footer">
   </div>
 </div>
-
-
-<?
-//consulta php para pegar os anuncios do usuario
-
-?>
 @endsection
