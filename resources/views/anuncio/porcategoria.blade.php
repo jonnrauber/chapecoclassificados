@@ -95,7 +95,7 @@
               <a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a>
             </td>
             <td>
-              <strong>R${{$anuncio->valor}}</strong>
+              <strong>R${{number_format($anuncio->valor, 2, ',', '.')}}</strong>
             </td>
             <td>
               <small>
