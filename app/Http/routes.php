@@ -26,7 +26,8 @@ Route::get('/anuncio/editar/{id}', 'AnuncioController@showEditarItemPage@{id}');
 Route::post('/anuncio/editar/{id}', 'AnuncioController@editarAnuncio@{id}');
 Route::get('/anuncio/deletar/{id}', 'AnuncioController@deletaAnuncio@{id}');
 Route::get('/anuncio/recebidos', 'InteresseController@showInteressesRecebidosPage');
-
+Route::post('anuncio/por-localizacao', 'CategoriaController@showAnunciosByLocation');
+Route::post('anuncio/por-preco', 'CategoriaController@showAnunciosByPrice');
 
 Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');

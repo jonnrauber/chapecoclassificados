@@ -94,8 +94,32 @@
                 <td>Endereço</td>
                 <td>
                   <strong>
-                    Bairro {!! Form::text('bairro', Auth::user()->bairro) !!}<br>
-                    Cidade {!! Form::text('cidade', Auth::user()->cidade) !!}
+                    {!!
+                    ControlGroup::generate(
+        							Form::label('estado','Estado', ['class'=>'control-label']),
+        							Form::select('estado', ['selected' => Auth::user()->estado]),
+        							null,
+        							2,6
+        						)
+                    !!}
+                    <br>
+                    {!!
+        						ControlGroup::generate(
+        							Form::label('cidade', 'Cidade', ['class'=>'control-label']),
+        							Form::select('cidade'),
+        							null,
+        							2,6
+        						)
+                    !!}
+                    <br>
+                    {!!
+        						ControlGroup::generate(
+        							Form::label('bairro', 'Bairro', ['class'=>'control-label']),
+        							Form::text('bairro', Auth::user()->bairro, ['class'=>'form-control','placeholder'=>'ex: Passo dos Fortes']),
+        							null,
+        							2,5
+        						)
+                    !!}
                   </strong>
                 </td>
               </tr>
@@ -111,4 +135,16 @@
       </div>
     </div>
   </div>
+
+
+  <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      new dgCidadesEstados(
+          document.getElementById('estado'),
+          document.getElementById('cidade'),
+          true
+      );
+    }
+  </script>
 @endsection

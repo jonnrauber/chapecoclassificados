@@ -16,8 +16,36 @@
     </div>
     <div class='col-md-12'>
       <h4>Filtrar busca</h4>
-      Localização<hr>
-      Faixa de preço<hr>
+      <h4>Localização</h4>
+      {!!
+      Form::open(['url' => 'anuncio/por-localizacao']),
+        ControlGroup::generate(
+          Form::label('estado','Estado', ['class'=>'control-label']),
+          Form::select('estado'),
+          null,
+          3, 9
+        ),
+        ControlGroup::generate(
+          Form::label('cidade', 'Cidade'),
+          Form::select('cidade'),
+          null,
+          3, 9
+        ),
+        Form::submit('Buscar', ['class' => 'btn btn-warning']),
+      Form::close()
+      !!}
+      <br>
+      <h4>Faixa de preço</h4>
+      {!!
+        Form::open(['url' => 'anuncio/por-preco'])
+      !!}
+        De: <input type='number' placeholder='0' name='minimo' min=0><br>
+        Até: <input type='number' placeholder='0' name='maximo' min=0>
+      {!!
+          Form::submit('Buscar', ['class' => 'btn btn-warning']),
+        Form::close()
+      !!}
+      <hr>
     </div>
     <div class='col-md-12'>
       <h4>Categorias</h4>
@@ -90,4 +118,14 @@
     @endif
   </div>
 
+  <script type="text/javascript" src="http://cidades-estados-js.googlecode.com/files/cidades-estados-v0.2.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      new dgCidadesEstados(
+          document.getElementById('estado'),
+          document.getElementById('cidade'),
+          true
+      );
+    }
+  </script>
 @endsection
