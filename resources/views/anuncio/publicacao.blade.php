@@ -23,7 +23,8 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2>{{$anuncio->tituloa}}</h2>
+      <h2 class='pull-left'>{{$anuncio->tituloa}}</h2>
+      <a href='{{url("denuncia/anuncioid=".$anuncio->id)}}' class='btn navbar-btn pull-right'>denunciar anúncio</a>
     </div>
   </div>
   <div class="row">

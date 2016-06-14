@@ -33,7 +33,6 @@ Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 
 
-//Route::get('categoria', 'AnuncioController');
 Route::get('categoria/{id}', 'CategoriaController@showAnunciosByCat@{id}');
 Route::get('categoria', 'CategoriaController@showCategoriasPage');
 
@@ -45,6 +44,12 @@ Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
 Route::get('perfil', 'ProfileController@perfil');
 Route::get('perfil/editar', 'ProfileController@showEditarPerfilPage');
 Route::post('perfil/editar', 'ProfileController@editarPerfil');
+
+Route::get('denuncia/anuncioid={id}', 'DenunciaController@showDenunciaPage');
+Route::post('denuncia/anuncioid={id}', 'DenunciaController@denunciaAnuncio');
+
+
+/* Rotas da área restrita */
 
 Route::get('restrito', 'AdminController@showRestritoPage');
 Route::post('restrito', 'AdminController@loginAdmin');
