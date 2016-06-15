@@ -161,8 +161,11 @@ class AdminController extends Controller
     }
 
     public function gerenciaDenuncias() {
+        $denuncias = DB::select('
+          select d.*, a.emaila from denuncia_a d
+          join anuncios a on d.id = a.id');
         if($this->admIsLoggedIn()) {
-          return view('restrito.denuncias');
+          return view('restrito.denuncias', ['denuncias' => $denuncias]);
         }
         else {
           return redirect('restrito');

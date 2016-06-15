@@ -94,23 +94,15 @@
                 <td>Endereço</td>
                 <td>
                   <strong>
-                    {!!
-                    ControlGroup::generate(
-        							Form::label('estado','Estado', ['class'=>'control-label']),
-        							Form::select('estado', ['selected' => Auth::user()->estado]),
-        							null,
-        							2,6
-        						)
-                    !!}
+                    <div class='control-group'>
+                      <select name='estado' id='estado' class='form-control' onclick='funcao();'>
+                      </select>
+                    </div>
                     <br>
-                    {!!
-        						ControlGroup::generate(
-        							Form::label('cidade', 'Cidade', ['class'=>'control-label']),
-        							Form::select('cidade'),
-        							null,
-        							2,6
-        						)
-                    !!}
+                    <div class='control-group'>
+                      <select name='cidade' id='cidade' class='form-control' onclick='document.getElementById("bairro").focus()'>
+                      </select>
+                    </div>
                     <br>
                     {!!
         						ControlGroup::generate(
@@ -145,6 +137,11 @@
           document.getElementById('cidade'),
           true
       );
+      document.getElementById('estado').value='{{Auth::user()->estado}}';
+      document.getElementById('cidade').name='{{Auth::user()->cidade}}';
+    }
+    function funcao(){
+      document.getElementById("cidade").focus();
     }
   </script>
 @endsection

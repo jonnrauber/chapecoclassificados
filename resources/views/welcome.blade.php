@@ -4,7 +4,7 @@
 	<div class="hidden-xs hidden-sm hidden-md">
 		<h4>Recentemente adicionados</h4>
 
-			@foreach($recentes as $recente)
+			@foreach(array_slice($recentes, 0, 3) as $recente)
 				<div class="media">
 					<a class="pull-left" href="{{url('anuncio/'.$recente->id)}}">
 						@if($recente->imagem1)
@@ -29,24 +29,23 @@
 
 @section('content')
 	<div class="col-lg-9 content-right">
-		<div class="hidden-xs hidden-sm">
-				<div class="col-lg-12">
-					{!!
-						Carousel::named('example')->withContents([
-						    [
-						        'image' => '//lorempixel.com/800/400/city',
-						        'alt' => 'something',
-						    ],
-						    [
-						        'image' => '//lorempixel.com/800/400/people',
-						        'alt' => 'something else',
-						    ],
-						])
-					!!}
-				</div>
-			<div class="col-lg-12">
-				<hr>
-			@foreach($anuncios as $anuncio)
+		<div class="col-lg-11">
+			{!!
+				Carousel::named('home')->withContents([
+				    [
+				        'image' => 'img/master/home.fw.png',
+				        'alt' => 'cadastrar',
+				    ],
+						[
+				        'image' => 'img/master/homeauth.fw.png',
+				        'alt' => 'publicar',
+				    ],
+				])
+			!!}
+		</div>
+		<div class="col-lg-12">
+			<hr>
+			@foreach(array_slice($anuncios, 0, 8) as $anuncio)
 					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 						<div class="thumbnail">
 							<a href="{{url('anuncio/'.$anuncio->id)}}">
@@ -63,7 +62,6 @@
 						</div>
 					</div>
 			@endforeach
-			</div>
 		</div>
 	</div>
 
