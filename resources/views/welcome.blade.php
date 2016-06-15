@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('menu-left')
-	<div class="hidden-xs hidden-sm hidden-md">
+	<div class="">
 		<h4>Recentemente adicionados</h4>
 
 			@foreach($recentes as $recente)
@@ -29,7 +29,7 @@
 
 @section('content')
 	<div class="col-lg-9 content-right">
-		<div class="hidden-xs hidden-sm">
+		<div class="">
 				<div class="col-lg-12">
 					{!!
 						Carousel::named('example')->withContents([
