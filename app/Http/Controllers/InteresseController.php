@@ -7,8 +7,10 @@ use App\Http\Requests\InteresseRequest;
 use App\Http\Requests;
 use App\Interesse;
 use Auth;
+use Mail;
 use Redirect;
 use DB;
+use Validator;
 
 class InteresseController extends Controller
 {
@@ -16,13 +18,26 @@ class InteresseController extends Controller
       $this->middleware('auth');
   }
 
-  public function enviarInteresse($id, InteresseRequest $request) {
+  private function enviarEmailInteresse($interesse) {
+    $usuario = DB::select('
+      select u.* from usuarios u
+      join anuncios a on u.email = a.emaila
+      where a.id = ?', [$interesse->id]);
+
+    Mail::send('auth.emails.interesse', ['interesse' => $interesse, 'usuario' => $usuario[0]], function ($message) use ($usuario) {
+      $message->to($usuario[0]->email)->subject('Novo interesse - Classificados Chapecó');
+    });
+  }
+
+  public function enviarInteresse(InteresseRequest $request) {
     $interesse = new Interesse;
     $interesse->msg = $request->msg;
     $interesse->emaili = Auth::user()->email;
-    $interesse->id = $id;
+    $interesse->id = $request->id;
 
     $interesse->save();
+
+    $this->enviarEmailInteresse($interesse);
 
     return Redirect::back();
   }

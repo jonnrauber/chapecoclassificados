@@ -163,7 +163,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					{!! Form::open() !!}
-            <input type="hidden" name="emaila" value="{{$anuncio->emaila}}">
+            <input type="hidden" name="id" value="{{$anuncio->id}}">
             <input type="hidden" name="emaili" value="{{Auth::user()->email}}">
 						<div class="form-group">
 							<label for="msg">Deixe sua mensagem abaixo: </label>

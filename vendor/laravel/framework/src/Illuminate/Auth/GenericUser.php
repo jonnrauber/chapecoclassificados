@@ -53,7 +53,7 @@ class GenericUser implements UserContract
      */
     public function getAuthPassword()
     {
-        return $this->attributes['senha'];
+        return $this->attributes['password'];
     }
 
     /**

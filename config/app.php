@@ -150,6 +150,7 @@ return [
 
 
         'Bootstrapper\BootstrapperL5ServiceProvider',
+        'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
         /*
          * Application Service Providers...
          */

@@ -25,14 +25,16 @@ class InteresseRequest extends Request
     {
       return [
         'emaila' => 'different:emaili',
-        'msg' => 'required'
+        'msg' => 'required',
+        'emaili' => 'unique_with: interesses, id'
       ];
     }
 
     public function messages() {
       return [
         'emaila.different' => 'Você não pode se interessar por um anúncio seu!',
-        'msg.required' => 'Você deve preencher o campo mensagem.'
+        'msg.required' => 'Você deve preencher o campo mensagem.',
+        'emaili.unique_with' => 'Você já enviou uma mensagem de interesse por este anúncio!'
       ];
     }
 }

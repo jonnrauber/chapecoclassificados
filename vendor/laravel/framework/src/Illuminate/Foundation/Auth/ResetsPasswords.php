@@ -82,7 +82,6 @@ trait ResetsPasswords
         switch ($response) {
             case Password::RESET_LINK_SENT:
                 return $this->getSendResetLinkEmailSuccessResponse($response);
-
             case Password::INVALID_USER:
             default:
                 return $this->getSendResetLinkEmailFailureResponse($response);
@@ -202,7 +201,7 @@ trait ResetsPasswords
         );
 
         $credentials = $request->only(
-            'email', 'senha', 'senha_confirmation', 'token'
+            'email', 'password', 'password_confirmation', 'token'
         );
 
         $broker = $this->getBroker();
@@ -214,7 +213,6 @@ trait ResetsPasswords
         switch ($response) {
             case Password::PASSWORD_RESET:
                 return $this->getResetSuccessResponse($response);
-
             default:
                 return $this->getResetFailureResponse($request, $response);
         }
@@ -230,7 +228,7 @@ trait ResetsPasswords
         return [
             'token' => 'required',
             'email' => 'required|email',
-            'senha' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 
@@ -264,7 +262,7 @@ trait ResetsPasswords
     protected function resetPassword($user, $password)
     {
         $user->forceFill([
-            'senha' => bcrypt($password),
+            'password' => bcrypt($password),
             'remember_token' => Str::random(60),
         ])->save();
 
