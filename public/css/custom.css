@@ -47,13 +47,16 @@
 		float: left;
 		display: inline-block;
 	}
+	.btn-group-actions > .btn-success, .btn-group-actions > .navbar-btn{
+		display: inline-block;
+	}
 }
 
-/*@media screen and (max-width: 1024px){
-	.banner > h3{
-		font-size: 1.5em;
+@media screen and (min-width: 769px) and (max-width: 1024px){
+	.btn-group-actions > .btn-success, .btn-group-actions > .navbar-btn{
+		display: none;
 	}
-}*/
+}
 
 footer{
   float: left;

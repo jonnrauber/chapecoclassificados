@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('menu-left')
-	<div class="hidden-xs hidden-sm hidden-md">
+	<div class="">
 		<h4>Recentemente adicionados</h4>
 
 			@foreach(array_slice($recentes, 0, 3) as $recente)
