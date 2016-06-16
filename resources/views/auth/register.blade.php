@@ -34,15 +34,15 @@
 							4,6
 						),
 						ControlGroup::generate(
-							Form::label('senha','Senha', ['class'=>'control-label']),
-							Form::password('senha', null, ['class'=>'form-control']),
+							Form::label('password','Senha', ['class'=>'control-label']),
+							Form::password('password', null, ['class'=>'form-control']),
 							null,
 							4,5
 						),
 
 						ControlGroup::generate(
-							Form::label('senha_confirmation','Confirmar Senha', ['class'=>'control-label']),
-							Form::password('senha_confirmation', null, ['class'=>'form-control']),
+							Form::label('password_confirmation','Confirmar Senha', ['class'=>'control-label']),
+							Form::password('password_confirmation', null, ['class'=>'form-control']),
 							null,
 							4,5
 						),

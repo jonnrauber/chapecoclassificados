@@ -28,8 +28,8 @@
 								Form::email('email', old('email'), ['class'=>'form-control', 'placeholder'=>'email@exemplo.com'])
 							),
 							ControlGroup::generate(
-								Form::label('senha','Senha',['class'=>'col-xs-4 control-label']),
-								Form::password('senha', ['class'=>'form-control', 'placeholder'=>'*******'])
+								Form::label('password','Senha',['class'=>'col-xs-4 control-label']),
+								Form::password('password', ['class'=>'form-control', 'placeholder'=>'*******'])
 							),
 							ControlGroup::generate(
 								Form::checkbox('remember', 1,null,['class'=>'col-xs-1']),

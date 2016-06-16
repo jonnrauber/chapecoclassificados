@@ -15,7 +15,7 @@ class User extends Authenticatable
 	protected $fillable = [
 		'email',
 		'nome',
-		'senha',
+		'password',
 		'tel1',
 		'tel2',
 		'bairro',
@@ -25,6 +25,6 @@ class User extends Authenticatable
 	];
 
 	protected $hidden = [
-		'senha', 'remember_token',
+		'password', 'remember_token',
 	];
 }

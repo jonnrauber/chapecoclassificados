@@ -13,9 +13,9 @@ class CreateDenunciaAsTable extends Migration
     public function up()
     {
         Schema::create('denuncia_a', function (Blueprint $table) {
-          $table->string('emaild',50);
+          $table->string('emaild', 50);
           $table->integer('id');
-          $table->string('motivo',255);
+          $table->string('motivo', 255);
 
           $table->timestamps();
 

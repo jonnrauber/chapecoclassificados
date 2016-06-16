@@ -163,14 +163,14 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					{!! Form::open() !!}
-            <input type="hidden" name="id" value="{{$anuncio->id}}">
-            <input type="hidden" name="emaili" value="{{Auth::user()->email}}">
+            <input type="hidden" name="id" value='{{$anuncio->id}}'>
+            <input type="hidden" name="emaili" value='{{Auth::user()->email}}'>
 						<div class="form-group">
 							<label for="msg">Deixe sua mensagem abaixo: </label>
 							<textarea class="form-control" id="msg" name="msg" placeholder="Escreva aqui sua mensagem" rows="5"></textarea>
 						</div>
 						<button class="btn btn-info" type="submit">Enviar</button>
-					</form>
+					{!!Form::close()!!}
 				</div>
 			</div>
 		</div>

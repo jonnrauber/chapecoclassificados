@@ -32,8 +32,10 @@ class CreateAnunciosTable extends Migration
           $table->string('imagem3', 100)->nullable();
           $table->string('imagem4', 100)->nullable();
           $table->string('imagem5', 100)->nullable();
+          $table->string('codp', 3);
 
-          $table->foreign('emaila')->references('email')->on('usuarios');
+          $table->foreign('emaila')->references('email')->on('usuarios')->onDelete('cascade');
+          $table->foreign('codp')->references('codp')->on('pagamentos')->onDelete('cascade');
         });
     }
 

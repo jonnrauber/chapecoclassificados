@@ -26,6 +26,7 @@ class AnuncioRequest extends Request
         return [
           'tipo' => 'required',
           'codc' => 'required',
+          'codp' => 'required',
           'tituloa' => 'required|max:100',
           'descricao' => 'required',
           'valor' => 'numeric',

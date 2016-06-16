@@ -91,8 +91,8 @@
                             Form::email('email', old('email'), ['class' => 'form-control', 'placeholder' => 'email@exemplo.com', 'required' => ''])
                           ),
                           ControlGroup::generate(
-                            Form::label('senha', 'Senha', ['class' => 'sr-only']),
-                            Form::password('senha', ['class' => 'form-control', 'placeholder' => '******', 'required' => ''])
+                            Form::label('password', 'Senha', ['class' => 'sr-only']),
+                            Form::password('password', ['class' => 'form-control', 'placeholder' => '******', 'required' => ''])
                           ),
                           ControlGroup::generate(
                             Form::checkbox('remember', 1,null,['class'=>'col-xs-1']),

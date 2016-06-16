@@ -13,8 +13,8 @@ class CreateInteressesTable extends Migration
     public function up()
     {
         Schema::create('interesses', function (Blueprint $table) {
-          $table->string('emaili',50);
-          $table->string('msg',255);
+          $table->string('emaili', 50);
+          $table->string('msg', 255);
           $table->integer('id');
 
           $table->timestamps();

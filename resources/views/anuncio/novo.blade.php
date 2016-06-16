@@ -1,7 +1,9 @@
-<?php $categorias = DB::table('categorias')->get(); ?>
+<?php
+  $categorias = DB::table('categorias')->get();
+  $pagamentos = DB::table('pagamentos')->get();
+?>
 
 @extends('layouts.inside')
-
 
 @section('content')
   <div class='col-lg-12'>
@@ -103,6 +105,15 @@
                     </label>
                   </div>
                 </div>
+
+                <div class='form-group'>
+                  <select name="codp" class="form-control">
+										<option value="" selected="selected">Selecione a forma de pagamento</option>
+                    @foreach($pagamentos as $pag)
+                      <option value='{{$pag->codp}}'>{{$pag->nomep}}</option>
+                    @endforeach
+									</select>
+                </div>
               </div>
 						</div>
           </div>
@@ -146,5 +157,5 @@
 						</div>
           </div>
 				</div>
-      </form>
+      {!!Form::close()!!}
 @endsection
