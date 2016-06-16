@@ -13,7 +13,6 @@ class Comentario extends Model
   protected $fillable = [
     'emailc',
     'id',
-    'tituloc',
     'msg'
   ];
 }

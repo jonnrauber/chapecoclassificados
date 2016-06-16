@@ -31,6 +31,7 @@ Route::post('anuncio/por-preco', 'CategoriaController@showAnunciosByPrice');
 
 Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
+Route::post('anuncio/{id}/comentar', 'ComentarioController@enviarComentario');
 
 
 Route::get('categoria/{id}', 'CategoriaController@showAnunciosByCat@{id}');

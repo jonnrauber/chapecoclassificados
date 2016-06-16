@@ -20,8 +20,8 @@ class CreateInteressesTable extends Migration
           $table->timestamps();
 
           $table->primary(['emaili','id']);
-          $table->foreign('emaili')->references('email')->on('usuarios');
-          $table->foreign('id')->references('id')->on('anuncios');
+          $table->foreign('emaili')->references('email')->on('usuarios')->onDelete('cascade');
+          $table->foreign('id')->references('id')->on('anuncios')->onDelete('cascade');
         });
     }
 

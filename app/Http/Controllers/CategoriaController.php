@@ -9,6 +9,7 @@ use DB;
 use App\Anuncio;
 use App\User;
 use App\Categoria;
+use App\Pagamento;
 class CategoriaController extends Controller
 {
   public function showAnunciosByCat($id){
@@ -53,7 +54,7 @@ class CategoriaController extends Controller
 
   public function showAnunciosByPrice(Request $request) {
     $min = $request->minimo ? $request->minimo : 0;
-    $max = $request->maximo ? $request->maximo : 999999999; 
+    $max = $request->maximo ? $request->maximo : 999999999;
     $query = "select a.*, u.*, c.nomec from anuncios a
       join categorias c on c.codc = a.codc
       join usuarios u on u.email = a.emaila
@@ -67,7 +68,18 @@ class CategoriaController extends Controller
     //tem que implementar a contagem de visitas!
     $vendedor = User::find($anuncio->emaila);
     $categoria = Categoria::find($anuncio->codc);
-    return view('anuncio/publicacao', ['anuncio'=>$anuncio, 'vendedor'=>$vendedor, 'categoria'=>$categoria]);
+    $comentarios = DB::select('
+      select c.*, u.nome from comentarios c
+      join anuncios a on c.id = a.id
+      join usuarios u on a.emaila = u.email');
+    $pagamento = Pagamento::find($anuncio->codp);
+    return view('anuncio/publicacao', [
+      'anuncio' => $anuncio,
+      'vendedor'=>$vendedor,
+      'categoria'=>$categoria,
+      'comentarios' => $comentarios,
+      'pagamento' => $pagamento
+    ]);
   }
 
   public function showCategoriasPage() {

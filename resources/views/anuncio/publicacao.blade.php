@@ -116,14 +116,14 @@
   					<td>{{$categoria->nomec}}</td>
   				</tr>
   				<tr>
-  					<td>Métodos de Pagamento</td>
-  					<td>Boleto, etc etc</td>
+  					<td>Método de Pagamento</td>
+  					<td>{{$pagamento->nomep}}</td>
   				</tr>
   			</tbody>
   		</table>
       <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{number_format($anuncio->valor, 2, ',', '.')}}</h3></div>
       <div class='col-md-8 col-md-offset-2'>
-        <a href="#msg" class="btn btn-success btn-block">Tenho Interesse!</a>
+        <a href="#msg" class="btn btn-success btn-block" onclick='document.getElementById("mensagem").focus()'>Tenho Interesse!</a>
       </div>
   		<div class="row">
   			<div class="col-md-12">
@@ -146,8 +146,8 @@
   	</div>
   </div>
 	<div class="row">
-		<div class="col-md-12">
-      <div class="panel" style="border-color: #ccc">
+		<div class="col-md-7">
+      <div class="panel" style="border-color: #ccc; min-height: 250px">
     		<div class="panel panel-heading">
           <h4>Descrição</h4>
         </div>
@@ -156,18 +156,17 @@
         </div>
       </div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<h4 id='msg'>Enviar mensagem de interesse ao vendedor</h4>
-			<div class="panel panel-default">
+		<div class="col-md-5">
+			<div class="panel" style="border-color: #ccc">
+        <div class='panel panel-heading'>
+          <h4 id='msg'>Enviar mensagem de interesse ao vendedor</h4>
+        </div>
 				<div class="panel-body">
 					{!! Form::open() !!}
             <input type="hidden" name="id" value='{{$anuncio->id}}'>
             <input type="hidden" name="emaili" value='{{Auth::user()->email}}'>
 						<div class="form-group">
-							<label for="msg">Deixe sua mensagem abaixo: </label>
-							<textarea class="form-control" id="msg" name="msg" placeholder="Escreva aqui sua mensagem" rows="5"></textarea>
+							<textarea class="form-control" value='{{old("msg")}}'id="mensagem" name="msg" placeholder="Escreva aqui sua mensagem" rows="3"></textarea>
 						</div>
 						<button class="btn btn-info" type="submit">Enviar</button>
 					{!!Form::close()!!}
@@ -176,10 +175,35 @@
 		</div>
 	</div>
   <div class='row'>
+    <div class="col-md-10 col-md-offset-1">
+			<h3 id='cmm'>{{count($comentarios)}} Comentários</h4>
+				{!! Form::open(['url'=>'anuncio/'.$anuncio->id.'/comentar']) !!}
+        <div class='row'>
+          <input type="hidden" name="id" value='{{$anuncio->id}}'>
+          <input type="hidden" name="emailc" value='{{Auth::user()->email}}'>
+          <div class='col-sm-9 col-xs-8'>
+            <input type='text' class='form-control' id="msg" name="msg" placeholder="Escreva aqui seu comentário">
+          </div>
+          <div class='col-sm-2 col-xs-3'>
+					  <button class="btn btn-block btn-success" type="submit">Enviar</button>
+          </div>
+        </div>
+				{!!Form::close()!!}
 
+  		<div class="panel-body">
+  			@if(count($comentarios) > 0)
+          @foreach(array_slice($comentarios, 0, 5) as $cmm)
+            <h4>{{$cmm->nome}}<small>enviado em {{$cmm->created_at}}</small></h4>
+            <p>{{$cmm->msg}}</p>
+            <hr>
+          @endforeach
+        @else
+          <div class="well">
+            Ainda não foram feitos comentários neste anúncio.
+          </div>
+        @endif
+  		</div>
+    </div>
   </div>
 </div>
-
-
-
 @endsection

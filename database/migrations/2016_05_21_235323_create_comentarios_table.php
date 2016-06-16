@@ -16,12 +16,11 @@ class CreateComentariosTable extends Migration
           $table->timestamps();
           $table->integer('id');
           $table->string('emailc',50);
-          $table->string('tituloc',50);
           $table->string('msg',255);
 
           $table->primary(['emailc','created_at','id']);
-          $table->foreign('emailc')->references('email')->on('usuarios');
-          $table->foreign('id')->references('id')->on('anuncios');
+          $table->foreign('emailc')->references('email')->on('usuarios')->onDelete('cascade');
+          $table->foreign('id')->references('id')->on('anuncios')->onDelete('cascade');
         });
     }
 
