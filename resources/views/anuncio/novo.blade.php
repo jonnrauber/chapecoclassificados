@@ -66,7 +66,7 @@
 
 								<div class="form-group">
 									<label for="descricao">Descrição</label>
-									<textarea value="{{old('descricao')}}"name="descricao" class="form-control" rows="8"></textarea>
+									<textarea name="descricao" class="form-control" rows="8">{{old('descricao')}}</textarea>
 								</div>
 
 								<div class="form-group">

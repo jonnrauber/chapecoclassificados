@@ -35,7 +35,14 @@
 
 /*-------------------------------------*/
 
-
+/*------------ PAGINA DE CATEGORIAS --------------*/
+.catdiv {
+	min-height: 200px;
+	max-height: 200px;
+}
+.catimg {
+	max-height: 150px;
+}
 /*------------ RESPONSIVE DESIGN -----------------*/
 
 @media screen and (max-width: 768px){

@@ -10,6 +10,7 @@ use Validator;
 use DB;
 use Auth;
 use App\Anuncio;
+use App\BoletoBB;
 use App\User;
 use App\Categoria;
 use Boleto;
@@ -79,48 +80,11 @@ class AnuncioController extends Controller
     return false;
   }
 
-  private function geraBoletoPdf($request) {
-    Boleto::sacado(array(
-            'sacado'    => "Nome do seu Cliente",
-            'endereco1' => "Endereço do seu Cliente",
-            'endereco2' => "Cidade - Estado -  CEP: 00000-000"
-        ));
-
-     Boleto::cedente(array(
-      'agencia'           => "1100", // Num da agencia, sem digito
-      'agencia_dv'        => "0", // Digito do Num da agencia
-      'conta'             => "0102003",     // Num da conta, sem digito
-      'conta_dv'          => "4",
-      'conta_cedente'     => "0102003", // ContaCedente do Cliente, sem digito (Somente Números)
-      'conta_cedente_dv'  => "4", // Digito da ContaCedente do Cliente
-      'carteira'          => "06",  // Código da Carteira: pode ser 06 ou 03
-      'identificacao'     => "BoletoPhp - Código Aberto de Sistema de Boletos",
-      'cpf_cnpj'          => "",
-      'endereco'          => "Coloque o endereço da sua empresa aqui",
-      'cidade_uf'         => "Cidade / Estado",
-      'cedente'           => "Coloque a Razão Social da sua empresa aqui",
-      'contrato'          =>  "12345678900"
-    ));
-
-    Boleto::banco('bradesco', array(
-      'valor_boleto'          => '289,90', // Nosso numero sem o DV - REGRA: Máximo de 11 caracteres!
-      'nosso_numero'          => '789', //Num do pedido ou do documento = Nosso numero
-      'numero_documento'      =>  '789', //// Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
-      'data_vencimento'       =>  date('d/m/Y'), //Data de emissão do Boleto
-      'data_documento'        =>  date('d/m/Y'), //Data de processamento do boleto (opcional)
-      'valor_unitario'        =>  '289,90',
-      'demonstrativo1'        =>  "Pagamento de Compra na Loja Nonononono",
-      'demonstrativo2'        =>  "Mensalidade referente a ...",
-      'demonstrativo3'        =>  "Empresa- http://www.seusite.com.br",
-      'instrucoes1'           =>  "- Sr. Caixa, cobrar multa de 2% após o vencimento",
-      'instrucoes2'           =>  "- Receber atá 10 dias após o vencimento",
-      'instrucoes3'           =>  "- Em caso de dúvidas entre em contato conosco: contato@seusite.com.br",
-
-    ));
-
-    //PARA GERAR O BOLETO EM PDF
-    Boleto::pdf();
-    return view('/');
+  public function geraBoletoPdf(Request $request) {
+    $cliente = User::find($request->emaila);
+    $bb = new BoletoBB;
+    $boleto = $bb->init($cliente);
+    $bb->pdf($boleto);
   }
 
   public function createAnuncio(AnuncioRequest $request){
@@ -150,10 +114,7 @@ class AnuncioController extends Controller
     if($nomearquivo) $anuncio->imagem5 = $nomearquivo;
 
     $anuncio->save();
-
-    if($request->prior) $this->geraBoletoPdf($request);
-
-    return view('anuncio/novosuccess');
+    return view('anuncio.novosuccess', ['boleto' => $request->prior]);
   }
 
 }

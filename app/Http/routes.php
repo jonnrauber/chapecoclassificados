@@ -29,6 +29,7 @@ Route::get('/anuncio/recebidos', 'InteresseController@showInteressesRecebidosPag
 Route::post('anuncio/por-localizacao', 'CategoriaController@showAnunciosByLocation');
 Route::post('anuncio/por-preco', 'CategoriaController@showAnunciosByPrice');
 
+Route::post('anuncio/gera-boleto', 'AnuncioController@geraBoletoPdf');
 Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 Route::post('anuncio/{id}/comentar', 'ComentarioController@enviarComentario');
