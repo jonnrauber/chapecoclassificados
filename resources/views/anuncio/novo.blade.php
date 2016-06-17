@@ -32,6 +32,7 @@
       <div class="row">
         <div class="col-md-6">
 					{!!Form::open(['files'=>true])!!}
+          <input type='hidden' name='emaila' value='{{Auth::user()->email}}'>
 						<div class="panel panel-info">
 							<div class="panel-heading">
 								<h3 class="panel-title">Detalhes</h3>

@@ -22,7 +22,7 @@
 					</div>
 				</div>
 			@endforeach
-			<p class="text-right show-more"><a href="#">Mais &rarr;</a></p>
+			<p class="text-right show-more"><a href="{{url('categoria/recentes')}}">Mais &rarr;</a></p>
 		</div>
 @endsection
 

@@ -20,6 +20,23 @@ class CategoriaController extends Controller
       where c.codc= ?', [$id]);
     return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
   }
+  public function showAnunciosDestaques() {
+    $anuncios = DB::select(
+      'select a.*, u.*, c.nomec from anuncios a
+      join categorias c on c.codc = a.codc
+      join usuarios u on u.email = a.emaila
+      where a.prior = true');
+    return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
+  }
+
+  public function showAnunciosRecentes() {
+    $anuncios = DB::select(
+      'select a.*, u.*, c.nomec from anuncios a
+      join categorias c on c.codc = a.codc
+      join usuarios u on u.email = a.emaila
+      order by a.created_at desc');
+    return view('anuncio.porcategoria', ['anuncios' => $anuncios]);
+  }
 
   public function showAnunciosByUrl($palavra) {
     $anuncios = DB::select(
@@ -71,7 +88,9 @@ class CategoriaController extends Controller
     $comentarios = DB::select('
       select c.*, u.nome from comentarios c
       join anuncios a on c.id = a.id
-      join usuarios u on a.emaila = u.email');
+      join usuarios u on a.emaila = u.email
+      where a.id = ?
+      order by c.created_at desc',[$id]);
     $pagamento = Pagamento::find($anuncio->codp);
     return view('anuncio/publicacao', [
       'anuncio' => $anuncio,

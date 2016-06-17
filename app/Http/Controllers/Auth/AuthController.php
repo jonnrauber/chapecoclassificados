@@ -48,16 +48,30 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-          'nome' => 'required',
-          'email' => 'required|unique:usuarios,email',
-          'password' => 'required|min:6|confirmed',
-          'tel1' => 'required|min:10|numeric',
-          'pais' => 'required',
-          'estado' => 'required',
-          'cidade' => 'required',
-          'bairro' => 'required'
-        ]);
+      $rules = [
+        'nome' => 'required',
+        'email' => 'required|unique:usuarios,email',
+        'password' => 'required|min:6|confirmed',
+        'tel1' => 'required|min:10|numeric',
+        'pais' => 'required',
+        'estado' => 'required',
+        'cidade' => 'required',
+        'bairro' => 'required'
+      ];
+      $messages = [
+        'nome.required' => 'Preencha o campo nome.',
+        'email.required' => 'Preencha o campo e-mail.',
+        'password.required' => 'Preencha o campo senha.',
+        'password.min' => 'Sua senha deve possuir no mínimo 6 caracteres.',
+        'password.confirmed' => 'Os campos de senha não conferem.',
+        'tel1.required' => 'Você deve cadastrar pelo menos um telefone.',
+        'tel1.min' => 'O campo telefone deve possuir no mínimo 10 digitos.',
+        'tel1.numeric' => 'Digite apenas números no campo telefone',
+        'estado.required' => 'Escolha o seu estado',
+        'cidade.required' => 'Escolha a sua cidade',
+        'bairro.required' => 'Preencha o campo bairro'
+      ];
+      return Validator::make($data, $rules, $messages);
     }
 
     /**

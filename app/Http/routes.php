@@ -33,7 +33,8 @@ Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 Route::post('anuncio/{id}/comentar', 'ComentarioController@enviarComentario');
 
-
+Route::get('categoria/recentes', 'CategoriaController@showAnunciosRecentes');
+Route::get('categoria/destaques', 'CategoriaController@showAnunciosDestaques');
 Route::get('categoria/{id}', 'CategoriaController@showAnunciosByCat@{id}');
 Route::get('categoria', 'CategoriaController@showCategoriasPage');
 

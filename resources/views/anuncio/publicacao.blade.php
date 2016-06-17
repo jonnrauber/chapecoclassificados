@@ -164,7 +164,8 @@
 				<div class="panel-body">
 					{!! Form::open() !!}
             <input type="hidden" name="id" value='{{$anuncio->id}}'>
-            <input type="hidden" name="emaili" value='{{Auth::user()->email}}'>
+            <input type="hidden" name="emaili" value='
+              @if(!Auth::guest()) {{Auth::user()->email}} @endif'>
 						<div class="form-group">
 							<textarea class="form-control" value='{{old("msg")}}'id="mensagem" name="msg" placeholder="Escreva aqui sua mensagem" rows="3"></textarea>
 						</div>
@@ -180,7 +181,8 @@
 				{!! Form::open(['url'=>'anuncio/'.$anuncio->id.'/comentar']) !!}
         <div class='row'>
           <input type="hidden" name="id" value='{{$anuncio->id}}'>
-          <input type="hidden" name="emailc" value='{{Auth::user()->email}}'>
+          <input type="hidden" name="emailc" value='
+            @if(!Auth::guest()) {{Auth::user()->email}} @endif'>
           <div class='col-sm-9 col-xs-8'>
             <input type='text' class='form-control' id="msg" name="msg" placeholder="Escreva aqui seu comentário">
           </div>

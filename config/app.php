@@ -151,6 +151,7 @@ return [
 
         'Bootstrapper\BootstrapperL5ServiceProvider',
         'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
+        Miqueiasdesouza\Boleto\Laravel\v5\BoletoServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,6 +229,7 @@ return [
         'Tabbable' => 'Bootstrapper\Facades\Tabbable',
         'Table' => 'Bootstrapper\Facades\Table',
         'Thumbnail' => 'Bootstrapper\Facades\Thumbnail',
+        'Boleto'    => Miqueiasdesouza\Boleto\Laravel\v5\BoletoFacade::class,
 
     ],
 
