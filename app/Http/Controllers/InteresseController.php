@@ -32,7 +32,7 @@ class InteresseController extends Controller
   public function enviarInteresse(InteresseRequest $request) {
     $interesse = new Interesse;
     $interesse->msg = $request->msg;
-    $interesse->emaili = Auth::user()->email;
+    $interesse->emaili = $request->emaili;
     $interesse->id = $request->id;
 
     $interesse->save();
@@ -47,7 +47,8 @@ class InteresseController extends Controller
       'select i.*, a.tituloa, a.emaila, u.nome from interesses i
       join anuncios a on i.id = a.id
       join usuarios u on a.emaila = u.email
-      where i.emaili = ?', [Auth::user()->email]);
+      where i.emaili = ?
+      order by i.created_at desc', [Auth::user()->email]);
     return view('anuncio.interesses', ['interesses'=>$interesses]);
   }
 
@@ -56,7 +57,8 @@ class InteresseController extends Controller
       'select i.*, a.tituloa, a.emaila, u.nome from interesses i
       join anuncios a on i.id = a.id
       join usuarios u on i.emaili = u.email
-      where a.emaila = ?', [Auth::user()->email]);
+      where a.emaila = ?
+      order by i.created_at desc', [Auth::user()->email]);
     return view('anuncio.interessesrecebidos', ['interesses'=>$interesses]);
   }
 }

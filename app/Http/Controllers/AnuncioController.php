@@ -30,7 +30,8 @@ class AnuncioController extends Controller
     $anuncios = DB::select('
       select a.*, c.nomec from anuncios a
       join categorias c on c.codc = a.codc
-      where a.emaila = ?', [Auth::user()->email]);
+      where a.emaila = ?
+      order by a.created_at desc', [Auth::user()->email]);
     return view('anuncio.meusitens', ['anuncios' => $anuncios]);
   }
 

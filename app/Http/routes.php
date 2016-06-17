@@ -33,6 +33,7 @@ Route::post('anuncio/gera-boleto', 'AnuncioController@geraBoletoPdf');
 Route::get('anuncio/{id}', 'CategoriaController@showAnuncioPage@{id}');
 Route::post('anuncio/{id}', 'InteresseController@enviarInteresse@{id}');
 Route::post('anuncio/{id}/comentar', 'ComentarioController@enviarComentario');
+Route::get('anuncio/{id}/comentar', 'CategoriaController@showAnuncioPage@{id}');
 
 Route::get('categoria/recentes', 'CategoriaController@showAnunciosRecentes');
 Route::get('categoria/destaques', 'CategoriaController@showAnunciosDestaques');
