@@ -15,7 +15,7 @@ $logo_banco = "bb"; $dadosboleto = array (
   'demonstrativo2' => '',
   'demonstrativo3' => 'Empresa- http://www.classificadoschapeco.com',
   'instrucoes1' => '- Sr. Caixa, cobrar multa de 2% após o vencimento',
-  'instrucoes2' => '- Receber atá 10 dias após o vencimento',
+  'instrucoes2' => '- Receber até 7 dias após o vencimento',
   'instrucoes3' => '- Em caso de dúvidas entre em contato conosco: contato@classificadoschapeco.com.br',
   'instrucoes4' => '',
   'agencia' => '1100',

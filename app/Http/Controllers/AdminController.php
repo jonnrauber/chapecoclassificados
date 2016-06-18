@@ -10,6 +10,9 @@ use Validator;
 use Redirect;
 use DB;
 use App\User;
+use App\Anuncio;
+use App\Categoria;
+use App\Pagamento;
 
 class AdminController extends Controller
 {
@@ -136,14 +139,28 @@ class AdminController extends Controller
       return redirect('register');
     }
 
+    public function deletaAnuncio($id) {
+      if(!$this->admIsLoggedIn()) return redirect('restrito');
+      $anuncio = Anuncio::find($id);
+      $anuncio->delete();
+      return redirect('restrito/anuncios');
+    }
+
+
     public function gerenciaAnuncios() {
-        $anuncios = DB::select('select * from anuncios a join usuarios u on a.emaila = u.email');
-        if($this->admIsLoggedIn()) {
-          return view('restrito.anuncios', ['anuncios' => $anuncios]);
-        }
-        else {
-          return redirect('restrito');
-        }
+      $anuncios = DB::select('
+        select a.*, u.nome, u.email from anuncios a
+        join usuarios u on a.emaila = u.email
+        order by a.id');
+      if($this->admIsLoggedIn()) {
+        return view('restrito.anuncios', ['anuncios' => $anuncios]);
+      }
+      else {
+        return redirect('restrito');
+      }
+    }
+    public function visualizarDetalhes($id) {
+      $anuncio = Anuncio::find($id);
     }
 
     public function procuraAnuncios(Request $request) {
@@ -157,7 +174,6 @@ class AdminController extends Controller
       else {
         return redirect('restrito/anuncios');
       }
-
     }
 
     public function gerenciaDenuncias() {
@@ -170,5 +186,24 @@ class AdminController extends Controller
         else {
           return redirect('restrito');
         }
+    }
+
+    public function addCategoria(Request $request) {
+      $cat = new Categoria;
+      $cat->nomec = $request->nomec;
+      $cat->codc = $request->codc;
+      $cat->foto = $request->foto;
+
+      $cat->save();
+      return back();
+    }
+
+    public function addPagamento(Request $request) {
+      $pag = new Pagamento;
+      $pag->nomep = $request->nomep;
+      $pag->codp = $request->codp;
+
+      $pag->save();
+      return back();
     }
 }

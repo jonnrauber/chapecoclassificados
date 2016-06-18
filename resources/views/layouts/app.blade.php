@@ -7,7 +7,7 @@
           <div class='row'>
             <div class='col-md-12'>
             	<div class="well well-sm">
-          			{!!Form::open(['url' => 'pesquisa']) !!}
+          			{!!Form::open(['url' => 'pesquisa', 'method' => 'GET']) !!}
           				<div class="input-group">
           					<input type="text" class="form-control" placeholder="Procurando alguma coisa?" name="titulo">
           					<span class="input-group-btn">
@@ -18,14 +18,13 @@
           		</div>
             </div>
           </div>
+
           <div class='row'>
             <div class='col-md-12'>
-              <button type='button' class='btn btn-block btn-warning' onclick='location.href="{{url('categoria/destaques')}}"'>DESTAQUES!</button>
-            </div>
-          </div>
-          <div class='row'>
-            <div class='col-md-12'>
-          		<div class="categories list-group">
+          		<div class="list-group">
+                  <a href="{{url('categoria/destaques')}}" class="list-group-item destaques"><span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class='destaquestext'>Destaques!</span>
+                  </a>
           			  <a href="{{url('categoria/CAR')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
                     Carros
                   </a>

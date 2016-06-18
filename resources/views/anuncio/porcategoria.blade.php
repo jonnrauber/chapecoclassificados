@@ -1,64 +1,53 @@
 @extends('layouts.inside')
 
 @section('content')
+<?php
+  $categorias = DB::table('categorias')->get();
+?>
 
   <div class="col-sm-3">
-    <div class="well well-sm">
-      {!!Form::open(['url' => 'pesquisa']) !!}
-        <label for='titulo' class='control-label'>Procure anúncios:</label>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="" id='titulo' name="titulo">
-          <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-          </span>
+    {!! Form::open(['method' => 'GET', 'url' => 'pesquisa']) !!}
+    <div class="well well-sm" style='margin: 0px auto'>
+      <label for='titulo' class='control-label'>Procure anúncios:</label>
+      <div class="input-group">
+        <input type="text" class="form-control" value='{{old("titulo")}}' id='titulo' name="titulo">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+      </div>
+      <div class='row'>
+        <div class='col-xs-12'>
+          <h5>Localização</h5>
+          <div class='col-xs-12'>
+            <select name='estado' id='estado' class='form-control input-sm'></select>
+          </div>
+          <div class='col-xs-12'>
+            <select name='cidade' id='cidade' class='form-control input-sm'></select>
+          </div>
         </div>
-      </form>
+        <div class='col-xs-12'>
+          <h5>Faixa de preço <small>(vazio = sem limite)</small></h5>
+          <div class='col-xs-6'>
+            <input type='number' placeholder='de' value='{{old("minimo")}}' name='minimo' min=0 class='form-control input-sm'>
+          </div>
+          <div class='col-xs-6'>
+            <input type='number' placeholder='até' value='{{old("maximo")}}' name='maximo' min=0 class='form-control input-sm'>
+          </div>
+        </div>
+        <div class='col-xs-12'>
+          <h5>Categoria</h5>
+          <div class='col-xs-12'>
+            <select name='cat' id='cat' class='form-control'>
+              <option value=''>Selecione uma categoria</value>
+              @foreach($categorias as $cat)
+                <option value="{{$cat->codc}}">{{$cat->nomec}}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class='col-md-12'>
-      <h4>Filtrar busca</h4>
-      <h4>Localização</h4>
-      {!!
-      Form::open(['url' => 'anuncio/por-localizacao']),
-        ControlGroup::generate(
-          Form::label('estado','Estado', ['class'=>'control-label']),
-          Form::select('estado'),
-          null,
-          3, 9
-        ),
-        ControlGroup::generate(
-          Form::label('cidade', 'Cidade'),
-          Form::select('cidade'),
-          null,
-          3, 9
-        ),
-        Form::submit('Buscar', ['class' => 'btn btn-warning']),
-      Form::close()
-      !!}
-      <br>
-      <h4>Faixa de preço</h4>
-      {!!
-        Form::open(['url' => 'anuncio/por-preco'])
-      !!}
-        De: <input type='number' placeholder='0' name='minimo' min=0><br>
-        Até: <input type='number' placeholder='0' name='maximo' min=0>
-      {!!
-          Form::submit('Buscar', ['class' => 'btn btn-warning']),
-        Form::close()
-      !!}
-      <hr>
-    </div>
-    <div class='col-md-12'>
-      <h4>Categorias</h4>
-      <ul class="list-unstyled">
-        <li><a href="{{url('categoria/CAR')}}">Carros</a></li>
-        <li><a href="{{url('categoria/MOT')}}">Motos</a></li>
-        <li><a href="{{url('categoria/CEL')}}">Celulares</a></li>
-        <li><a href="{{url('categoria/PCS')}}">Computadores & Notebooks</a></li>
-        <li><a href="{{url('categoria/ROU')}}">Roupas & Acessórios</a></li>
-        <li><a href="{{url('categoria/IMO')}}">Imóveis</a></li>
-        <li><a href="{{url('categoria/OUT')}}">Outros</a></li>
-      </ul>
-    </div>
+    {!! Form::close() !!}
   </div>
 
   <div class='col-sm-9'>
@@ -111,6 +100,7 @@
           </tr>
         @endforeach
       </table>
+      {{ $anuncios->render() }}
     @else
       <div class='alert alert-info'>
         Não há itens a serem exibidos nessa lista.

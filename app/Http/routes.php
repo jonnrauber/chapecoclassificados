@@ -40,9 +40,7 @@ Route::get('categoria/destaques', 'CategoriaController@showAnunciosDestaques');
 Route::get('categoria/{id}', 'CategoriaController@showAnunciosByCat@{id}');
 Route::get('categoria', 'CategoriaController@showCategoriasPage');
 
-Route::get('pesquisa/{palavrachave}', 'CategoriaController@showAnunciosByUrl@{palavrachave}');
-
-Route::post('pesquisa', 'CategoriaController@showAnunciosBySearch');
+Route::get('pesquisa', 'CategoriaController@showAnunciosBySearch');
 
 Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
 Route::get('perfil', 'ProfileController@perfil');
@@ -67,6 +65,10 @@ Route::get('restrito/usuarios/delete/{email}', 'AdminController@deletaUsuario@{e
 Route::post('restrito/usuarios/{email}', 'AdminController@aplicaUpdateUsuario');
 
 Route::get('restrito/anuncios', 'AdminController@gerenciaAnuncios');
+Route::get('restrito/anuncios/{id}', 'AdminController@visualizarAnuncio@{id}');
 Route::post('restrito/anuncios', 'AdminController@procuraAnuncios');
-
+Route::get('restrito/anuncios/delete/{id}', 'AdminController@deletaAnuncio@{id}');
 Route::get('restrito/denuncias', 'AdminController@gerenciaDenuncias');
+
+Route::post('restrito/addcat', 'AdminController@addCategoria');
+Route::post('restrito/addpag', 'AdminController@addPagamento');

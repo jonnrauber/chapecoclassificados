@@ -16,19 +16,23 @@
   <link rel="stylesheet" type="text/css" href="{{ url('css/custom.css') }}">
   {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 </head>
-<body>
+<body color="#DDD">
 
-  <h2>RESTRITO</h2>
-  @if(count($errors) > 0)
-    <div class='alert alert-danger'>
-      Erro ao credenciar.
+  <div class='row'>
+    <div class='col-xs-4 col-xs-offset-4'>
+      <h2>RESTRITO</h2>
+      @if(count($errors) > 0)
+        <div class='alert alert-danger'>
+          Erro ao credenciar.
+        </div>
+      @endif
+      {!! Form::open() !!}
+        <input class='form-control' type='text'  name='loginadm' placeholder="administrador" autocomplete="off">
+        <input class='form-control' type='password'  name='senhaadm' placeholder="**********" autocomplete="off">
+        <input type='submit' value='Entrar' class='btn btn-danger'>
+      {!! Form::close() !!}
     </div>
-  @endif
-  {!! Form::open() !!}
-    <input type='text'  name='loginadm' placeholder="administrador" autocomplete="off">
-    <input type='password'  name='senhaadm' placeholder="**********" autocomplete="off">
-    <input type='submit' value='Entrar' class='btn btn-danger'>
-  {!! Form::close() !!}
+  </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

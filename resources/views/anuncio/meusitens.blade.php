@@ -29,8 +29,8 @@
                 <td>{{$anuncio->nomec}}</td>
                 <td>R${{number_format($anuncio->valor, 2, ',', '.')}}</td>
                 <td>{{$anuncio->qtvisit}}</td>
-                <td>{{date("d/m/y h:i",strtotime(str_replace('-','/', $anuncio->created_at)))}}</td>
-                <td>{{date("d/m/y h:i",strtotime(str_replace('-','/', $anuncio->dataex)))}}</td>
+                <td>{{date("d/m/y H:i",strtotime(str_replace('-','/', $anuncio->created_at)))}}</td>
+                <td>{{date("d/m/y H:i",strtotime(str_replace('-','/', $anuncio->dataex)))}}</td>
                 <td><a href='{{url('anuncio/editar/'.$anuncio->id)}}'><b class='fa fa-pencil'></b></a></td>
                 <td><a href='{{url('anuncio/deletar/'.$anuncio->id)}}' onclick="return confirm('Tem certeza que deseja deletar o anúncio?');"><b class='fa fa-trash'></b></a></td>
             </tr>

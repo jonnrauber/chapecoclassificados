@@ -97,8 +97,8 @@
   			<tbody style="font-size: 15px;">
           @if($anuncio->tipo == 'p')
           <tr>
-            <td>Quantidade de itens</td>
-            <td>{{$anuncio->qtitens}}</td>
+            <td>Visualizações do anúncio</td>
+            <td>{{$anuncio->qtvisit}}</td>
           </tr>
           <tr>
   					<td>Condição</td>
@@ -119,6 +119,10 @@
   					<td>Método de Pagamento</td>
   					<td>{{$pagamento->nomep}}</td>
   				</tr>
+          <tr>
+            <td>Unidades à venda</td>
+            <td>{{$anuncio->qtitens}}</td>
+          </tr>
   			</tbody>
   		</table>
       <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{number_format($anuncio->valor, 2, ',', '.')}}</h3></div>

@@ -33,7 +33,7 @@
                   <td>{{$denuncia->emaild}}</td>
                   <td><a href="{{url('anuncio/'.$denuncia->id)}}" class='indexlink btn-block' target='_blank'>{{$denuncia->id}}</a></td>
                   <td>{{$denuncia->emaila}}</td>
-                  <td>{{$denuncia->created_at}}</td>
+                  <td>{{date("d/m/y H:i:s",strtotime(str_replace('-','/', $denuncia->created_at)))}}</td>
                   <td>{{$denuncia->motivo}}</td>
                 </a>
               </tr>

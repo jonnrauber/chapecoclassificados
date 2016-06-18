@@ -26,7 +26,7 @@
               <tr>
                 <td><a href="{{url('anuncio/'.$interesse->id)}}">{{$interesse->tituloa}}</a></td>
                 <td>{{$interesse->nome}}<br><small>{{$interesse->emaili}}</small></td>
-                <td>{{date("d/m/y h:i",strtotime(str_replace('-','/', $interesse->created_at)))}}</td>
+                <td>{{date("d/m/y H:i",strtotime(str_replace('-','/', $interesse->created_at)))}}</td>
                 <td>{{$interesse->msg}}</td>
               </tr>
             @endforeach
