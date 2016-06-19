@@ -30,12 +30,19 @@
   <div class="row">
 		<div class="col-md-7">
       <div class="slider">
-      	<input type="radio" name="slide_switch" id="id1" checked="checked"/>
-      	<label for="id1">
-      		<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" width="100"/>
-      	</label>
-      	<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class="imgslider"/>
-
+        @if($anuncio->imagem1)
+        	<input type="radio" name="slide_switch" id="id1" checked="checked"/>
+        	<label for="id1">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class="imgslider"/>
+        @else
+          <input type="radio" name="slide_switch" id="id1" checked="checked"/>
+        	<label for="id1">
+        		<img src="{{url('img/anuncioplaceholder.svg')}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/imageplaceholder.png')}}" height=100% class="imgslider"/>
+        @endif
         @if($anuncio->imagem2)
       	  <input type="radio" name="slide_switch" id="id2"/>
         	<label for="id2">
