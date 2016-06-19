@@ -29,66 +29,44 @@
   </div>
   <div class="row">
 		<div class="col-md-7">
-			<div id="carousel-detail-classified" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-detail-classified" data-slide-to="0" class="active"></li>
-					@if($anuncio->imagem2)
-            <li data-target="#carousel-detail-classified" data-slide-to="1"></li>
-          @endif
-					@if($anuncio->imagem3)
-            <li data-target="#carousel-detail-classified" data-slide-to="2"></li>
-          @endif
-					@if($anuncio->imagem4)
-            <li data-target="#carousel-detail-classified" data-slide-to="3"></li>
-          @endif
-          @if($anuncio->imagem5)
-            <li data-target="#carousel-detail-classified" data-slide-to="4"></li>
-          @endif
-				</ol>
-			  <div class="carousel-inner">
+      <div class="slider">
+      	<input type="radio" name="slide_switch" id="id1" checked="checked"/>
+      	<label for="id1">
+      		<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" width="100"/>
+      	</label>
+      	<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class="imgslider"/>
 
+        @if($anuncio->imagem2)
+      	  <input type="radio" name="slide_switch" id="id2"/>
+        	<label for="id2">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" class="imgslider"/>
+        @endif
 
-
-          @if(!($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3 ||
-                $anuncio->imagem4 || $anuncio->imagem5))
-                <img src="{{url('/img/anuncioplaceholder.svg')}}" class="img-responsive">
-          @endif
-
-          @if($anuncio->imagem1)
-            <div class="item active tamimg">
-              <img src="{{url('/img/anuncio/'.$anuncio->imagem1)}}" class="img-responsive">
-            </div>
-          @endif
-          @if($anuncio->imagem2)
-            <div class="item active tamimg">
-  						<img src="/img/anuncio/{{$anuncio->imagem2}}" class="img-responsive" />
-  					</div>
-          @endif
-          @if($anuncio->imagem3)
-            <div class="item active tamimg">
-  						<img src="/img/anuncio/{{$anuncio->imagem3}}" class="img-responsive" />
-  					</div>
-          @endif
-          @if($anuncio->imagem4)
-            <div class="item active tamimg">
-  						<img src="/img/anuncio/{{$anuncio->imagem4}}" class="img-responsive" />
-  					</div>
-          @endif
-          @if($anuncio->imagem5)
-            <div class="item active tamimg">
-  						<img src="/img/anuncio/{{$anuncio->imagem5}}" class="img-responsive" />
-  					</div>
-          @endif
-
-				</div>
-				<a class="left carousel-control" href="#carousel-detail-classified" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-				</a>
-				<a class="right carousel-control" href="#carousel-detail-classified" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
-			</div>
-		</div>
+        @if($anuncio->imagem2)
+      	  <input type="radio" name="slide_switch" id="id3"/>
+        	<label for="id3">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" class="imgslider"/>
+        @endif
+        @if($anuncio->imagem4)
+      	  <input type="radio" name="slide_switch" id="id4"/>
+        	<label for="id4">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" class="imgslider"/>
+        @endif
+        @if($anuncio->imagem5)
+      	  <input type="radio" name="slide_switch" id="id5"/>
+        	<label for="id5">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" class="imgslider"/>
+        @endif
+      </div>
+    </div>
   	<div class="col-md-5">
   		<table class="table table-condensed table-hover">
   		  <thead>
@@ -215,4 +193,6 @@
     </div>
   </div>
 </div>
+
+<script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
 @endsection

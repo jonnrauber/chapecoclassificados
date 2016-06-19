@@ -105,6 +105,7 @@ class AnuncioController extends Controller
 
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem1', 1);
     if($nomearquivo) $anuncio->imagem1 = $nomearquivo;
+
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem2', 2);
     if($nomearquivo) $anuncio->imagem2 = $nomearquivo;
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem3', 3);
