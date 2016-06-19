@@ -28,20 +28,34 @@
 
 
 @section('content')
-	<div class="col-lg-9 content-right">
-		<div class="col-lg-11">
-			{!!
-				Carousel::named('home')->withContents([
-				    [
-				        'image' => 'img/master/home.fw.png',
-				        'alt' => 'cadastrar',
-				    ],
-						[
-				        'image' => 'img/master/homeauth.fw.png',
-				        'alt' => 'publicar',
-				    ],
-				])
-			!!}
+	<div class="col-xs-9">
+		<div class="accordian">
+			<ul>
+				<li>
+					<div class="image_title">
+						<a href="#">Conheça</a>
+					</div>
+					<a href="#">
+						<img src="{{url('img/master/homeauth.fw.png')}}"/>
+					</a>
+				</li>
+				<li>
+					<div class="image_title">
+						<a href="#">Cadastre-se</a>
+					</div>
+					<a href="#">
+						<img src="{{url('img/master/homeauth.fw.png')}}"/>
+					</a>
+				</li>
+				<li>
+					<div class="image_title">
+						<a href="#">Anuncie</a>
+					</div>
+					<a href="#">
+						<img src="{{url('img/master/home.fw.png')}}"/>
+					</a>
+				</li>
+			</ul>
 		</div>
 		<div class="col-lg-12">
 			<hr>
