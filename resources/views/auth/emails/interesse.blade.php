@@ -6,8 +6,9 @@
 </head>
 <body>
     <h2>Olá {{$usuario->nome}}!</h2>
-    <p>Você recebeu uma nova mensagem de interesse em seu anúncio. Confira:<br>
-    <a href='localhost:8000/anuncio/recebidos'>>>Meus interesses recebidos <<</a></p>
+    <p>Você recebeu uma nova mensagem de interesse em seu anúncio:</p>
+    <h3>{{$usuario->tituloa}}</h3>
+    <p><a href='{{url("anuncio/recebidos")}}'>>> Meus interesses recebidos <<</a></p>
 </body>
 
 </html>

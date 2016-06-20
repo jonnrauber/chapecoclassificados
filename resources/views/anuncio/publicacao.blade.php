@@ -173,8 +173,11 @@
 				{!! Form::open(['url'=>'anuncio/'.$anuncio->id.'/comentar']) !!}
         <div class='row'>
           <input type="hidden" name="id" value='{{$anuncio->id}}'>
-          <input type="hidden" name="emailc" value='
-            @if(!Auth::guest()) {{Auth::user()->email}} @endif'>
+          <input type="hidden" name="emailc"
+            @if(Auth::check())
+              value='{{Auth::user()->email}}'
+            @endif
+          >
           <div class='col-sm-9 col-xs-8'>
             <input type='text' class='form-control' id="msg" name="msg" placeholder="Escreva aqui seu comentário">
           </div>

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('menu-left')
-	<div class="">
+	<div class="col-xs-12">
 		<h4>Recentemente adicionados</h4>
 
-			@foreach(array_slice($recentes, 0, 3) as $recente)
+			@foreach(array_slice($recentes, 0, 4) as $recente)
 				<div class="media">
 					<a class="pull-left" href="{{url('anuncio/'.$recente->id)}}">
 						@if($recente->imagem1)
@@ -26,42 +26,43 @@
 		</div>
 @endsection
 
-
 @section('content')
-	<div class="col-xs-9">
-		<div class="accordian">
-			<ul>
-				<li>
-					<div class="image_title">
-						<a href="#">Conheça</a>
-					</div>
-					<a href="#">
-						<img src="{{url('img/master/homeauth.fw.png')}}"/>
-					</a>
-				</li>
-				<li>
-					<div class="image_title">
-						<a href="#">Cadastre-se</a>
-					</div>
-					<a href="#">
-						<img src="{{url('img/master/homeauth.fw.png')}}"/>
-					</a>
-				</li>
-				<li>
-					<div class="image_title">
-						<a href="#">Anuncie</a>
-					</div>
-					<a href="#">
-						<img src="{{url('img/master/home.fw.png')}}"/>
-					</a>
-				</li>
-			</ul>
+	<div class="col-md-9">
+		<div class='col-xs-12'>
+			<div class="accordian">
+				<ul>
+					<li>
+						<div class="image_title">
+							<a href="#">Conheça</a>
+						</div>
+						<a href="#">
+							<img src="{{url('img/master/homeauth.fw.png')}}"/>
+						</a>
+					</li>
+					<li>
+						<div class="image_title">
+							<a href="#">Cadastre-se</a>
+						</div>
+						<a href="#">
+							<img src="{{url('img/master/homeauth.fw.png')}}"/>
+						</a>
+					</li>
+					<li>
+						<div class="image_title">
+							<a href="#">Anuncie</a>
+						</div>
+						<a href="#">
+							<img src="{{url('img/master/home.fw.png')}}"/>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-		<div class="col-lg-12">
+		<div class="col-xs-12">
 			<hr>
-			@foreach(array_slice($anuncios, 0, 8) as $anuncio)
+			@foreach(array_slice($anuncios, 0, 12) as $anuncio)
 					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-						<div class="thumbnail">
+						<div class="thumbnail thumbhome">
 							<a href="{{url('anuncio/'.$anuncio->id)}}">
 								@if($anuncio->imagem1)
 									<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" />

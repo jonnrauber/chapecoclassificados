@@ -2,10 +2,10 @@
 
 @section('content')
 <?php
-  $categorias = DB::table('categorias')->get();
+  $categorias = DB::table('categorias')->orderBy('nomec')->get();
 ?>
 
-  <div class="col-sm-3">
+  <div class="col-md-3">
     {!! Form::open(['method' => 'GET', 'url' => 'pesquisa']) !!}
     <div class="well well-sm" style='margin: 0px auto'>
       <label for='titulo' class='control-label'>Procure anúncios:</label>
@@ -50,12 +50,21 @@
     {!! Form::close() !!}
   </div>
 
-  <div class='col-sm-9'>
+  <div class='col-md-9'>
     <ol class='breadcrumb'>
       <li><a href='/'>Home</a></li>
       <li><a href='/categoria'>Categorias</a></li>
-      <li></li>
+      <li>Pesquisa</li>
     </ol>
+    @if(isset($filtros) && count($filtros)>0)
+      <div class='alert alert-warning'>
+        <ul class='list-inline'>
+          @foreach($filtros as $filtro)
+            <li>{{$filtro}}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     @if(count($anuncios) > 0)
       <table class="table">
         <th>
@@ -81,7 +90,12 @@
               </a>
             </td>
             <td>
-              <a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a>
+              <a href="{{url('anuncio/'.$anuncio->id)}}">
+                @if($anuncio->prior)
+                  <i class='fa fa-star'></i>
+                @endif
+                {{$anuncio->tituloa}}
+              </a>
             </td>
             <td>
               <strong>R${{number_format($anuncio->valor, 2, ',', '.')}}</strong>
@@ -95,7 +109,7 @@
               <small>
                 Visitas: {{$anuncio->qtvisit}}
               </small><br>
-              {{$anuncio->bairro}}, {{$anuncio->cidade}}</td>
+              {{$anuncio->bairro}}, {{$anuncio->cidade}} - {{$anuncio->estado}}</td>
             <td></td>
           </tr>
         @endforeach
