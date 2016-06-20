@@ -48,10 +48,10 @@
 						<div class="form-group">
               <label>Tipo</label><br>
               <div class="radio-inline">
-                <label><input type="radio" name="tipo" value="p" checked> Produto</label>
+                <label><input type="radio" name="tipo" value="p" onclick="novoPerfilProdServ();"checked> Produto</label>
               </div>
               <div class="radio-inline">
-                <label><input type="radio" name="tipo" value="s"> Serviço</label>
+                <label><input type="radio" name="tipo" value="s" onclick="novoPerfilProdServ();"> Serviço</label>
               </div>
 						</div>
 
@@ -81,23 +81,23 @@
 								<div class="form-group">
 									<div class="input-group" style="width: 150px;">
                     <span class="input-group-addon">R$</span>
-                    <input type="text" class="form-control" name="valor" value="{{old('valor')}}">
+                    <input type="text" class="form-control" onkeydown="CurrencyFormatted()" class="valor" name="valor" value="{{old('valor')}}">
 									</div>
 								</div>
 								<div class="form-group">
 									<p class="form-control-static" style="padding: 0 10px;">ou</p>
 								</div>
-                <label><input type="checkbox" name="gratis" /> Grátis?</label>
+                <label><input type="checkbox" name="gratis" onclick="ehGratis();" /> Grátis?</label>
 							</div>
 						</div>
 
-            <div class="form-group" style="width: 150px">
+            <div class="form-group qtitens" style="width: 150px">
               <label>Quantidade de itens
               <input type="text" class="form-control" name="qtitens" value="{{old('qtitens')}}">
               </label>
             </div>
 
-            <div class="form-group" style="width: 300px">
+            <div class="form-group condicao" style="width: 300px">
               <label>Condição</label><br>
               <div class="radio">
                 <label>
@@ -113,7 +113,7 @@
               </div>
             </div>
 
-            <div class='form-group'>
+            <div class='form-group pagamentos'>
               <select name="codp" class="form-control">
 								<option value="" selected="selected">Selecione a forma de pagamento</option>
                 @foreach($pagamentos as $pag)
@@ -164,5 +164,12 @@
 				</div>
       </div>
 		</div>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        novoPerfilProdServ();
+      }
+    </script>
+
   {!!Form::close()!!}
 @endsection
