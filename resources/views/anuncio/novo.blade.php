@@ -67,7 +67,7 @@
 
 						<div class="form-group">
 							<label for="tituloa">Título</label>
-							  <input type="text" class="form-control" name="tituloa" placeholder="ex.: Celular Samsung Galaxy S2" value="{{old('tituloa')}}">
+							  <input type="text" maxlength="100" class="form-control" name="tituloa" placeholder="ex.: Celular Samsung Galaxy S2" value="{{old('tituloa')}}">
 						</div>
 
 						<div class="form-group">

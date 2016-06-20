@@ -94,7 +94,7 @@ class AnuncioController extends Controller
     $anuncio->tituloa = $request->tituloa;
     $anuncio->descricao = $request->descricao;
     $anuncio->codc = $request->codc;
-    $anuncio->codp = $request->codp;
+    $anuncio->codp = $request->codp ? $request->codp : 1;
     $anuncio->valor = $request->valor;
     $anuncio->qtvisit = 0;
     $anuncio->prior = $request->prior ? true : false;

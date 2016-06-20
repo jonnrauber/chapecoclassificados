@@ -5,12 +5,23 @@
 		<h4>Recentemente adicionados</h4>
 
 			@foreach(array_slice($recentes, 0, 4) as $recente)
-				<div class="media">
+				<div class="media recentes">
 					<a class="pull-left" href="{{url('anuncio/'.$recente->id)}}">
-						@if($recente->imagem1)
-							<img class="media-object" style="max-width: 64px; height: auto;" src="{{url('/img/anuncio/'.$recente->imagem1)}}" />
+						@if($recente->imagem1 || $recente->imagem2 || $recente->imagem3
+								|| $recente->imagem4 || $recente->imagem5)
+							@if($recente->imagem1)
+								<img class="media-object" src="{{url('/img/anuncio/'.$recente->imagem1)}}" />
+							@elseif($recente->imagem2)
+								<img class="media-object" src="{{url('/img/anuncio/'.$recente->imagem2)}}" />
+							@elseif($recente->imagem3)
+								<img class="media-object" src="{{url('/img/anuncio/'.$recente->imagem3)}}" />
+							@elseif($recente->imagem4)
+								<img class="media-object" src="{{url('/img/anuncio/'.$recente->imagem4)}}" />
+							@elseif($recente->imagem5)
+								<img class="media-object" src="{{url('/img/anuncio/'.$recente->imagem5)}}" />
+							@endif
 						@else
-							<img class="media-object" style="max-width: 64px; height: auto;" src="{{url('/img/peqanuncioplaceholder.png')}}" />
+							<img class="media-object" src="{{url('/img/peqanuncioplaceholder.png')}}" />
 						@endif
 					</a>
 					<div class="media-body">
@@ -60,12 +71,23 @@
 		</div>
 		<div class="col-xs-12">
 			<hr>
-			@foreach(array_slice($anuncios, 0, 12) as $anuncio)
+				@foreach(array_slice($anuncios, 0, 12) as $anuncio)
 					<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 						<div class="thumbnail thumbhome">
 							<a href="{{url('anuncio/'.$anuncio->id)}}">
-								@if($anuncio->imagem1)
-									<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" />
+								@if($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3
+										|| $anuncio->imagem4 || $anuncio->imagem5)
+									@if($anuncio->imagem1)
+										<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" />
+									@elseif($anuncio->imagem2)
+										<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" />
+									@elseif($anuncio->imagem3)
+										<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" />
+									@elseif($anuncio->imagem4)
+										<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" />
+									@elseif($anuncio->imagem5)
+										<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" />
+									@endif
 								@else
 									<img src="{{url('img/peqanuncioplaceholder.png')}}" />
 								@endif

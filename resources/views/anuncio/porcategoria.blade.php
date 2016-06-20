@@ -82,12 +82,25 @@
           <tr>
             <td>
               <a href="{{url('anuncio/'.$anuncio->id)}}">
-                @if($anuncio->imagem1)
-                  <img src="{{url('/img/anuncio/'.$anuncio->imagem1)}}" class="img-responsive" width=150px>
-                @else
-                  <img src="{{url('/img/peqanuncioplaceholder.png')}}" class="img-responsive" width=100px>
-                @endif
-              </a>
+                <div class='imgAnuncioPesquisa'>
+  								@if($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3
+  										|| $anuncio->imagem4 || $anuncio->imagem5)
+  									@if($anuncio->imagem1)
+  										<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" />
+  									@elseif($anuncio->imagem2)
+  										<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" />
+  									@elseif($anuncio->imagem3)
+  										<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" />
+  									@elseif($anuncio->imagem4)
+  										<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" />
+  									@elseif($anuncio->imagem5)
+  										<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" />
+  									@endif
+  								@else
+  									<img src="{{url('img/peqanuncioplaceholder.png')}}" />
+  								@endif
+                </div>
+							</a>
             </td>
             <td>
               <a href="{{url('anuncio/'.$anuncio->id)}}">

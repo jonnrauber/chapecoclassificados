@@ -197,6 +197,11 @@ On click the images will be displayed at normal size to complete the effect
 	bottom: 0;
 }
 
+.recentes .media-object {
+	max-width: 64px;
+	max-height: 64px;
+}
+
 /*-------------------------------------*/
 
 /*------------ PAGINA DE CATEGORIAS --------------*/
@@ -206,6 +211,11 @@ On click the images will be displayed at normal size to complete the effect
 }
 .catimg {
 	max-height: 150px;
+}
+
+.imgAnuncioPesquisa img {
+	max-width: 125px;
+	max-height: 125px;
 }
 /*------------ RESPONSIVE DESIGN -----------------*/
 
