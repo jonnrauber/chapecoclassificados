@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
+<?php
+  $numeroInteresses = count($interesses);
+  //---------------------------------------------------
+  $interessesrec = DB::select(
+    'select i.*, a.tituloa, a.emaila, u.nome from interesses i
+    join anuncios a on i.id = a.id
+    join usuarios u on i.emaili = u.email
+    where a.emaila = ?
+    order by i.created_at desc', [Auth::user()->email]);
+  $numeroInteressesRec = count($interessesrec);
+  //---------------------------------------------------
+  $anuncios = DB::select('
+    select a.*, c.nomec from anuncios a
+    join categorias c on c.codc = a.codc
+    where a.emaila = ?
+    order by a.created_at desc', [Auth::user()->email]);
+  $numeroAnuncios= count($anuncios);
+?>
+
+
 @section('content')
-  <?php
-    $numeroInteresses = count($interesses);
-    //---------------------------------------------------
-    $interessesrec = DB::select(
-      'select i.*, a.tituloa, a.emaila, u.nome from interesses i
-      join anuncios a on i.id = a.id
-      join usuarios u on i.emaili = u.email
-      where a.emaila = ?
-      order by i.created_at desc', [Auth::user()->email]);
-    $numeroInteressesRec = count($interessesrec);
-    //---------------------------------------------------
-    $anuncios = DB::select('
-      select a.*, c.nomec from anuncios a
-      join categorias c on c.codc = a.codc
-      where a.emaila = ?
-      order by a.created_at desc', [Auth::user()->email]);
-    $numeroAnuncios= count($anuncios);
-  ?>
-
-
-<div class='col-md-9 content-left'>
+<div class='col-md-9'>
   <h4>Negócios de {{ Auth::user()->nome }}</h4>
   <ul class="nav nav-tabs nav-justified">
     <li role="presentation" class="active">

@@ -104,6 +104,7 @@ default width = 800/5 = 160px;
 /*Time for the CSS*/
 .slider{
 	width: 600px; /*Same as width of the large image*/
+	max-width: 100%;
 	position: relative;
 	/*Instead of height we will use padding*/
 	padding-top: 380px; /*That helps bring the labels down*/
