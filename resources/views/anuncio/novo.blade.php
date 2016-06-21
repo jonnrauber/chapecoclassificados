@@ -73,28 +73,21 @@
 						<label for="descricao">Descrição</label>
 						<textarea name="descricao" class="form-control" rows="8">{{old('descricao')}}</textarea>
 					</div>
-
-<<<<<<< HEAD
-						<div class="form-group">
-							<label>Preço</label>
-							<div class="form-inline">
-								<div class="form-group">
-									<div class="input-group" style="width: 150px;">
-                    <span class="input-group-addon">R$</span>
-                    <input type="text" class="form-control" id="valor" name="valor" value="{{old('valor')}}">
-									</div>
-								</div>
-								<div class="form-group">
-									<p class="form-control-static" style="padding: 0 10px;">ou</p>
+					<div class="form-group">
+						<label>Preço</label>
+						<div class="form-inline">
+							<div class="form-group">
+								<div class="input-group" style="width: 150px;">
+                  <span class="input-group-addon">R$</span>
+                  <input type="text" class="form-control" id="valor" name="valor" value="{{old('valor')}}">
 								</div>
 							</div>
 							<div class="form-group">
 								<p class="form-control-static" style="padding: 0 10px;">ou</p>
+                <label><input type="checkbox" name="gratis" onclick="ehGratis();" /> Grátis?</label>
 							</div>
-              <label><input type="checkbox" name="gratis" onclick="ehGratis();" /> Grátis?</label>
 						</div>
 					</div>
-
           <div class="form-group qtitens" style="width: 150px">
             <label>Quantidade de itens
             <input type="text" class="form-control" name="qtitens" value="{{old('qtitens')}}">
