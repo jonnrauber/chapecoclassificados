@@ -74,13 +74,18 @@
 						<textarea name="descricao" class="form-control" rows="8">{{old('descricao')}}</textarea>
 					</div>
 
-					<div class="form-group">
-						<label>Preço</label>
-						<div class="form-inline">
-							<div class="form-group">
-								<div class="input-group" style="width: 150px;">
-                  <span class="input-group-addon">R$</span>
-                  <input type="text" class="form-control" onkeydown="CurrencyFormatted()" class="valor" name="valor" value="{{old('valor')}}">
+<<<<<<< HEAD
+						<div class="form-group">
+							<label>Preço</label>
+							<div class="form-inline">
+								<div class="form-group">
+									<div class="input-group" style="width: 150px;">
+                    <span class="input-group-addon">R$</span>
+                    <input type="text" class="form-control" id="valor" name="valor" value="{{old('valor')}}">
+									</div>
+								</div>
+								<div class="form-group">
+									<p class="form-control-static" style="padding: 0 10px;">ou</p>
 								</div>
 							</div>
 							<div class="form-group">
@@ -167,6 +172,7 @@
       window.onload = function() {
         novoPerfilProdServ();
       }
+
     </script>
 
   {!!Form::close()!!}

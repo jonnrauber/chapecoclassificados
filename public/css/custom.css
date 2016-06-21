@@ -171,7 +171,14 @@ On click the images will be displayed at normal size to complete the effect
 
 /*------------ app --------------------*/
 .destaques {
-	background-color: rgb(88, 199, 75);
+	background-color: #449D44;
+}
+.destaquestext{
+	color: #FFF;
+}
+.destaques:hover{
+	background-color: rgba(, , , .7) !important;
+	transition: all 1s;
 }
 
 .list-group-item {

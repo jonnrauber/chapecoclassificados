@@ -34,3 +34,8 @@ function ehGratis(){
     document.getElementsByName('valor')[0].disabled = true;
   else document.getElementsByName('valor')[0].disabled = false;
 }
+
+/* Formatação Dinheiro */
+$(function() {
+  $('#valor').maskMoney();
+})

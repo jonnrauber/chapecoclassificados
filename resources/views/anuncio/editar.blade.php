@@ -19,10 +19,10 @@
             <div class="form-group">
               <label>Tipo</label><br>
               <div class="radio-inline">
-                <label><input type="radio" name="tipo" value="p" @if($anuncio->tipo == 'p') checked @endif> Produto</label>
+                <label><input type="radio" name="tipo" value="p" onclick="novoPerfilProdServ();" @if($anuncio->tipo == 'p') checked @endif> Produto</label>
               </div>
               <div class="radio-inline">
-                <label><input type="radio" name="tipo" value="s" @if($anuncio->tipo == 's') checked @endif> Serviço</label>
+                <label><input type="radio" name="tipo" value="s" onclick="novoPerfilProdServ();" @if($anuncio->tipo == 's') checked @endif> Serviço</label>
               </div>
             </div>
 
@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <div class="input-group" style="width: 150px;">
                     <span class="input-group-addon">R$</span>
-                    <input type="text" class="form-control" name="valor" value="{{$anuncio->valor}}">
+                    <input type="text" class="form-control" name="valor" id="valor" value="{{$anuncio->valor}}">
                   </div>
                 </div>
                 <div class="form-group">
@@ -62,13 +62,13 @@
               </div>
             </div>
 
-            <div class="form-group" style="width: 150px">
+            <div class="form-group qtitens" style="width: 150px">
               <label>Quantidade de itens
               <input type="text" class="form-control" name="qtitens" value="{{$anuncio->qtitens}}">
               </label>
             </div>
 
-            <div class="form-group" style="width: 300px">
+            <div class="form-group condicao" style="width: 300px">
               <label>Condição</label><br>
               <div class="radio">
                 <label>
@@ -118,4 +118,9 @@
         <button type="submit" class="btn btn-success">Salvar Alterações</button>
       </div>
     </div>
+    <script type="text/javascript">
+      window.onload = function() {
+        novoPerfilProdServ();
+      }
+    </script>
 @endsection
