@@ -47,10 +47,20 @@
 					<div class="form-group">
             <label>Tipo</label><br>
             <div class="radio-inline">
-              <label><input type="radio" name="tipo" value="p" onclick="novoPerfilProdServ();"checked> Produto</label>
+              <label>
+                <input type="radio" name="tipo" value="p" onclick="novoPerfilProdServ();"
+                  @if(old('tipo') == 'p')
+                    checked
+                  @endif
+                > Produto</label>
             </div>
             <div class="radio-inline">
-              <label><input type="radio" name="tipo" value="s" onclick="novoPerfilProdServ();"> Serviço</label>
+              <label>
+                <input type="radio" name="tipo" value="s" onclick="novoPerfilProdServ();"
+                  @if(old('tipo') == 's')
+                    checked
+                  @endif
+                > Serviço</label>
             </div>
 					</div>
 
@@ -59,7 +69,12 @@
 						<select name="codc" class="form-control">
 							<option value="" selected="selected">Selecione a categoria</option>
               @foreach($categorias as $cat)
-                <option value='{{$cat->codc}}'>{{$cat->nomec}}</option>
+                <option value='{{$cat->codc}}'
+                @if($cat->codc = old('codc'))
+                  selected
+                @endif>
+                  {{$cat->nomec}}
+                </option>
               @endforeach
 						</select>
 					</div>
