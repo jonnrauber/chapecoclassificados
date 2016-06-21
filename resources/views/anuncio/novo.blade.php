@@ -81,7 +81,7 @@
 								<div class="form-group">
 									<div class="input-group" style="width: 150px;">
                     <span class="input-group-addon">R$</span>
-                    <input type="text" class="form-control" onkeydown="CurrencyFormatted()" class="valor" name="valor" value="{{old('valor')}}">
+                    <input type="text" class="form-control" id="valor" name="valor" value="{{old('valor')}}">
 									</div>
 								</div>
 								<div class="form-group">
@@ -169,6 +169,7 @@
       window.onload = function() {
         novoPerfilProdServ();
       }
+
     </script>
 
   {!!Form::close()!!}
