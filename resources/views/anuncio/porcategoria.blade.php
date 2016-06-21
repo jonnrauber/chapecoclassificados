@@ -66,68 +66,70 @@
       </div>
     @endif
     @if(count($anuncios) > 0)
-      <table class="table">
-        <thead>
-          <th></th>
-          <th>
-            Título
-          </th>
-          <th>
-            Preço
-          </th>
-          <th>
-            Detalhes
-          </th>
-        </thead>
-        @foreach($anuncios as $anuncio)
-          <tr>
-            <td>
-              <a href="{{url('anuncio/'.$anuncio->id)}}">
-                <div class='imgAnuncioPesquisa'>
-  								@if($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3
-  										|| $anuncio->imagem4 || $anuncio->imagem5)
-  									@if($anuncio->imagem1)
-  										<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" />
-  									@elseif($anuncio->imagem2)
-  										<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" />
-  									@elseif($anuncio->imagem3)
-  										<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" />
-  									@elseif($anuncio->imagem4)
-  										<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" />
-  									@elseif($anuncio->imagem5)
-  										<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" />
-  									@endif
-  								@else
-  									<img src="{{url('img/peqanuncioplaceholder.png')}}" />
-  								@endif
-                </div>
-							</a>
-            </td>
-            <td>
-              <a href="{{url('anuncio/'.$anuncio->id)}}">
-                <h4>{{$anuncio->tituloa}}</h4>
-              </a><br>
-                @if($anuncio->prior)
-                  <p class='text-muted'><i class='fa fa-star'></i> patrocinado</div></p>
-                @endif
-            </td>
-            <td>
-              <strong>R${{number_format($anuncio->valor, 2, ',', '.')}}</strong>
-            </td>
-            <td>
-              <small>
-                @if($anuncio->condicao == 'n') Produto Novo
-                @else Produto Usado
-                @endif
-              </small>|
-              <small>
-                Visitas: {{$anuncio->qtvisit}}
-              </small><br>
-              {{$anuncio->bairro}}, {{$anuncio->cidade}} - {{$anuncio->estado}}
-            </td>
-          </tr>
-        @endforeach
-      </table>
+      <div class='table-responsive'>
+        <table class="table">
+          <thead>
+            <th></th>
+            <th>
+              Título
+            </th>
+            <th>
+              Preço
+            </th>
+            <th>
+              Detalhes
+            </th>
+          </thead>
+          @foreach($anuncios as $anuncio)
+            <tr>
+              <td>
+                <a href="{{url('anuncio/'.$anuncio->id)}}">
+                  <div class='imgAnuncioPesquisa'>
+    								@if($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3
+    										|| $anuncio->imagem4 || $anuncio->imagem5)
+    									@if($anuncio->imagem1)
+    										<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class='img-responsive'/>
+    									@elseif($anuncio->imagem2)
+    										<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" class='img-responsive'/>
+    									@elseif($anuncio->imagem3)
+    										<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" class='img-responsive'/>
+    									@elseif($anuncio->imagem4)
+    										<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" class='img-responsive'/>
+    									@elseif($anuncio->imagem5)
+    										<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" class='img-responsive'/>
+    									@endif
+    								@else
+    									<img src="{{url('img/peqanuncioplaceholder.png')}}" class='img-responsive'/>
+    								@endif
+                  </div>
+  							</a>
+              </td>
+              <td>
+                <a href="{{url('anuncio/'.$anuncio->id)}}">
+                  <h4>{{$anuncio->tituloa}}</h4>
+                </a><br>
+                  @if($anuncio->prior)
+                    <p class='text-muted'><i class='fa fa-star'></i> patrocinado</div></p>
+                  @endif
+              </td>
+              <td>
+                <strong>R${{number_format($anuncio->valor, 2, ',', '.')}}</strong>
+              </td>
+              <td>
+                <small>
+                  @if($anuncio->condicao == 'n') Produto Novo
+                  @else Produto Usado
+                  @endif
+                </small>|
+                <small>
+                  Visitas: {{$anuncio->qtvisit}}
+                </small><br>
+                {{$anuncio->bairro}}, {{$anuncio->cidade}} - {{$anuncio->estado}}
+              </td>
+            </tr>
+          @endforeach
+        </table>
+      </div>
       {{ $anuncios->render() }}
     @else
       <div class='alert alert-info'>

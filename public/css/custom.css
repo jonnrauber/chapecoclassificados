@@ -179,22 +179,9 @@ On click the images will be displayed at normal size to complete the effect
 }
 
 /*------------ welcome ----------------*/
-.thumbhome {
-	position: relative;
-	height: 250px;
-}
 
-.thumbhome img {
-	position: absolute;
-	left:0;
-	bottom: 30%;
-	width: 100%;
-	max-height: 70%;
-}
-.thumbhome .caption {
-	position: absolute;
-	margin: 0 auto;
-	bottom: 0;
+.thumbhome {
+	max-height: 250px;
 }
 
 .recentes .media-object {
@@ -219,7 +206,7 @@ On click the images will be displayed at normal size to complete the effect
 }
 /*------------ RESPONSIVE DESIGN -----------------*/
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
 	.banner > a > h3{
 		display: none;
 	}
@@ -233,7 +220,7 @@ On click the images will be displayed at normal size to complete the effect
 	}
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px){
+@media screen and (min-width: 768px) and (max-width: 1024px){
 	.btn-group-actions > .btn-success, .btn-group-actions > .navbar-btn{
 		display: none;
 	}
@@ -242,10 +229,20 @@ On click the images will be displayed at normal size to complete the effect
 footer{
   float: left;
   width: 100%;
-	height: 30px;
+	min-height: 30px;
 	background-color: #f5f5f5;
 	border-radius: 10px;
 }
 footer > .row > .col-xs-6 p, footer > .row > .col-xs-6 > .col-xs-6 .text-right a{
 	line-height: 30px;
+}
+
+.alterarimgperfil {
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.imgperfil {
+	max-height: 200px;
+	max-width: 100%;
 }

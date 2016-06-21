@@ -146,9 +146,7 @@
   				</div>
   				<div class="col-xs-6 text-right">
   					<a href="help.html" class="btn btn-link">Ajuda</a>
-  					<span class="bar">|</span>
   					<a href="contact.html" class="btn btn-link">Contato</a>
-  					<span class="bar">|</span>
   					<a href="conditions.html" class="btn btn-link">Regras</a>
   				</div>
   			</div>

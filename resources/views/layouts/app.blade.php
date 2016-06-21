@@ -26,11 +26,18 @@
                   <a href="{{url('categoria/destaques')}}" class="list-group-item destaques"><span class="glyphicon glyphicon-chevron-right"></span>
                     <span class='destaquestext'>Destaques!</span>
                   </a>
-                  @foreach($categorias as $cat)
-                    <a href="{{url('categoria/'.$cat->codc)}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                      {{$cat->nomec}}
+                  <div class='hidden-sm hidden-xs'>
+                    @foreach($categorias as $cat)
+                      <a href="{{url('categoria/'.$cat->codc)}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                        {{$cat->nomec}}
+                      </a>
+                    @endforeach
+                  </div>
+                  <div class='visible-xs visible-sm'>
+                    <a href="{{url('categoria')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                      Ver todas as categorias
                     </a>
-                  @endforeach
+                  </div>
           		</div>
             </div>
           </div>

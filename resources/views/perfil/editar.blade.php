@@ -2,7 +2,7 @@
 
 
 @section('content')
-  <div class='col-lg-9 content-left'>
+  <div class='col-md-9'>
     <h4>Editando o perfil de {{ Auth::user()->nome }}</h4>
 
     <div class="panel panel-default">
@@ -11,36 +11,38 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-md-3">
             <div class='panel panel-heading'>
               <strong>Foto de perfil</strong>
             </div>
-            {!!
-              Image::rounded('/img/perfil/'.Auth::user()->email)->responsive()
-            !!}
-            @if(count($errors)>0)
-              <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                  {{$error}}
-                @endforeach
-              </div>
-            @endif
-            {!!
-              Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
-                Form::file('fotoperfil', ['class' => 'file']),
-                Form::submit('Alterar foto'),
-              Form::close()
-            !!}
-
-
-            </form>
+            <div class='alterarimgperfil'>
+              @if(file_exists('../public/img/perfil/'.Auth::user()->email))
+                <img src="{{'/img/perfil/'.Auth::user()->email}}" alt='foto de perfil' class='img-rounded imgperfil'>
+              @else
+                <img src="{{url('/img/perfilplaceholder.png')}}" alt='foto de perfil' class='img-rounded imgperfil'>
+              @endif
+              @if(count($errors)>0)
+                <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                    {{$error}}
+                  @endforeach
+                </div>
+              @endif
+              {!!
+                Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
+                  Form::file('fotoperfil', ['class' => 'file']),
+                  Form::submit('Alterar foto'),
+                Form::close()
+              !!}
+            </div>
           </div>
-          <div class="col-sm-9">
+          <div class="col-md-9">
             <div class='panel panel-heading'>
               <a href="{{url('perfil')}}">cancelar</a> | <strong>Editar perfil</strong>
             </div>
-            <table class="table table-hover">
+            <table class="table table-striped table-hover">
               {!! Form::open() !!}
+              <tr></tr>
               <tr>
                 <td>Nome</td>
                 <td>
@@ -94,17 +96,19 @@
                 <td>Endereço</td>
                 <td>
                   <strong>
-                    <div class='control-group'>
-                      <select name='estado' id='estado' class='form-control' onclick='funcao();'>
-                      </select>
-                    </div>
-                    <br>
-                    <div class='control-group'>
-                      <select name='cidade' id='cidade' class='form-control' onclick='document.getElementById("bairro").focus()'>
-                      </select>
-                    </div>
-                    <br>
                     {!!
+                      ControlGroup::generate(
+        							Form::label('estado','Estado', ['class'=>'control-label']),
+        							Form::select('estado'),
+        							null,
+        							2,9
+        						),
+        						ControlGroup::generate(
+        							Form::label('cidade', 'Cidade', ['class'=>'control-label']),
+        							Form::select('cidade'),
+        							null,
+        							2,9
+        						),
         						ControlGroup::generate(
         							Form::label('bairro', 'Bairro', ['class'=>'control-label']),
         							Form::text('bairro', Auth::user()->bairro, ['class'=>'form-control','placeholder'=>'ex: Passo dos Fortes']),
@@ -118,8 +122,8 @@
             </table>
             <div class='col-xs-6 col-xs-offset-5'>
               {!!Form::submit('Atualizar dados', ['class'=>'btn btn-success btn-block'])!!}
-            {!!Form::close()!!}
             </div>
+            {!!Form::close()!!}
           </div>
         </div>
       </div>
@@ -137,11 +141,8 @@
           document.getElementById('cidade'),
           true
       );
-      document.getElementById('estado').value='{{Auth::user()->estado}}';
-      document.getElementById('cidade').name='{{Auth::user()->cidade}}';
-    }
-    function funcao(){
-      document.getElementById("cidade").focus();
+      /*document.getElementById('estado').value='{{Auth::user()->estado}}';
+      document.getElementById('cidade').value='{{Auth::user()->cidade}}';*/
     }
   </script>
 @endsection
