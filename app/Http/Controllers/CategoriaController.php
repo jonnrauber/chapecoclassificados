@@ -52,32 +52,45 @@ class CategoriaController extends Controller
   }
 
   public function showAnunciosBySearch(Request $request) {
+    $filtrosAtivos = array();
     $palavra = $request->titulo;
-    $min = $request->minimo ? $request->minimo : 0;
-    $max = $request->maximo ? $request->maximo : 9999999999;
     $estado = $request->estado;
     $cidade = $request->cidade;
     $cat = $request->cat;
-    $filtrosAtivos = array();
+
+    if($request->minimo) {
+      $min = $request->minimo;
+      array_push($filtrosAtivos, 'Preço Mínimo: R$'.$min);
+    } else {
+      $min = 0;
+    }
+    if($request->maximo) {
+      $max = $request->maximo;
+      array_push($filtrosAtivos, 'Preço Máximo: R$'.$max);
+    } else {
+      $max = 999999999999;
+    }
 
     $anuncios = DB::table('anuncios')
                     ->join('categorias', 'anuncios.codc', '=', 'categorias.codc')
                     ->join('usuarios', 'anuncios.emaila', '=', 'usuarios.email')
                     ->select('anuncios.*', 'usuarios.*', 'categorias.nomec')
-                    ->whereBetween('anuncios.valor', [$min, $max]); 
+                    ->whereBetween('anuncios.valor', [$min, $max]);
+
     if($palavra)
       $anuncios = $anuncios->where('anuncios.tituloa', '~*', $palavra);
     if($estado) {
       $anuncios = $anuncios->where('usuarios.estado', '=', $estado);
-      array_push($filtrosAtivos, 'estado: '.$estado);
+      array_push($filtrosAtivos, 'Estado: '.$estado);
     }
     if($cidade) {
       $anuncios = $anuncios->where('usuarios.cidade', '=', $cidade);
-      array_push($filtrosAtivos, 'cidade: '.$cidade);
+      array_push($filtrosAtivos, 'Cidade: '.$cidade);
     }
     if($cat) {
       $anuncios = $anuncios->where('anuncios.codc', '=', $cat);
-      array_push($filtrosAtivos, 'categoria: '.$cat);
+      $categoria = Categoria::find($cat);
+      array_push($filtrosAtivos, 'Categoria: '.$categoria->nomec);
     }
     $anuncios = $anuncios->paginate(10);
     return view('anuncio.porcategoria', ['anuncios' => $anuncios, 'filtros' => $filtrosAtivos]);
@@ -107,7 +120,7 @@ class CategoriaController extends Controller
   }
 
   public function showCategoriasPage() {
-    $categorias = DB::select('select c.* from categorias c');
+    $categorias = DB::select('select c.* from categorias c order by c.nomec');
     return view('anuncio.categoria', ['categorias' => $categorias]);
   }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='col-lg-9 content-left'>
+<div class='col-md-9'>
   <h4>Perfil de {{ Auth::user()->nome }}</h4>
 
   <div class="panel panel-default">
@@ -14,27 +14,26 @@
           <div class='panel panel-heading'>
             <strong>Foto de perfil</strong>
           </div>
-          @if(file_exists('../public/img/perfil/'.Auth::user()->email))
-          {!!
-              Image::rounded('/img/perfil/'.Auth::user()->email)->responsive()
-          !!}
-          @endif
-          @if(count($errors)>0)
-            <div class="alert alert-danger">
-              @foreach($errors->all() as $error)
-                {{$error}}
-              @endforeach
-            </div>
-          @endif
-          {!!
-            Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
-              Form::file('fotoperfil', ['class' => 'file']),
-              Form::submit('Alterar foto'),
-            Form::close()
-          !!}
-
-
-          </form>
+          <div class='alterarimgperfil'>
+            @if(file_exists('../public/img/perfil/'.Auth::user()->email))
+              <img src="{{'/img/perfil/'.Auth::user()->email}}" alt='foto de perfil' class='img-rounded imgperfil'>
+            @else
+              <img src="{{url('/img/perfilplaceholder.png')}}" alt='foto de perfil' class='img-rounded imgperfil'>
+            @endif
+            @if(count($errors)>0)
+              <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                  {{$error}}
+                @endforeach
+              </div>
+            @endif
+            {!!
+              Form::open(['files'=>true, 'url' => 'perfil/fotoperfil']),
+                Form::file('fotoperfil', ['class' => 'file']),
+                Form::submit('Alterar foto'),
+              Form::close()
+            !!}
+          </div>
         </div>
         <div class="col-sm-9">
           <div class='panel panel-heading'>
@@ -90,7 +89,7 @@
               </td>
               <td>
                 <strong>
-                {{Auth::user()->created_at}}
+                {{date("d/m/y H:i",strtotime(str_replace('-','/', Auth::user()->created_at)))}}
                 </strong>
               </td>
             </tr>

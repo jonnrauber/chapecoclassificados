@@ -30,40 +30,60 @@
   <div class="row">
 		<div class="col-md-7">
       <div class="slider">
-      	<input type="radio" name="slide_switch" id="id1" checked="checked"/>
-      	<label for="id1">
-      		<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" width="100"/>
-      	</label>
-      	<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class="imgslider"/>
-
+        @if($anuncio->imagem1)
+        	<input type="radio" name="slide_switch" id="id1" checked/>
+        	<label for="id1">
+        		<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/anuncio/'.$anuncio->imagem1)}}" class="imgslider"/>
+        @endif
         @if($anuncio->imagem2)
-      	  <input type="radio" name="slide_switch" id="id2"/>
+      	  <input type="radio" name="slide_switch" id="id2"
+          @if(!$anuncio->imagem1)
+            checked
+          @endif/>
         	<label for="id2">
         		<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" width="100"/>
         	</label>
         	<img src="{{url('img/anuncio/'.$anuncio->imagem2)}}" class="imgslider"/>
         @endif
-
-        @if($anuncio->imagem2)
-      	  <input type="radio" name="slide_switch" id="id3"/>
+        @if($anuncio->imagem3)
+      	  <input type="radio" name="slide_switch" id="id3"
+          @if(!$anuncio->imagem1 && !$anuncio->imagem2)
+            checked
+          @endif/>
         	<label for="id3">
         		<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" width="100"/>
         	</label>
         	<img src="{{url('img/anuncio/'.$anuncio->imagem3)}}" class="imgslider"/>
         @endif
         @if($anuncio->imagem4)
-      	  <input type="radio" name="slide_switch" id="id4"/>
+      	  <input type="radio" name="slide_switch" id="id4"
+          @if(!$anuncio->imagem1 && !$anuncio->imagem2 && !$anuncio->imagem3)
+            checked
+          @endif/>
         	<label for="id4">
         		<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" width="100"/>
         	</label>
         	<img src="{{url('img/anuncio/'.$anuncio->imagem4)}}" class="imgslider"/>
         @endif
         @if($anuncio->imagem5)
-      	  <input type="radio" name="slide_switch" id="id5"/>
+      	  <input type="radio" name="slide_switch" id="id5"
+          @if(!$anuncio->imagem1 && !$anuncio->imagem2 && !$anuncio->imagem3 && !$anuncio->imagem4)
+            checked
+          @endif/>
         	<label for="id5">
         		<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" width="100"/>
         	</label>
         	<img src="{{url('img/anuncio/'.$anuncio->imagem5)}}" class="imgslider"/>
+        @endif
+        @if(!($anuncio->imagem1 || $anuncio->imagem2 || $anuncio->imagem3 ||
+              $anuncio->imagem4 || $anuncio->imagem5))
+          <input type="radio" name="slide_switch" id="id1" checked="checked"/>
+        	<label for="id1">
+        		<img src="{{url('img/anuncioplaceholder.svg')}}" width="100"/>
+        	</label>
+        	<img src="{{url('img/imageplaceholder.png')}}" height=100% class="imgslider"/>
         @endif
       </div>
     </div>
@@ -166,8 +186,11 @@
 				{!! Form::open(['url'=>'anuncio/'.$anuncio->id.'/comentar']) !!}
         <div class='row'>
           <input type="hidden" name="id" value='{{$anuncio->id}}'>
-          <input type="hidden" name="emailc" value='
-            @if(!Auth::guest()) {{Auth::user()->email}} @endif'>
+          <input type="hidden" name="emailc"
+            @if(Auth::check())
+              value='{{Auth::user()->email}}'
+            @endif
+          >
           <div class='col-sm-9 col-xs-8'>
             <input type='text' class='form-control' id="msg" name="msg" placeholder="Escreva aqui seu comentário">
           </div>

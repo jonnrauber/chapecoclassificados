@@ -94,7 +94,7 @@ class AnuncioController extends Controller
     $anuncio->tituloa = $request->tituloa;
     $anuncio->descricao = $request->descricao;
     $anuncio->codc = $request->codc;
-    $anuncio->codp = $request->codp;
+    $anuncio->codp = $request->codp ? $request->codp : 1;
     $anuncio->valor = $request->valor;
     $anuncio->qtvisit = 0;
     $anuncio->prior = $request->prior ? true : false;
@@ -105,7 +105,6 @@ class AnuncioController extends Controller
 
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem1', 1);
     if($nomearquivo) $anuncio->imagem1 = $nomearquivo;
-
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem2', 2);
     if($nomearquivo) $anuncio->imagem2 = $nomearquivo;
     $nomearquivo = $this->salvaImagemAnuncio($request, 'imagem3', 3);

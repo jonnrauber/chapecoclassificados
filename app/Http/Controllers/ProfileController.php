@@ -47,6 +47,7 @@ class ProfileController extends Controller
       'nome' => 'required',
       'tel1' => 'required|min:10|numeric',
       'bairro' => 'required',
+      'estado' => 'required',
       'cidade' => 'required'
     ];
     $validation = Validator::make($request->all(), $rules);
@@ -57,6 +58,7 @@ class ProfileController extends Controller
       $usuario->tel1 = $request->tel1;
       $usuario->tel2 = $request->tel2;
       $usuario->bairro = $request->bairro;
+      $usuario->estado = $request->estado;
       $usuario->cidade = $request->cidade;
       $usuario->save();
     } else {

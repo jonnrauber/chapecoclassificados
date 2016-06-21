@@ -1,9 +1,10 @@
 @extends('layouts.header')
+<?php $categorias = DB::table('categorias')->orderBy('nomec')->get(); ?>
 
   @section('body')
 
-      <div class="row content">
-      	<div class="col-lg-3 content-left">
+      <div class="row">
+      	<div class="col-md-3">
           <div class='row'>
             <div class='col-md-12'>
             	<div class="well well-sm">
@@ -25,24 +26,18 @@
                   <a href="{{url('categoria/destaques')}}" class="list-group-item destaques"><span class="glyphicon glyphicon-chevron-right"></span>
                     <span class='destaquestext'>Destaques!</span>
                   </a>
-          			  <a href="{{url('categoria/CAR')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Carros
-                  </a>
-                  <a href="{{url('categoria/MOT')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Motocicletas
-                  </a>
-                  <a href="{{url('categoria/CEL')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Celulares
-                  </a>
-                  <a href="{{url('categoria/PCS')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Notebooks & Computadores
-                  </a>
-                  <a href="{{url('categoria/ROU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Roupas & Acessórios
-                  </a>
-                  <a href="{{url('categoria/OU')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
-                    Outras Categorias
-                  </a>
+                  <div class='hidden-sm hidden-xs'>
+                    @foreach($categorias as $cat)
+                      <a href="{{url('categoria/'.$cat->codc)}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                        {{$cat->nomec}}
+                      </a>
+                    @endforeach
+                  </div>
+                  <div class='visible-xs visible-sm'>
+                    <a href="{{url('categoria')}}" class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>
+                      Ver todas as categorias
+                    </a>
+                  </div>
           		</div>
             </div>
           </div>

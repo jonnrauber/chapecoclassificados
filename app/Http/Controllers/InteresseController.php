@@ -7,6 +7,7 @@ use App\Http\Requests\InteresseRequest;
 use App\Http\Requests;
 use App\Interesse;
 use Auth;
+use App\Anuncio;
 use Mail;
 use Redirect;
 use DB;
@@ -20,10 +21,9 @@ class InteresseController extends Controller
 
   private function enviarEmailInteresse($interesse) {
     $usuario = DB::select('
-      select u.* from usuarios u
+      select u.*, a.tituloa from usuarios u
       join anuncios a on u.email = a.emaila
       where a.id = ?', [$interesse->id]);
-
     Mail::send('auth.emails.interesse', ['interesse' => $interesse, 'usuario' => $usuario[0]], function ($message) use ($usuario) {
       $message->to($usuario[0]->email)->subject('Novo interesse - Classificados Chapecó');
     });
