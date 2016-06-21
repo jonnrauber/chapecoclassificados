@@ -112,7 +112,6 @@ default width = 800/5 = 160px;
 	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
 }
 
-
 /*Last thing remaining is to add transitions*/
 .slider>img{
 	position: absolute;
