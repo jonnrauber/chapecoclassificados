@@ -67,17 +67,18 @@
     @endif
     @if(count($anuncios) > 0)
       <table class="table">
-        <th>
-          <td>
+        <thead>
+          <th></th>
+          <th>
             Título
-          </td>
-          <td>
+          </th>
+          <th>
             Preço
-          </td>
-          <td>
+          </th>
+          <th>
             Detalhes
-          </td>
-        </th>
+          </th>
+        </thead>
         @foreach($anuncios as $anuncio)
           <tr>
             <td>
@@ -104,11 +105,11 @@
             </td>
             <td>
               <a href="{{url('anuncio/'.$anuncio->id)}}">
+                <h4>{{$anuncio->tituloa}}</h4>
+              </a><br>
                 @if($anuncio->prior)
-                  <i class='fa fa-star'></i>
+                  <p class='text-muted'><i class='fa fa-star'></i> patrocinado</div></p>
                 @endif
-                {{$anuncio->tituloa}}
-              </a>
             </td>
             <td>
               <strong>R${{number_format($anuncio->valor, 2, ',', '.')}}</strong>
@@ -122,8 +123,8 @@
               <small>
                 Visitas: {{$anuncio->qtvisit}}
               </small><br>
-              {{$anuncio->bairro}}, {{$anuncio->cidade}} - {{$anuncio->estado}}</td>
-            <td></td>
+              {{$anuncio->bairro}}, {{$anuncio->cidade}} - {{$anuncio->estado}}
+            </td>
           </tr>
         @endforeach
       </table>
