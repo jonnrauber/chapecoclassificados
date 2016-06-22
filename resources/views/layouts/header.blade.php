@@ -131,6 +131,7 @@
             @endif
           </ul>
         </div>
+        </div>
       </nav>
 
       @yield('body')
@@ -145,9 +146,8 @@
             <p><a href="{{ url('/') }}">Chapecó Classificados</a> | 2016 &copy;</p>
   				</div>
   				<div class="col-xs-6 text-right">
-  					<a href="help.html" class="btn btn-link">Ajuda</a>
-  					<a href="contact.html" class="btn btn-link">Contato</a>
-  					<a href="conditions.html" class="btn btn-link">Regras</a>
+  					<a href="{{url('ajuda')}}" class="btn btn-link">Ajuda</a>
+  					<a href="{{url('regras')}}" class="btn btn-link">Regras</a>
   				</div>
   			</div>
     	</footer>

@@ -41,14 +41,14 @@
       <ul class='list-inline pull-right'>
         @if(Auth::check() && $anuncio->emaila==Auth::user()->email)
           <li class='list-inline-item'>
-            <a href='{{url("anuncio/editar/".$anuncio->id)}}' class='btn navbar-btn'>
-              editar anúncio <i class='fa fa-pencil'></i>
+            <a href='{{url("anuncio/editar/".$anuncio->id)}}' class='btn navbar-btn text-success'>
+              editar <i class='fa fa-pencil'></i>
             </a>
           </li>
         @endif
         <li class='list-inline-item'>
-          <a href='{{url("denuncia/anuncioid=".$anuncio->id)}}' class='btn navbar-btn'>
-            denunciar anúncio <i class='fa fa-ban text-danger'></i>
+          <a href='{{url("denuncia/anuncioid=".$anuncio->id)}}' class='btn navbar-btn text-danger'>
+            denunciar <i class='fa fa-ban'></i>
           </a>
         </li>
 

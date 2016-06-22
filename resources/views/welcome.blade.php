@@ -65,7 +65,7 @@
 								@endif
 							</a>
 							<div class="caption">
-								<h5><a href="{{url('anuncio/'.$anuncio->id)}}">{{$anuncio->tituloa}}</a></h5>
+								<h5><a href="{{url('anuncio/'.$anuncio->id)}}"><strong>{{$anuncio->tituloa}}</strong></a></h5>
 								<p>R${{number_format($anuncio->valor, 2, ',', '.')}}</p>
 							</div>
 						</div>

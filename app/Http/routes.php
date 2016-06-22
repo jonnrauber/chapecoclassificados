@@ -50,9 +50,11 @@ Route::post('perfil/editar', 'ProfileController@editarPerfil');
 Route::get('denuncia/anuncioid={id}', 'DenunciaController@showDenunciaPage');
 Route::post('denuncia/anuncioid={id}', 'DenunciaController@denunciaAnuncio');
 
-Route::get('ajuda', function() {
-  return view('ajuda');
-});
+Route::get('ajuda', 'HomeController@paginaDeAjuda');
+Route::post('ajuda', 'HomeController@enviarContatoAjuda');
+
+Route::get('regras', 'HomeController@paginaDeRegras');
+
 
 /* Rotas da área restrita */
 

@@ -57,8 +57,8 @@
                   <td>{{$anuncio->qtvisit}}</td>
                   <td>{{date("d/m/y H:i",strtotime(str_replace('-','/', $anuncio->created_at)))}}</td>
                   <td>{{date("d/m/y H:i",strtotime(str_replace('-','/', $anuncio->dataex)))}}</td>
-                  <td><a href='{{url('anuncio/editar/'.$anuncio->id)}}'><b class='fa fa-pencil'></b></a></td>
-                  <td><a href='{{url('anuncio/deletar/'.$anuncio->id)}}' onclick="return confirm('Tem certeza que deseja deletar o anúncio?');"><b class='fa fa-trash'></b></a></td>
+                  <td><a href='{{url('anuncio/editar/'.$anuncio->id)}}'><b class='fa fa-pencil text-success'></b></a></td>
+                  <td><a href='{{url('anuncio/deletar/'.$anuncio->id)}}' onclick="return confirm('Tem certeza que deseja deletar o anúncio?');"><b class='fa fa-trash text-danger'></b></a></td>
               </tr>
             @endforeach
           </table>
