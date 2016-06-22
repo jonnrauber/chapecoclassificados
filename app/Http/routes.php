@@ -46,6 +46,8 @@ Route::post('perfil/fotoperfil', 'ProfileController@uploadFotoPerfil');
 Route::get('perfil', 'ProfileController@perfil');
 Route::get('perfil/editar', 'ProfileController@showEditarPerfilPage');
 Route::post('perfil/editar', 'ProfileController@editarPerfil');
+Route::get('perfil/alterarsenha', 'ProfileController@paginaAlterarSenha');
+Route::post('perfil/alterarsenha', 'ProfileController@alterarSenha');
 
 Route::get('denuncia/anuncioid={id}', 'DenunciaController@showDenunciaPage');
 Route::post('denuncia/anuncioid={id}', 'DenunciaController@denunciaAnuncio');

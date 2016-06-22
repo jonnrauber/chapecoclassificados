@@ -57,7 +57,6 @@
                   <strong>
                     {{Auth::user()->email}}
                   </strong>
-                  <small>(verifique a Ajuda para alterar o endereço de e-mail)</small>
                 </td>
               </tr>
               <tr>

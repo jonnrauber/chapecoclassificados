@@ -9,6 +9,8 @@ use Redirect;
 use Auth;
 use Validator;
 use App\User;
+use Session;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -39,9 +41,11 @@ class ProfileController extends Controller
     }
     return Redirect::back();
   }
+
   public function showEditarPerfilPage() {
     return view('perfil/editar');
   }
+
   public function editarPerfil(Request $request) {
     $rules = [
       'nome' => 'required',
@@ -65,5 +69,38 @@ class ProfileController extends Controller
       return Redirect::back()->withErrors($validation);
     }
     return redirect('perfil');
+  }
+
+  public function paginaAlterarSenha() {
+    return view('perfil/alterarsenha');
+  }
+
+  public function alterarSenha(Request $request) {
+    $rules = [
+      'senhaAntiga' => 'required',
+      'novaSenha' => 'required|confirmed|min:6',
+    ];
+    $messages = [
+      'senhaAntiga.required' => 'preencha sua senha antiga',
+      'novaSenha.required' => 'preencha sua nova senha',
+      'novaSenha.confirmed' => 'as senhas não coincidem',
+      'novaSenha.min' => 'a nova senha deve conter no mínimo 6 caracteres'
+    ];
+    $validator = Validator::make($request->all(), $rules, $messages);
+
+    if($validator->fails())
+      return Redirect::back()->withErrors($validator);
+
+    if(Hash::check($request->senhaAntiga, Auth::user()->password)) {
+      $usuario = Auth::user();
+      $usuario->password = bcrypt($request->novaSenha);
+      $usuario->save();
+
+      Session::flash('senha_sucesso', 'Sua senha foi alterada com sucesso.');
+      return Redirect::back();
+    } else {
+      Session::flash('erro_senha', 'A senha antiga inserida está incorreta.');
+      return Redirect::back();
+    }
   }
 }

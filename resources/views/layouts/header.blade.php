@@ -137,15 +137,15 @@
       @yield('body')
 
 
-      <footer>
+      <footer class='bg-success'>
     		<div class="row">
-  				<div class="col-xs-6">
-  				<!--
-            <img src="img/czsale-logo.png" alt="CZSale" title="CZSale" style="width: 100px; height: 58px;" />
-          -->
+  				<div class="col-xs-4">
             <p><a href="{{ url('/') }}">Chapecó Classificados</a> | 2016 &copy;</p>
   				</div>
-  				<div class="col-xs-6 text-right">
+          <div class='col-xs-4'>
+            <p>Desenvolvido por: Jonathan Rauber, Nicholas S. Brutti</p>
+          </div>
+  				<div class="col-xs-4 text-right">
   					<a href="{{url('ajuda')}}" class="btn btn-link">Ajuda</a>
   					<a href="{{url('regras')}}" class="btn btn-link">Regras</a>
   				</div>
