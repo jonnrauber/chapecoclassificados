@@ -14,7 +14,7 @@ use App\BoletoBB;
 use App\User;
 use App\Categoria;
 use Boleto;
-
+use File;
 
 class AnuncioController extends Controller
 {
@@ -51,7 +51,7 @@ class AnuncioController extends Controller
     $anuncio->tituloa = $request->tituloa;
     $anuncio->descricao = $request->descricao;
     $anuncio->codc = $request->codc;
-    $anuncio->valor = $request->valor;
+    $anuncio->valor = $request->valor ? str_replace(',' , '' , $request->valor) : 0;
     $anuncio->prior = false; //falta colocar a prioridade!
     $anuncio->tipo = $request->tipo;
     $anuncio->qtitens = $request->qtitens ? $request->qtitens : null;
@@ -63,6 +63,18 @@ class AnuncioController extends Controller
 
   public function deletaAnuncio($id) {
     $anuncio = Anuncio::find($id);
+
+    if($anuncio->imagem1)
+      File::delete('img/anuncio/'.$anuncio->imagem1);
+    if($anuncio->imagem2)
+      File::delete('img/anuncio/'.$anuncio->imagem2);
+    if($anuncio->imagem3)
+      File::delete('img/anuncio/'.$anuncio->imagem3);
+    if($anuncio->imagem4)
+      File::delete('img/anuncio/'.$anuncio->imagem4);
+    if($anuncio->imagem5)
+      File::delete('img/anuncio/'.$anuncio->imagem5);
+
     $anuncio->delete();
 
     return redirect('anuncio/meusitens');
@@ -95,7 +107,7 @@ class AnuncioController extends Controller
     $anuncio->descricao = $request->descricao;
     $anuncio->codc = $request->codc;
     $anuncio->codp = $request->codp ? $request->codp : 1;
-    $anuncio->valor = $request->valor ? $request->valor : 0;
+    $anuncio->valor = $request->valor ? str_replace(',' , '' , $request->valor) : 0;
     $anuncio->qtvisit = 0;
     $anuncio->prior = $request->prior ? true : false;
     $anuncio->tipo = $request->tipo;

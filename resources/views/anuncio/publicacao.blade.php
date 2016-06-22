@@ -20,6 +20,16 @@
       </ul>
     </div>
   @endif
+  @if(Session::has('interesse_sucesso'))
+    <div class='alert alert-success'>
+      {{session('interesse_sucesso')}}
+    </div>
+  @endif
+  @if(Session::has('coment_sucesso'))
+    <div class='alert alert-success'>
+      {{session('coment_sucesso')}}
+    </div>
+  @endif
 
   <div class="row">
     <div class="col-xs-12">
@@ -117,10 +127,12 @@
   					<td>Método de Pagamento</td>
   					<td>{{$pagamento->nomep}}</td>
   				</tr>
-          <tr>
-            <td>Unidades à venda</td>
-            <td>{{$anuncio->qtitens}}</td>
-          </tr>
+          @if($anuncio->tipo == 'p')
+            <tr>
+              <td>Unidades à venda</td>
+              <td>{{$anuncio->qtitens}}</td>
+            </tr>
+          @endif
   			</tbody>
   		</table>
       <div class='col-md-12' style='text-align: center'><h3 style='margin-top: 0'>R${{number_format($anuncio->valor, 2, ',', '.')}}</h3></div>

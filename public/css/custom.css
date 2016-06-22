@@ -188,7 +188,10 @@ On click the images will be displayed at normal size to complete the effect
 /*------------ welcome ----------------*/
 
 .thumbhome {
-	max-height: 250px;
+	height: 250px;
+}
+.thumbhome img {
+	max-height: 150px;
 }
 
 .recentes .media-object {

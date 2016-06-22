@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\ComentarioRequest;
 use App\Comentario;
+use Session;
 
 class ComentarioController extends Controller
 {
@@ -22,6 +23,8 @@ class ComentarioController extends Controller
       $comentario->msg = $request->msg;
 
       $comentario->save();
+
+      Session::flash('coment_sucesso', 'Você comentou na publicação.');
 
       return back();
     }

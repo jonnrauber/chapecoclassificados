@@ -12,6 +12,7 @@ use Mail;
 use Redirect;
 use DB;
 use Validator;
+use Session;
 
 class InteresseController extends Controller
 {
@@ -38,6 +39,8 @@ class InteresseController extends Controller
     $interesse->save();
 
     $this->enviarEmailInteresse($interesse);
+
+    Session::flash('interesse_sucesso', 'Sua mensagem de interesse foi enviada com sucesso ao autor do anúncio.');
 
     return Redirect::back();
   }

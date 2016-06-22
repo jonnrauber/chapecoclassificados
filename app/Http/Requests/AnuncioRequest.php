@@ -29,7 +29,6 @@ class AnuncioRequest extends Request
           'codp' => 'required_unless:tipo, "s"',
           'tituloa' => 'required|max:100|unique_with:anuncios,emaila',
           'descricao' => 'required',
-          'valor' => 'numeric',
           'qtitens' => 'integer'
         ];
     }
