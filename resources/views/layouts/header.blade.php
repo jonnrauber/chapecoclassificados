@@ -98,15 +98,15 @@
                             Form::checkbox('remember', 1,null,['class'=>'col-xs-1']),
                             Form::label('remember','Lembrar-me')
                           ),
-                          ControlGroup::generate(
-                            Form::submit(
-                              'Login',
-                              ['class'=>'btn btn-success']
-                            ),
-                            Button::link('Esqueceu sua senha?', url('/password/email'))
-                          ),
-                        Form::close()
-                        !!}
+                          Form::submit(
+                            'Login',
+                            ['class'=>'btn btn-success']
+                          )
+            						!!}
+            						<div class='pull-right'>
+            							<a href="{{url('/password/email')}}">Esqueceu sua senha?</a>
+            						</div>
+            						{!!	Form::close() !!}
                       </div>
                     </div>
                   </li>
@@ -134,7 +134,6 @@
       </nav>
 
       @yield('body')
-
 
       <footer class='bg-success'>
     		<div class="row">

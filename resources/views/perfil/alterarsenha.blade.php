@@ -2,7 +2,7 @@
 
 @section('content')
     <div class='col-md-9'>
-      <a href='{{url()->previous()}}'>voltar</a>
+      <a href='{{url("perfil/editar")}}'>voltar</a>
       <div class='panel panel-default'>
         <div class='panel-heading panel-title'>
           <i class='fa fa-key'></i> Alterar senha

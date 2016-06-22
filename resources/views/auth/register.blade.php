@@ -85,7 +85,7 @@
 							null,
 							4,5
 						),
-						Form::submit('Cadastrar',['class'=>'col-md-offset-5 btn btn-primary']),
+						Form::submit('Cadastrar',['class'=>'col-md-offset-5 btn btn-success']),
 					Form::close()
 					!!}
 

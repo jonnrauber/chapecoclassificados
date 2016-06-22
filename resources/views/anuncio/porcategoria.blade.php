@@ -12,7 +12,7 @@
       <div class="input-group">
         <input type="text" class="form-control" value='{{old("titulo")}}' id='titulo' name="titulo">
         <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
         </span>
       </div>
       <div class='row'>
