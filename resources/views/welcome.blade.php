@@ -40,34 +40,6 @@
 @section('content')
 	<div class="col-md-9">
 		<div class='col-xs-12'>
-			<div class="accordian">
-				<ul>
-					<li>
-						<div class="image_title">
-							<a href="#">Conheça</a>
-						</div>
-						<a href="#">
-							<img src="{{url('img/master/homeauth.fw.png')}}"/>
-						</a>
-					</li>
-					<li>
-						<div class="image_title">
-							<a href="#">Cadastre-se</a>
-						</div>
-						<a href="#">
-							<img src="{{url('img/master/homeauth.fw.png')}}"/>
-						</a>
-					</li>
-					<li>
-						<div class="image_title">
-							<a href="#">Anuncie</a>
-						</div>
-						<a href="#">
-							<img src="{{url('img/master/home.fw.png')}}"/>
-						</a>
-					</li>
-				</ul>
-			</div>
 		</div>
 		<div class="col-xs-12">
 			<hr>

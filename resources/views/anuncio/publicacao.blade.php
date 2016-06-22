@@ -38,7 +38,20 @@
   <div class="row">
     <div class="col-xs-12">
       <h2 class='pull-left'>{{$anuncio->tituloa}}</h2>
-      <a href='{{url("denuncia/anuncioid=".$anuncio->id)}}' class='btn navbar-btn pull-right'>denunciar anúncio</a>
+      <ul class='list-inline pull-right'>
+        @if(Auth::check() && $anuncio->emaila==Auth::user()->email)
+          <li class='list-inline-item'>
+            <a href='{{url("anuncio/editar/".$anuncio->id)}}' class='btn navbar-btn'>
+              editar anúncio <i class='fa fa-pencil'></i>
+            </a>
+          </li>
+        @endif
+        <li class='list-inline-item'>
+          <a href='{{url("denuncia/anuncioid=".$anuncio->id)}}' class='btn navbar-btn'>
+            denunciar anúncio <i class='fa fa-ban text-danger'></i>
+          </a>
+        </li>
+
     </div>
   </div>
   <div class="row">
