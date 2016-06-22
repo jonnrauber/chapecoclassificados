@@ -15,6 +15,7 @@ use App\User;
 use App\Categoria;
 use Boleto;
 use File;
+use Session;
 
 class AnuncioController extends Controller
 {
@@ -24,7 +25,13 @@ class AnuncioController extends Controller
   }
 
   public function showAnuncioForm(){
-    return view('anuncio.novo');
+    $categorias = DB::table('categorias')
+                      ->orderBy('nomec')
+                      ->get();
+    $pagamentos = DB::table('pagamentos')
+                      ->orderBy('nomep')
+                      ->get();
+    return view('anuncio.novo', ['categorias' => $categorias, 'pagamentos' => $pagamentos]);
   }
   public function showMeusItensPage(){
     $anuncios = DB::select('
@@ -36,12 +43,14 @@ class AnuncioController extends Controller
   }
 
   public function showEditarItemPage($id) {
-    $anuncio = DB::select('
-      select a.* from anuncios a
-      where a.id = ?', [$id]);
-    $anuncio = $anuncio[0];
-    $categorias = DB::select('select c.codc, c.nomec from categorias c');
-    return view('anuncio.editar', ['anuncio' => $anuncio, 'categorias'=>$categorias]);
+    $anuncio = Anuncio::find($id);
+    $categorias = DB::table('categorias')
+                      ->orderBy('nomec')
+                      ->get();
+    $pagamentos = DB::table('pagamentos')
+                      ->orderBy('nomep')
+                      ->get();
+    return view('anuncio.editar', ['anuncio' => $anuncio, 'categorias' => $categorias, 'pagamentos' => $pagamentos]);
   }
 
   public function editarAnuncio($id, AnuncioRequest $request) {
@@ -51,13 +60,16 @@ class AnuncioController extends Controller
     $anuncio->tituloa = $request->tituloa;
     $anuncio->descricao = $request->descricao;
     $anuncio->codc = $request->codc;
+    $anuncio->codp = $request->codp ? $request->codp : 1;
     $anuncio->valor = $request->valor ? str_replace(',' , '' , $request->valor) : 0;
-    $anuncio->prior = false; //falta colocar a prioridade!
+    $anuncio->prior = $request->prior ? true : false;
     $anuncio->tipo = $request->tipo;
     $anuncio->qtitens = $request->qtitens ? $request->qtitens : null;
     $anuncio->condicao = $request->condicao;
 
     $anuncio->save();
+
+    Session::flash('edit_sucesso', 'Anúncio editado com sucesso.');
     return redirect('anuncio/'.$id);
   }
 

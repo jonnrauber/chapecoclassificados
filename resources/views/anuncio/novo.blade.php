@@ -1,12 +1,3 @@
-<?php
-  $categorias = DB::table('categorias')
-                    ->orderBy('nomec')
-                    ->get();
-  $pagamentos = DB::table('pagamentos')
-                    ->orderBy('nomep')
-                    ->get();
-?>
-
 @extends('layouts.inside')
 
 @section('content')

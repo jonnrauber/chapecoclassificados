@@ -30,7 +30,11 @@
       {{session('coment_sucesso')}}
     </div>
   @endif
-
+  @if(Session::has('edit_sucesso'))
+    <div class='alert alert-success'>
+      {{session('edit_sucesso')}}
+    </div>
+  @endif
   <div class="row">
     <div class="col-xs-12">
       <h2 class='pull-left'>{{$anuncio->tituloa}}</h2>

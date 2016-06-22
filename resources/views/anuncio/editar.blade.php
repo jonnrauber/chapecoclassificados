@@ -45,61 +45,55 @@
               <label for="descricao">Descrição</label>
               <textarea name="descricao" class="form-control" rows="8">{{$anuncio->descricao}}</textarea>
             </div>
-
-            <div class="form-group">
-              <label>Preço</label>
-              <div class="form-inline">
-                <div class="form-group">
-                  <div class="input-group" style="width: 150px;">
-                    <span class="input-group-addon">R$</span>
-                    <input type="text" class="form-control" name="valor" id="valor" value="{{$anuncio->valor}}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <p class="form-control-static" style="padding: 0 10px;">ou</p>
-                </div>
-                <label><input type="checkbox" name="gratis" /> Grátis?</label>
-              </div>
-            </div>
-
-            <div class="form-group qtitens" style="width: 150px">
-              <label>Quantidade de itens
-              <input type="text" class="form-control" name="qtitens" value="{{$anuncio->qtitens}}">
-              </label>
-            </div>
-
-            <div class="form-group condicao" style="width: 300px">
-              <label>Condição</label><br>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="condicao" value="n" @if($anuncio->condicao == 'n') checked @endif>
-                  Novo
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="condicao" value="u" @if($anuncio->condicao == 'u') checked @endif>
-                  Usado
-                </label>
-              </div>
-            </div>
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Imagens do classificado</h3>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label>Selecione as imagens</label>
-              <input type="file" name="imagem1">
-              <input type="file" name="imagem2">
-              <input type="file" name="imagem3">
-              <input type="file" name="imagem4">
-              <input type="file" name="imagem5">
+        <div class='panel panel-info panel-body'>
+          <div class="form-group">
+            <label>Preço</label>
+            <div class="form-inline">
+              <div class="form-group">
+                <div class="input-group" style="width: 150px;">
+                  <span class="input-group-addon">R$</span>
+                  <input type="text" class="form-control" name="valor" id="valor" value="{{$anuncio->valor}}">
+                </div>
+              </div>
+              <div class="form-group">
+								<p class="form-control-static" style="padding: 0 10px;">ou</p>
+                <label><input type="checkbox" name="gratis" onclick="ehGratis();" /> Grátis?</label>
+							</div>
             </div>
+          </div>
+
+          <div class="form-group qtitens" style="width: 150px">
+            <label>Quantidade de itens
+            <input type="text" class="form-control" name="qtitens" value="{{$anuncio->qtitens}}">
+            </label>
+          </div>
+
+          <div class="form-group condicao" style="width: 300px">
+            <label>Condição</label><br>
+            <div class="radio">
+              <label>
+                <input type="radio" name="condicao" value="n" @if($anuncio->condicao == 'n') checked @endif>
+                Novo
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="condicao" value="u" @if($anuncio->condicao == 'u') checked @endif>
+                Usado
+              </label>
+            </div>
+          </div>
+          <div class='form-group pagamentos'>
+            <select name="codp" class="form-control">
+							<option value="" selected="selected">Selecione a forma de pagamento</option>
+              @foreach($pagamentos as $pag)
+                <option value='{{$pag->codp}}' @if($pag->codp == $anuncio->codp) selected @endif>{{$pag->nomep}}</option>
+              @endforeach
+						</select>
           </div>
         </div>
         <div class="panel panel-info">
