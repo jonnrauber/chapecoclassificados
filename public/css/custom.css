@@ -124,10 +124,6 @@ On click the images will be displayed at normal size to complete the effect
 	transition: all 1s;
 }
 
-.list-group-item {
-	height: 38px;
-}
-
 /*------------ welcome ----------------*/
 
 .thumbhome {
@@ -193,6 +189,7 @@ footer > .row > .col-xs-4 p, footer > .row > .col-xs-6 > .col-xs-6 .text-right a
 .alterarimgperfil {
 	max-width: 100%;
 	margin: 0 auto;
+	overflow: hidden;
 }
 
 .imgperfil {

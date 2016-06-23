@@ -40,6 +40,9 @@
 @section('content')
 	<div class="col-md-9">
 		<div class='col-xs-12'>
+			<a href='{{url("anuncio/novo")}}'>
+				<img src='img/master/bannerhome.jpg' class='img-responsive' alt='chapeco classificados' />
+			</a>
 		</div>
 		<div class="col-xs-12">
 			<hr>

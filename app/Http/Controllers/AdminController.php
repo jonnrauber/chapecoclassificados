@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
     public function loginAdmin(Request $request) {
       $login = $request->loginadm;
-      $senha = $request->senhaadm;
+      $senha = md5($request->senhaadm);
 
       $rules = [
         'loginadm' => 'required',

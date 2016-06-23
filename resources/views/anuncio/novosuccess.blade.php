@@ -1,6 +1,14 @@
 @extends('anuncio.novo')
 
 @section('novosuccess')
+<?php
+  $categorias = DB::table('categorias')
+                    ->orderBy('nomec')
+                    ->get();
+  $pagamentos = DB::table('pagamentos')
+                    ->orderBy('nomep')
+                    ->get();
+?>
 
   <div class="alert alert-success">
     <p>Anúncio cadastrado com sucesso.</p>

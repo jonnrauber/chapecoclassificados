@@ -45,6 +45,12 @@
 						</div>
 						{!!	Form::close() !!}
 					</div>
+					<hr>
+					<div class='row'>
+						<div class='well col-sm-6 col-sm-offset-3'>
+							Não tem uma conta? <a href='{{url("register")}}'>Crie uma nova</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

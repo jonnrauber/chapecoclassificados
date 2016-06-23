@@ -25,13 +25,7 @@ class AnuncioController extends Controller
   }
 
   public function showAnuncioForm(){
-    $categorias = DB::table('categorias')
-                      ->orderBy('nomec')
-                      ->get();
-    $pagamentos = DB::table('pagamentos')
-                      ->orderBy('nomep')
-                      ->get();
-    return view('anuncio.novo', ['categorias' => $categorias, 'pagamentos' => $pagamentos]);
+    return view('anuncio.novo');
   }
   public function showMeusItensPage(){
     $anuncios = DB::select('

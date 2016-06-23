@@ -120,11 +120,11 @@
   				<th colspan="2">Detalhes:</th>
   			</thead>
   			<tbody style="font-size: 15px;">
-          @if($anuncio->tipo == 'p')
           <tr>
             <td>Visualizações do anúncio</td>
             <td>{{$anuncio->qtvisit}}</td>
           </tr>
+          @if($anuncio->tipo == 'p')
           <tr>
   					<td>Condição</td>
   					<td>
